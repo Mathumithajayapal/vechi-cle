@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FleetManage</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
+        type="image/svg+xml">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    fontWeight: {
+                        regular: '400',
+                        medium: '500',
+                        semibold: '600',
+                        bold: '700',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* === RESET & CORE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* === THEME VARIABLES (Corporate Fleet Theme) === */
+        :root {
+            --bg-color: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --bg-card: #FFFFFF;
+            --bg-inverted: #0F172A;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --accent-color: #0284C7;
+            --accent-dark: #0369A1; 
+            --border-color: #E2E8F0;
+            --nav-bg: #F8FAFC;
+            --drawer-bg: rgba(248, 250, 252, 0.98);
+            --menu-hover-bg: rgba(2, 132, 199, 0.08);
+        }
+
+        /* DARK MODE */
+        body.dark-mode {
+            --bg-color: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-card: #1E293B;
+            --bg-inverted: #F8FAFC;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --accent-color: #38BDF8;
+            --accent-dark: #0EA5E9;
+            --border-color: #334155;
+            --nav-bg: #0F172A;
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(56, 189, 248, 0.1);
+        }
+
+        /* RTL SUPPORT */
+        [dir="rtl"] { text-align: right; }
+        [dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
+
+        @keyframes subtleZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .animate-zoom { animation: subtleZoom 25s infinite alternate ease-in-out; }
+
+        /* === NAVBAR DESIGN === */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 32px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.scrolled {
+            height: 75px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            background: var(--drawer-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        body.dark-mode .navbar.scrolled {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 10px 20px;
+            margin: 0 4px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%; width: 0; height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after { width: 60%; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-color); }
+
+        .dropdown { position: relative; display: flex; align-items: center; height: 100%; }
+        .dropdown-menu {
+            position: absolute; top: 70px; left: 0;
+            transform: translateY(15px); opacity: 0; visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100;
+        }
+        .navbar.scrolled .dropdown-menu { top: 60px; }
+
+        .dropdown-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            min-width: 220px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            padding: 8px 0;
+            display: flex; flex-direction: column;
+        }
+
+        body.dark-mode .dropdown-inner { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block; padding: 12px 24px; color: var(--text-main);
+            text-decoration: none; font-size: 12px; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            transition: all 0.3s; text-align: left; white-space: nowrap;
+        }
+
+        .dropdown-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-color);
+            padding-left: 28px;
+        }
+        [dir="rtl"] .dropdown-item:hover { padding-left: 24px; padding-right: 28px; }
+
+        /* PILL TOGGLE */
+        .theme-toggle-pill {
+            width: 52px; height: 28px; background: var(--bg-secondary);
+            border-radius: 30px; position: relative; cursor: pointer;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 6px; border: 1px solid var(--border-color);
+        }
+        .theme-toggle-pill i { font-size: 10px; z-index: 1; }
+        .theme-toggle-pill .fa-sun { color: #0284C7; }
+        .theme-toggle-pill .fa-moon { color: #64748B; }
+        .theme-toggle-pill .thumb {
+            position: absolute; top: 2px; left: 2px; width: 22px; height: 22px;
+            background: white; border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 2; border: 1px solid var(--border-color);
+        }
+        body.dark-mode .theme-toggle-pill .thumb {
+            transform: translateX(24px); background: #1E293B; border-color: var(--border-color);
+        }
+
+        /* RTL BUTTON STYLE */
+        .rtl-btn-style {
+            width: 44px; height: 28px; background: var(--bg-secondary);
+            border-radius: 2px; border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 600; cursor: pointer; color: var(--text-main);
+            transition: all 0.3s ease; font-family: 'Inter', sans-serif;
+        }
+        .rtl-btn-style:hover { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+
+        /* === BUTTON DESIGN === */
+        .btn {
+            padding: 14px 32px; font-weight: 500; font-size: 12px;
+            text-transform: uppercase; letter-spacing: 2px; transition: all 0.4s ease;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; border: 1px solid transparent; font-family: 'Inter', sans-serif;
+        }
+        .btn-solid { background: var(--accent-color); color: #FFFFFF !important; }
+        .btn-solid:hover { background: var(--accent-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+        .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color) !important; }
+
+        /* MOBILE OVERLAY & DRAWER */
+        .drawer-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7);
+            z-index: 999; opacity: 0; visibility: hidden;
+            transition: all 0.4s ease; backdrop-filter: blur(5px);
+        }
+        .drawer-overlay.active { opacity: 1; visibility: visible; }
+
+        .fullscreen-menu {
+            position: fixed; top: 0; right: 0; width: 100%; max-width: 420px;
+            height: 100dvh; background: var(--drawer-bg); z-index: 1001;
+            display: flex; flex-direction: column; opacity: 0; visibility: hidden;
+            transform: translateX(100%); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-color);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto; left: 0; transform: translateX(-100%);
+            border-left: none; border-right: 1px solid var(--border-color);
+        }
+        .fullscreen-menu.active { opacity: 1; visibility: visible; transform: translateX(0); }
+
+        .mobile-link {
+            display: block; width: 100%; padding: 18px 32px; font-size: 1rem;
+            font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-main);
+            text-decoration: none; transition: all 0.3s; border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover { color: var(--accent-color); padding-left: 40px; background: var(--menu-hover-bg); }
+        [dir="rtl"] .mobile-link:hover { padding-left: 32px; padding-right: 40px; }
+
+        /* FOOTER */
+        footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding-top: 80px; }
+        footer h4 { color: var(--text-main); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 24px; letter-spacing: 1px; }
+        footer a, footer li, footer span { color: var(--text-muted); text-decoration: none; transition: all 0.3s; font-size: 0.95rem; }
+        footer a:hover { color: var(--accent-color); }
+
+        .social-link-circle {
+            width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; color: var(--text-main); background: transparent;
+        }
+        .social-link-circle:hover { background: var(--accent-color); border-color: var(--accent-color); color: #FFFFFF; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 32px 0; margin-top: 60px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR COMPONENT -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <div class="flex items-center">
+                <a href="index.html"
+                    class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
+                    style="color: var(--text-main) !important; text-decoration: none;">
+                    <i class="fas fa-truck"
+                        style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
+                </a>
+            </div>
+
+            <div class="hidden xl:flex justify-center items-center flex-1">
+                <div class="dropdown">
+                    <div class="nav-link">Home <i class="fas fa-chevron-down text-[9px] ml-2 opacity-60"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="index.html" class="dropdown-item">Home Page 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home Page 2</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <div class="dropdown">
+                    <div class="nav-link">Dashboard <i class="fas fa-chevron-down text-[9px] ml-2 opacity-60"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="user.html" class="dropdown-item">User Dashboard</a>
+                            <a href="admin.html" class="dropdown-item">Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden xl:flex items-center gap-5">
+                <div id="theme-toggle-desktop" class="theme-toggle-pill" title="Toggle Dark Mode">
+                    <i class="fas fa-sun"></i><i class="fas fa-moon"></i>
+                    <div class="thumb"></div>
+                </div>
+                <button id="rtl-btn" class="rtl-btn-style" title="Toggle LTR/RTL">LTR</button>
+                <div class="w-px h-6 bg-[var(--border-color)] mx-1"></div>
+                <a href="login.html" class="btn btn-solid !py-2.5 !px-6 !text-[10px]">Login</a>
+            </div>
+
+            <div class="xl:hidden flex items-center justify-end gap-4">
+                <button id="mobile-btn"
+                    class="text-2xl text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)]">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE HAMBURGER DRAWER -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-8 py-8 flex justify-between items-center shrink-0 border-b border-[var(--border-color)]">
+            <a href="index.html"
+                class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
+                style="color: var(--text-main) !important; text-decoration: none;">
+                <i class="fas fa-truck"
+                    style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+            </a>
+            <button id="close-menu"
+                class="w-10 h-10 flex items-center justify-center transition-all text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)]">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-4">
+            <a href="index.html" class="mobile-link">Home Page 1</a>
+            <a href="home-2.html" class="mobile-link">Home Page 2</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="services.html" class="mobile-link">Services</a>
+            <a href="pricing.html" class="mobile-link">Pricing</a>
+            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="faq.html" class="mobile-link">FAQ</a>
+            <a href="contact.html" class="mobile-link" style="color: var(--accent-color);">Contact</a>
+
+            <div class="px-8 mt-8 mb-2">
+                <span class="text-[10px] font-bold text-[var(--accent-color)] uppercase tracking-widest">Portals</span>
+            </div>
+            <a href="user.html" class="mobile-link !text-sm text-[var(--text-muted)] !not-italic">User Dashboard</a>
+            <a href="admin.html" class="mobile-link !text-sm text-[var(--text-muted)] !not-italic">Admin Dashboard</a>
+        </div>
+
+        <div class="w-full px-8 py-8 border-t border-[var(--border-color)] flex flex-col gap-6 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-muted)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <div id="theme-toggle-mobile" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i>
+                        <div class="thumb"></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-muted)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-btn-style">LTR</button>
+                </div>
+            </div>
+            <div class="flex gap-4 w-full">
+                <a href="login.html" class="btn btn-outline flex-1 !py-3">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT HERO BANNER COMPONENT -->
+    <section class="relative w-full min-h-[70dvh] pt-32 pb-24 flex items-center justify-center overflow-hidden border-b border-[var(--border-color)]">
+        <div class="absolute inset-0 z-0 bg-[#0F172A]">
+            <img src="images/vechicle (7).jpg" alt="Customer Support Representation"
+                class="w-full h-full object-cover animate-zoom opacity-40" />
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/50 to-[var(--bg-color)] z-10"></div>
+        </div>
+
+        <div class="max-w-[1000px] mx-auto px-6 w-full flex flex-col items-center justify-center text-center relative z-20">
+            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-6">
+                <i class="fas fa-headset mr-2 text-[10px]"></i> 24/7 Dedicated Support
+            </span>
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-regular leading-tight mb-8 text-white">
+                We're Here to <br class="hidden sm:block">
+                <span class="italic text-[var(--accent-color)]">Help</span>.
+            </h1>
+
+            <p class="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl font-light mb-12 drop-shadow-md">
+                Whether you're looking to lease a new fleet or need assistance with your current account, our expert support team is ready to assist you.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                <a href="#contact-form" class="btn btn-solid !py-4 !px-12">
+                    Send a Message
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="w-full bg-[var(--bg-color)]">
+        
+        <!-- SECTION 1: CONTACT FORM & DIRECT INFO (~50 lines) -->
+        <section id="contact-form" class="w-full py-24 px-6 bg-[var(--bg-color)]">
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="flex flex-col justify-center">
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-3">Get in Touch</span>
+                    <h2 class="text-3xl md:text-4xl font-regular mb-6" style="color: var(--text-main);">Send Us a Message</h2>
+                    <p class="text-[var(--text-muted)] text-base font-light mb-10">Fill out the form below and our dedicated logistics team will get back to you within 24 business hours.</p>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-2">First Name</label>
+                                <input type="text" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] px-4 py-3 rounded-md focus:outline-none focus:border-[var(--accent-color)] transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-2">Last Name</label>
+                                <input type="text" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] px-4 py-3 rounded-md focus:outline-none focus:border-[var(--accent-color)] transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-2">Email Address</label>
+                            <input type="email" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] px-4 py-3 rounded-md focus:outline-none focus:border-[var(--accent-color)] transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider mb-2">Message</label>
+                            <textarea rows="5" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] px-4 py-3 rounded-md focus:outline-none focus:border-[var(--accent-color)] transition-colors"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-solid w-full !py-4 mt-4">Submit Inquiry</button>
+                    </form>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-10 shadow-sm flex flex-col justify-center h-full">
+                    <h3 class="text-2xl font-semibold mb-8" style="color: var(--text-main);">Direct Contact</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 rounded-full bg-[var(--accent-color)]/10 flex items-center justify-center shrink-0">
+                                <i class="fas fa-phone text-[var(--accent-color)] text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-[var(--text-main)] uppercase tracking-wider mb-1">Phone Line</h4>
+                                <p class="text-[var(--text-muted)] text-sm font-light">+1 (800) 555-0199 <br> Mon-Fri, 8am-6pm EST</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5 border-t border-[var(--border-color)] pt-8">
+                            <div class="w-12 h-12 rounded-full bg-[var(--accent-color)]/10 flex items-center justify-center shrink-0">
+                                <i class="fas fa-envelope text-[var(--accent-color)] text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-[var(--text-main)] uppercase tracking-wider mb-1">Email Desks</h4>
+                                <p class="text-[var(--text-muted)] text-sm font-light">support@fleetmanage.com <br> sales@fleetmanage.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTERACTIVE MAP (~50 lines) -->
+        <section class="w-full py-20 px-6 bg-[var(--bg-secondary)] border-y border-[var(--border-color)]">
+            <div class="max-w-[1200px] mx-auto text-center mb-12">
+                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Our Headquarters</span>
+                <h2 class="text-3xl md:text-4xl font-regular" style="color: var(--text-main);">Find Us on the Map</h2>
+                <p class="text-[var(--text-muted)] text-base font-light mt-4 max-w-2xl mx-auto">Visit our central logistics hub. We're conveniently located near major shipping routes and industrial centers.</p>
+            </div>
+            <div class="max-w-[1200px] mx-auto">
+                <div class="w-full h-[500px] rounded-xl overflow-hidden border border-[var(--border-color)] shadow-lg relative bg-[var(--bg-card)]">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25280945934!2d-74.14483161047648!3d40.69766373767215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1715000000000!5m2!1sen!2s" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(0.2) contrast(1.1);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="absolute top-6 left-6 bg-[var(--bg-card)] p-5 rounded-lg shadow-xl border border-[var(--border-color)] z-10 hidden md:block">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-[var(--accent-color)]/10 rounded flex items-center justify-center">
+                                <i class="fas fa-building text-[var(--accent-color)] text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-[var(--text-main)]">FleetManage HQ</h4>
+                                <p class="text-xs text-[var(--text-muted)] mt-1">1200 Logistics Way<br>Industrial Park, NY 10001</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: GLOBAL OFFICES (~50 lines) -->
+        <section class="w-full py-24 px-6 bg-[var(--bg-color)]">
+            <div class="max-w-[1200px] mx-auto text-center mb-16">
+                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Global Reach</span>
+                <h2 class="text-3xl md:text-4xl font-regular" style="color: var(--text-main);">Our Regional Hubs</h2>
+            </div>
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Office 1 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-8 transition-all hover:border-[var(--accent-color)] hover:shadow-md">
+                    <i class="fas fa-globe-americas text-3xl text-[var(--text-muted)] opacity-50 mb-6 block"></i>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--text-main);">North America</h3>
+                    <p class="text-sm text-[var(--accent-color)] font-medium mb-6 uppercase tracking-wider">Chicago, IL</p>
+                    <ul class="space-y-4 text-sm text-[var(--text-muted)] font-light">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-[var(--accent-color)]"></i> 4500 Transit Blvd, Suite 200<br>Chicago, IL 60601</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-[var(--accent-color)]"></i> +1 (312) 555-0142</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-[var(--accent-color)]"></i> na-sales@fleetmanage.com</li>
+                    </ul>
+                </div>
+                <!-- Office 2 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-8 transition-all hover:border-[var(--accent-color)] hover:shadow-md">
+                    <i class="fas fa-globe-europe text-3xl text-[var(--text-muted)] opacity-50 mb-6 block"></i>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--text-main);">Europe</h3>
+                    <p class="text-sm text-[var(--accent-color)] font-medium mb-6 uppercase tracking-wider">Berlin, Germany</p>
+                    <ul class="space-y-4 text-sm text-[var(--text-muted)] font-light">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-[var(--accent-color)]"></i> Logistikstraße 88<br>10115 Berlin, Germany</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-[var(--accent-color)]"></i> +49 30 1234 5678</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-[var(--accent-color)]"></i> eu-sales@fleetmanage.com</li>
+                    </ul>
+                </div>
+                <!-- Office 3 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-8 transition-all hover:border-[var(--accent-color)] hover:shadow-md">
+                    <i class="fas fa-globe-asia text-3xl text-[var(--text-muted)] opacity-50 mb-6 block"></i>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--text-main);">Asia Pacific</h3>
+                    <p class="text-sm text-[var(--accent-color)] font-medium mb-6 uppercase tracking-wider">Singapore</p>
+                    <ul class="space-y-4 text-sm text-[var(--text-muted)] font-light">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-[var(--accent-color)]"></i> 12 Marina View, #15-01<br>Singapore 018961</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-[var(--accent-color)]"></i> +65 6789 0123</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-[var(--accent-color)]"></i> apac-sales@fleetmanage.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CONTACT FAQ (~50 lines) -->
+        <section class="w-full py-20 px-6 bg-[var(--bg-secondary)] border-y border-[var(--border-color)]">
+            <div class="max-w-[900px] mx-auto">
+                <div class="text-center mb-12">
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Quick Answers</span>
+                    <h2 class="text-3xl font-regular" style="color: var(--text-main);">Before You Reach Out</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
+                        <h3 class="text-base font-semibold mb-2 flex items-center justify-between" style="color: var(--text-main);">
+                            <span>What is the typical response time for support tickets?</span>
+                            <i class="fas fa-clock text-xs text-[var(--accent-color)]"></i>
+                        </h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light mt-3 leading-relaxed">
+                            For standard inquiries, our team aims to respond within 24 business hours. If you are on an Enterprise tier, your dedicated account manager will respond within 2 hours.
+                        </p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
+                        <h3 class="text-base font-semibold mb-2 flex items-center justify-between" style="color: var(--text-main);">
+                            <span>Who should I contact for billing inquiries?</span>
+                            <i class="fas fa-credit-card text-xs text-[var(--accent-color)]"></i>
+                        </h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light mt-3 leading-relaxed">
+                            Please direct all invoice, payment, and subscription tier questions directly to billing@fleetmanage.com to ensure the fastest routing to our finance department.
+                        </p>
+                    </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
+                        <h3 class="text-base font-semibold mb-2 flex items-center justify-between" style="color: var(--text-main);">
+                            <span>Do you offer emergency roadside dispatch support?</span>
+                            <i class="fas fa-truck-medical text-xs text-[var(--accent-color)]"></i>
+                        </h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light mt-3 leading-relaxed">
+                            Yes. Emergency dispatch is handled through a separate 24/7 hotline provided in your onboarding packet. Do not use the general contact form for immediate roadside emergencies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: URGENT CTA (~50 lines) -->
+        <section class="w-full py-24 px-6 relative overflow-hidden bg-[#0F172A]">
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" class="text-white"/>
+                </svg>
+            </div>
+            <div class="max-w-[800px] mx-auto text-center relative z-10 flex flex-col items-center">
+                <div class="w-20 h-20 bg-[var(--accent-color)] rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-[var(--accent-color)]/30">
+                    <i class="fas fa-bolt text-3xl text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-regular mb-6 text-white">
+                    Need Immediate Assistance?
+                </h2>
+                <p class="text-slate-400 text-lg font-light mb-10 max-w-2xl mx-auto">
+                    If your fleet is experiencing an active disruption or you require urgent technical intervention, bypass the form and call our critical response team directly.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-4">
+                    <a href="tel:+18009999999" class="btn bg-white !text-slate-900 hover:bg-gray-100 !py-4 !px-10 rounded-sm font-bold w-full sm:w-auto shadow-xl">
+                        <i class="fas fa-phone-alt mr-2 text-[var(--accent-color)]"></i> Call 1-800-999-URGENT
+                    </a>
+                    <a href="faq.html" class="btn btn-outline !border-slate-600 !text-slate-300 hover:!border-white hover:!text-white !py-4 !px-10 rounded-sm w-full sm:w-auto transition-colors">
+                        Browse Help Center
+                    </a>
+                </div>
+                <p class="mt-8 text-xs text-slate-500 uppercase tracking-widest font-semibold">
+                    Available 24/7/365 for Active Clients
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER COMPONENT -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 pt-4">
+                <div class="lg:col-span-4">
+                    <div class="mb-8">
+                        <a href="index.html"
+                            class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
+                            style="color: var(--text-main) !important; text-decoration: none;">
+                            <i class="fas fa-truck"
+                                style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+                        </a>
+                    </div>
+                    <p class="opacity-90 leading-relaxed text-sm mb-8 max-w-sm" style="color: var(--text-muted);">
+                        Dedicated to delivering efficient corporate fleet solutions. From scalable vehicle leasing to advanced maintenance tracking, we keep your business moving forward.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-link-circle"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link-circle"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link-circle"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                        <div>
+                            <h4>Client Portal</h4>
+                            <ul class="space-y-4">
+                                <li><a href="login.html">Client Login</a></li>
+                                <li><a href="user.html">Fleet Dashboard</a></li>
+                                <li><a href="pricing.html">Lease Terms</a></li>
+                                <li><a href="faq.html">Support & FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Our Solutions</h4>
+                            <ul class="space-y-4">
+                                <li><a href="services.html">Corporate Leasing</a></li>
+                                <li><a href="services.html">Maintenance Tracking</a></li>
+                                <li><a href="services.html">Logistics Planning</a></li>
+                                <li><a href="services.html">Enterprise Fleets</a></li>
+                            </ul>
+                        </div>
+                        <div class="sm:col-span-2 md:col-span-1">
+                            <h4>Headquarters</h4>
+                            <ul class="space-y-5 text-[var(--text-muted)] text-sm">
+                                <li class="flex items-start gap-4"><i class="fas fa-map-marker-alt mt-1 shrink-0"
+                                        style="color: var(--accent-color);"></i><span>1200 Logistics Way<br>Industrial Park, NY 10001</span></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-phone shrink-0"
+                                        style="color: var(--accent-color);"></i><a href="tel:+18005550199"
+                                        class="break-all hover:text-[var(--accent-color)]">+1 (800) 555-0199</a></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-envelope shrink-0"
+                                        style="color: var(--accent-color);"></i><a href="contact.html"
+                                        class="break-all hover:text-[var(--accent-color)]">support@fleetmanage.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center text-xs gap-6 uppercase tracking-[1px]">
+                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. All rights reserved.</p>
+                <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Lease Agreements</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Drawer Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        mobileBtn.onclick = toggleMenu;
+        closeMenu.onclick = toggleMenu;
+        drawerOverlay.onclick = toggleMenu;
+
+        // Theme Toggle Logic
+        const themeDesktop = document.getElementById('theme-toggle-desktop');
+        const themeMobile = document.getElementById('theme-toggle-mobile');
+        const theme = localStorage.getItem('theme') || 'light';
+
+        function updateThemeUI(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                if (themeMobile) themeMobile.classList.add('active');
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (themeMobile) themeMobile.classList.remove('active');
+            }
+        }
+
+        updateThemeUI(theme === 'dark');
+
+        function toggleTheme() {
+            const isDark = !document.body.classList.contains('dark-mode');
+            updateThemeUI(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        themeDesktop.onclick = toggleTheme;
+        if (themeMobile) themeMobile.onclick = toggleTheme;
+
+        // RTL Logic
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMobile = document.getElementById('rtl-toggle-mobile');
+        const dir = localStorage.getItem('dir') || 'ltr';
+
+        function updateRTLUI(currentDir) {
+            const isRTL = currentDir === 'rtl';
+            if (rtlBtn) rtlBtn.innerText = isRTL ? 'RTL' : 'LTR';
+            if (rtlMobile) rtlMobile.innerText = isRTL ? 'RTL' : 'LTR';
+        }
+
+        if (dir === 'rtl') {
+            document.documentElement.dir = 'rtl';
+        }
+        updateRTLUI(dir);
+
+        function toggleRTL() {
+            const isRTL = document.documentElement.dir === 'rtl';
+            const newDir = isRTL ? 'ltr' : 'rtl';
+            document.documentElement.dir = newDir;
+            localStorage.setItem('dir', newDir);
+            updateRTLUI(newDir);
+        }
+
+        if (rtlBtn) rtlBtn.onclick = toggleRTL;
+        if (rtlMobile) rtlMobile.onclick = toggleRTL;
+    </script>
+</body>
+</html>

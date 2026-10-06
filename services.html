@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - FleetManage</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
+        type="image/svg+xml">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    fontWeight: {
+                        regular: '400',
+                        medium: '500',
+                        semibold: '600',
+                        bold: '700',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* === RESET & CORE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* === THEME VARIABLES (Corporate Fleet Theme) === */
+        :root {
+            --bg-color: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --bg-card: #FFFFFF;
+            --bg-inverted: #0F172A;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --accent-color: #0284C7;
+            --accent-dark: #0369A1; 
+            --border-color: #E2E8F0;
+            --nav-bg: #F8FAFC;
+            --drawer-bg: rgba(248, 250, 252, 0.98);
+            --menu-hover-bg: rgba(2, 132, 199, 0.08);
+        }
+
+        /* DARK MODE */
+        body.dark-mode {
+            --bg-color: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-card: #1E293B;
+            --bg-inverted: #F8FAFC;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --accent-color: #38BDF8;
+            --accent-dark: #0EA5E9;
+            --border-color: #334155;
+            --nav-bg: #0F172A;
+            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --menu-hover-bg: rgba(56, 189, 248, 0.1);
+        }
+
+        /* RTL SUPPORT */
+        [dir="rtl"] { text-align: right; }
+        [dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
+
+        @keyframes subtleZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .animate-zoom { animation: subtleZoom 25s infinite alternate ease-in-out; }
+
+        /* === NAVBAR DESIGN === */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 32px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.scrolled {
+            height: 75px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            background: var(--drawer-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        body.dark-mode .navbar.scrolled {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 10px 20px;
+            margin: 0 4px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%; width: 0; height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after { width: 60%; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-color); }
+
+        .dropdown { position: relative; display: flex; align-items: center; height: 100%; }
+        .dropdown-menu {
+            position: absolute; top: 70px; left: 0;
+            transform: translateY(15px); opacity: 0; visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100;
+        }
+        .navbar.scrolled .dropdown-menu { top: 60px; }
+
+        .dropdown-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            min-width: 220px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            padding: 8px 0;
+            display: flex; flex-direction: column;
+        }
+
+        body.dark-mode .dropdown-inner { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block; padding: 12px 24px; color: var(--text-main);
+            text-decoration: none; font-size: 12px; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            transition: all 0.3s; text-align: left; white-space: nowrap;
+        }
+
+        .dropdown-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-color);
+            padding-left: 28px;
+        }
+        [dir="rtl"] .dropdown-item:hover { padding-left: 24px; padding-right: 28px; }
+
+        /* PILL TOGGLE */
+        .theme-toggle-pill {
+            width: 52px; height: 28px; background: var(--bg-secondary);
+            border-radius: 30px; position: relative; cursor: pointer;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 6px; border: 1px solid var(--border-color);
+        }
+        .theme-toggle-pill i { font-size: 10px; z-index: 1; }
+        .theme-toggle-pill .fa-sun { color: #0284C7; }
+        .theme-toggle-pill .fa-moon { color: #64748B; }
+        .theme-toggle-pill .thumb {
+            position: absolute; top: 2px; left: 2px; width: 22px; height: 22px;
+            background: white; border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 2; border: 1px solid var(--border-color);
+        }
+        body.dark-mode .theme-toggle-pill .thumb {
+            transform: translateX(24px); background: #1E293B; border-color: var(--border-color);
+        }
+
+        /* RTL BUTTON STYLE */
+        .rtl-btn-style {
+            width: 44px; height: 28px; background: var(--bg-secondary);
+            border-radius: 2px; border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 600; cursor: pointer; color: var(--text-main);
+            transition: all 0.3s ease; font-family: 'Inter', sans-serif;
+        }
+        .rtl-btn-style:hover { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+
+        /* === BUTTON DESIGN === */
+        .btn {
+            padding: 14px 32px; font-weight: 500; font-size: 12px;
+            text-transform: uppercase; letter-spacing: 2px; transition: all 0.4s ease;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; border: 1px solid transparent; font-family: 'Inter', sans-serif;
+        }
+        .btn-solid { background: var(--accent-color); color: #FFFFFF !important; }
+        .btn-solid:hover { background: var(--accent-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+        .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color) !important; }
+
+        /* MOBILE OVERLAY & DRAWER */
+        .drawer-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7);
+            z-index: 999; opacity: 0; visibility: hidden;
+            transition: all 0.4s ease; backdrop-filter: blur(5px);
+        }
+        .drawer-overlay.active { opacity: 1; visibility: visible; }
+
+        .fullscreen-menu {
+            position: fixed; top: 0; right: 0; width: 100%; max-width: 420px;
+            height: 100dvh; background: var(--drawer-bg); z-index: 1001;
+            display: flex; flex-direction: column; opacity: 0; visibility: hidden;
+            transform: translateX(100%); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-color);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto; left: 0; transform: translateX(-100%);
+            border-left: none; border-right: 1px solid var(--border-color);
+        }
+        .fullscreen-menu.active { opacity: 1; visibility: visible; transform: translateX(0); }
+
+        .mobile-link {
+            display: block; width: 100%; padding: 18px 32px; font-size: 1rem;
+            font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-main);
+            text-decoration: none; transition: all 0.3s; border-bottom: 1px solid var(--border-color);
+        }
+        .mobile-link:hover { color: var(--accent-color); padding-left: 40px; background: var(--menu-hover-bg); }
+        [dir="rtl"] .mobile-link:hover { padding-left: 32px; padding-right: 40px; }
+
+        /* FOOTER */
+        footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding-top: 80px; }
+        footer h4 { color: var(--text-main); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 24px; letter-spacing: 1px; }
+        footer a, footer li, footer span { color: var(--text-muted); text-decoration: none; transition: all 0.3s; font-size: 0.95rem; }
+        footer a:hover { color: var(--accent-color); }
+
+        .social-link-circle {
+            width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; color: var(--text-main); background: transparent;
+        }
+        .social-link-circle:hover { background: var(--accent-color); border-color: var(--accent-color); color: #FFFFFF; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 32px 0; margin-top: 60px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR COMPONENT -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <div class="flex items-center">
+                <a href="index.html"
+                    class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
+                    style="color: var(--text-main) !important; text-decoration: none;">
+                    <i class="fas fa-truck"
+                        style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
+                </a>
+            </div>
+
+            <div class="hidden xl:flex justify-center items-center flex-1">
+                <div class="dropdown">
+                    <div class="nav-link">Home <i class="fas fa-chevron-down text-[9px] ml-2 opacity-60"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="index.html" class="dropdown-item">Home Page 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home Page 2</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <!-- Active class moved to Services -->
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="dropdown">
+                    <div class="nav-link">Dashboard <i class="fas fa-chevron-down text-[9px] ml-2 opacity-60"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="user.html" class="dropdown-item">User Dashboard</a>
+                            <a href="admin.html" class="dropdown-item">Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden xl:flex items-center gap-5">
+                <div id="theme-toggle-desktop" class="theme-toggle-pill" title="Toggle Dark Mode">
+                    <i class="fas fa-sun"></i><i class="fas fa-moon"></i>
+                    <div class="thumb"></div>
+                </div>
+                <button id="rtl-btn" class="rtl-btn-style" title="Toggle LTR/RTL">LTR</button>
+                <div class="w-px h-6 bg-[var(--border-color)] mx-1"></div>
+                <a href="login.html" class="btn btn-solid !py-2.5 !px-6 !text-[10px]">Login</a>
+            </div>
+
+            <div class="xl:hidden flex items-center justify-end gap-4">
+                <button id="mobile-btn"
+                    class="text-2xl text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)]">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE HAMBURGER DRAWER -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-8 py-8 flex justify-between items-center shrink-0 border-b border-[var(--border-color)]">
+            <a href="index.html"
+                class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
+                style="color: var(--text-main) !important; text-decoration: none;">
+                <i class="fas fa-truck"
+                    style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+            </a>
+            <button id="close-menu"
+                class="w-10 h-10 flex items-center justify-center transition-all text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)]">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-4">
+            <a href="index.html" class="mobile-link">Home Page 1</a>
+            <a href="home-2.html" class="mobile-link">Home Page 2</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <!-- Active style moved to Services -->
+            <a href="services.html" class="mobile-link" style="color: var(--accent-color);">Services</a>
+            <a href="pricing.html" class="mobile-link">Pricing</a>
+            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="faq.html" class="mobile-link">FAQ</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+
+            <div class="px-8 mt-8 mb-2">
+                <span class="text-[10px] font-bold text-[var(--accent-color)] uppercase tracking-widest">Portals</span>
+            </div>
+            <a href="user.html" class="mobile-link !text-sm text-[var(--text-muted)] !not-italic">User Dashboard</a>
+            <a href="admin.html" class="mobile-link !text-sm text-[var(--text-muted)] !not-italic">Admin Dashboard</a>
+        </div>
+
+        <div class="w-full px-8 py-8 border-t border-[var(--border-color)] flex flex-col gap-6 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-muted)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <div id="theme-toggle-mobile" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i>
+                        <div class="thumb"></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-muted)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-btn-style">LTR</button>
+                </div>
+            </div>
+            <div class="flex gap-4 w-full">
+                <a href="login.html" class="btn btn-outline flex-1 !py-3">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES HERO BANNER COMPONENT -->
+    <section class="relative w-full min-h-[70dvh] pt-32 pb-24 flex items-center justify-center overflow-hidden border-b border-[var(--border-color)]">
+        <div class="absolute inset-0 z-0 bg-[#0F172A]">
+            <!-- Fleet/Services Image -->
+            <img src="images/vechicle (1).jpg" alt="Fleet Services Operations"
+                class="w-full h-full object-cover animate-zoom opacity-40" />
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/50 to-[var(--bg-color)] z-10"></div>
+        </div>
+
+        <div class="max-w-[1000px] mx-auto px-6 w-full flex flex-col items-center justify-center text-center relative z-20">
+            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-6">
+                <i class="fas fa-cogs mr-2 text-[10px]"></i> End-to-End Fleet Management
+            </span>
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-regular leading-tight mb-8 text-white">
+                Comprehensive <br class="hidden sm:block">
+                <span class="italic text-[var(--accent-color)]">Logistics</span> Solutions.
+            </h1>
+
+            <p class="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl font-light mb-12 drop-shadow-md">
+                From vehicle acquisition and leasing to predictive maintenance and real-time telematics, our services ensure your fleet operates at peak efficiency.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                <a href="#solutions" class="btn btn-solid !py-4 !px-12">
+                    Explore Solutions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES GRID CONTENT -->
+    <main id="solutions" class="w-full bg-[var(--bg-color)] min-h-[50vh]">
+        <section class="py-24 px-6 border-b border-[var(--border-color)]">
+            <div class="max-w-[1200px] mx-auto text-center mb-16">
+                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">What We Do</span>
+                <h2 class="text-3xl md:text-4xl font-regular" style="color: var(--text-main);">Our Core Services</h2>
+                <p class="text-[var(--text-muted)] text-base font-light mt-4 max-w-2xl mx-auto">
+                    Explore our comprehensive suite of fleet management tools designed to optimize performance, reduce overhead costs, and ensure strict compliance across your entire operation.
+                </p>
+            </div>
+
+            <!-- CSS Grid for 6 Cards -->
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1 -->
+                <div class="flex flex-col bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group h-full">
+                    <div class="relative h-56 overflow-hidden shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverted)]/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <img src="images/vechicle (2).jpg" alt="Vehicle Leasing"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <!-- Floating Icon Badge -->
+                        <div class="absolute bottom-0 left-6 translate-y-1/2 z-20 w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:border-[var(--accent-color)]">
+                            <i class="fas fa-key text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="pt-12 px-8 pb-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--text-main);">Acquisition & Leasing</h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed mb-8 flex-grow">
+                            Flexible leasing options and strategic acquisition plans to build a modern, scalable, and cost-effective fleet tailored specifically to your corporate needs.
+                        </p>
+                        <a href="services-details.html" class="btn btn-outline w-full mt-auto !py-3 rounded-lg">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="flex flex-col bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group h-full">
+                    <div class="relative h-56 overflow-hidden shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverted)]/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <img src="images/vechicle (3).jpg" alt="Fleet Maintenance"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-6 translate-y-1/2 z-20 w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:border-[var(--accent-color)]">
+                            <i class="fas fa-tools text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="pt-12 px-8 pb-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--text-main);">Maintenance & Repairs</h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed mb-8 flex-grow">
+                            Minimize vehicle downtime with predictive maintenance schedules, 24/7 breakdown support, and access to our certified nationwide repair network.
+                        </p>
+                        <a href="services-details.html" class="btn btn-outline w-full mt-auto !py-3 rounded-lg">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="flex flex-col bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group h-full">
+                    <div class="relative h-56 overflow-hidden shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverted)]/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <img src="images/vechicle (4).jpg" alt="Telematics Data"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-6 translate-y-1/2 z-20 w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:border-[var(--accent-color)]">
+                            <i class="fas fa-satellite-dish text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="pt-12 px-8 pb-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--text-main);">Telematics & GPS</h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed mb-8 flex-grow">
+                            Gain absolute visibility over your assets. Track real-time locations, monitor route efficiency, and analyze vehicle diagnostics from our cloud portal.
+                        </p>
+                        <a href="services-details.html" class="btn btn-outline w-full mt-auto !py-3 rounded-lg">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="flex flex-col bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group h-full">
+                    <div class="relative h-56 overflow-hidden shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverted)]/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <img src="images/vechicle (5).jpg" alt="Fuel Management"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-6 translate-y-1/2 z-20 w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:border-[var(--accent-color)]">
+                            <i class="fas fa-gas-pump text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="pt-12 px-8 pb-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--text-main);">Fuel Management</h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed mb-8 flex-grow">
+                            Cut down your largest variable expense. We provide corporate fuel cards, volume discount negotiations, and strict consumption auditing.
+                        </p>
+                        <a href="services-details.html" class="btn btn-outline w-full mt-auto !py-3 rounded-lg">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="flex flex-col bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group h-full">
+                    <div class="relative h-56 overflow-hidden shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverted)]/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <img src="images/vechicle (6).jpg" alt="Driver Safety"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-6 translate-y-1/2 z-20 w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:border-[var(--accent-color)]">
+                            <i class="fas fa-user-shield text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="pt-12 px-8 pb-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--text-main);">Driver Safety & Training</h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed mb-8 flex-grow">
+                            Protect your team and lower insurance premiums through continuous behavioral monitoring, risk assessment scores, and advanced driver training programs.
+                        </p>
+                        <a href="services-details.html" class="btn btn-outline w-full mt-auto !py-3 rounded-lg">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="flex flex-col bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group h-full">
+                    <div class="relative h-56 overflow-hidden shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-inverted)]/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <img src="images/vechicle (7).jpg" alt="Compliance Reporting"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-6 translate-y-1/2 z-20 w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:border-[var(--accent-color)]">
+                            <i class="fas fa-file-contract text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="pt-12 px-8 pb-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--text-main);">Compliance & Reporting</h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed mb-8 flex-grow">
+                            Never miss a deadline. We handle all taxation, toll management, environmental standard tracking, and complex regulatory reporting requirements.
+                        </p>
+                        <a href="services-details.html" class="btn btn-outline w-full mt-auto !py-3 rounded-lg">View Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ==================== SECTION 1: FLEET OPERATIONS IN ACTION ==================== -->
+
+<section class="py-20 px-6 border-b border-[var(--border-color)] bg-[var(--bg-secondary)]">
+    <div class="max-w-[1200px] mx-auto">
+
+```
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+        <!-- Image -->
+        <div class="relative h-[320px] md:h-[380px] overflow-hidden rounded-2xl group">
+            <img src="images/vechicle (8).jpg"
+                alt="Fleet operations"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/70 via-transparent to-transparent"></div>
+
+            <div class="absolute bottom-6 left-6 right-6">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                    bg-white/90 backdrop-blur-sm text-[#0F172A] text-xs font-semibold uppercase tracking-wider">
+                    <i class="fas fa-road text-[var(--accent-color)]"></i>
+                    Fleet Operations
+                </span>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="lg:pl-6">
+
+            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
+                Fleet In Motion
+            </span>
+
+            <h2 class="text-3xl md:text-4xl font-regular leading-tight mb-5"
+                style="color: var(--text-main);">
+                Keep Every Vehicle
+                <span class="italic text-[var(--accent-color)]">Moving Forward.</span>
+            </h2>
+
+            <p class="text-[var(--text-muted)] text-sm md:text-base leading-relaxed font-light mb-7">
+                From daily routes to long-distance deliveries, FleetManage brings
+                your vehicles, drivers, maintenance schedules, and operational
+                data together in one connected system.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mb-8">
+
+                <div class="border border-[var(--border-color)] bg-[var(--bg-card)] rounded-xl p-5">
+                    <i class="fas fa-location-dot text-[var(--accent-color)] mb-3"></i>
+                    <h4 class="font-semibold text-sm mb-1"
+                        style="color: var(--text-main);">
+                        Live Visibility
+                    </h4>
+                    <p class="text-xs text-[var(--text-muted)]">
+                        Track fleet activity
+                    </p>
+                </div>
+
+                <div class="border border-[var(--border-color)] bg-[var(--bg-card)] rounded-xl p-5">
+                    <i class="fas fa-chart-line text-[var(--accent-color)] mb-3"></i>
+                    <h4 class="font-semibold text-sm mb-1"
+                        style="color: var(--text-main);">
+                        Better Insights
+                    </h4>
+                    <p class="text-xs text-[var(--text-muted)]">
+                        Understand performance
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="contact.html" class="btn btn-solid !py-3 !px-7">
+                Talk To Our Team
+                <i class="fas fa-arrow-right ml-3 text-[10px]"></i>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+```
+
+</section>
+
+<!-- ==================== SECTION 2: HOW WE KEEP FLEETS MOVING ==================== -->
+
+<section class="py-20 px-6 bg-[var(--bg-color)] border-b border-[var(--border-color)]">
+
+```
+<div class="max-w-[1200px] mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center max-w-2xl mx-auto mb-12">
+
+        <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
+            Our Approach
+        </span>
+
+        <h2 class="text-3xl md:text-4xl font-regular mb-4"
+            style="color: var(--text-main);">
+            How We Keep Fleets
+            <span class="italic text-[var(--accent-color)]">Moving.</span>
+        </h2>
+
+        <p class="text-[var(--text-muted)] text-sm md:text-base font-light leading-relaxed">
+            A connected approach that helps your team manage vehicles,
+            people, and operations more efficiently.
+        </p>
+
+    </div>
+
+
+    <!-- Small Image Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div class="group relative h-[300px] overflow-hidden rounded-2xl">
+
+            <img src="images/vechicle (2).jpg"
+                alt="Fleet planning"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/30 to-transparent"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-7">
+
+                <div class="w-11 h-11 rounded-full bg-[var(--accent-color)]
+                    text-white flex items-center justify-center mb-4">
+                    <i class="fas fa-route"></i>
+                </div>
+
+                <h3 class="text-xl font-semibold text-white mb-2">
+                    Plan
+                </h3>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Build efficient fleet strategies around your
+                    routes, vehicles, and operational requirements.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- Card 2 -->
+        <div class="group relative h-[300px] overflow-hidden rounded-2xl">
+
+            <img src="images/vechicle (4).jpg"
+                alt="Fleet monitoring"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/30 to-transparent"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-7">
+
+                <div class="w-11 h-11 rounded-full bg-[var(--accent-color)]
+                    text-white flex items-center justify-center mb-4">
+                    <i class="fas fa-eye"></i>
+                </div>
+
+                <h3 class="text-xl font-semibold text-white mb-2">
+                    Monitor
+                </h3>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Stay connected with vehicle activity, locations,
+                    diagnostics, and fleet performance.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- Card 3 -->
+        <div class="group relative h-[300px] overflow-hidden rounded-2xl">
+
+            <img src="images/vechicle (6).jpg"
+                alt="Fleet performance"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/30 to-transparent"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-7">
+
+                <div class="w-11 h-11 rounded-full bg-[var(--accent-color)]
+                    text-white flex items-center justify-center mb-4">
+                    <i class="fas fa-arrow-trend-up"></i>
+                </div>
+
+                <h3 class="text-xl font-semibold text-white mb-2">
+                    Improve
+                </h3>
+
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Use operational insights to identify opportunities
+                    for better fleet performance.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+```
+
+</section>
+
+<!-- ==================== SECTION 3: BUILT AROUND YOUR FLEET ==================== -->
+
+<section class="py-20 px-6 bg-[var(--bg-secondary)]">
+
+```
+<div class="max-w-[1200px] mx-auto">
+
+    <div class="relative overflow-hidden rounded-3xl min-h-[320px] flex items-center">
+
+        <!-- Background Image -->
+        <img src="images/vechicle (7).jpg"
+            alt="Enterprise fleet management"
+            class="absolute inset-0 w-full h-full object-cover">
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-[#0F172A]/85"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 p-8 md:p-12 lg:p-16 max-w-3xl">
+
+            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
+                Flexible Fleet Support
+            </span>
+
+            <h2 class="text-3xl md:text-5xl font-regular text-white leading-tight mb-5">
+                Built Around
+                <span class="italic text-[var(--accent-color)]">
+                    Your Fleet.
+                </span>
+            </h2>
+
+            <p class="text-slate-300 text-sm md:text-base leading-relaxed font-light max-w-2xl mb-8">
+                Whether you operate a small delivery fleet or manage a
+                large enterprise network, our solutions can adapt to
+                your vehicles, workflows, and business goals.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+
+                <a href="pricing.html"
+                    class="btn btn-solid !py-3 !px-8">
+                    View Pricing
+                </a>
+
+                <a href="contact.html"
+                    class="btn !py-3 !px-8 !border-white/40 !text-white hover:!border-[var(--accent-color)] hover:!text-[var(--accent-color)]">
+                    Contact Our Team
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+    </main>
+
+    <!-- FOOTER COMPONENT -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 pt-4">
+                <div class="lg:col-span-4">
+                    <div class="mb-8">
+                        <a href="index.html"
+                            class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
+                            style="color: var(--text-main) !important; text-decoration: none;">
+                            <i class="fas fa-truck"
+                                style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+                        </a>
+                    </div>
+                    <p class="opacity-90 leading-relaxed text-sm mb-8 max-w-sm" style="color: var(--text-muted);">
+                        Dedicated to delivering efficient corporate fleet solutions. From scalable vehicle leasing to advanced maintenance tracking, we keep your business moving forward.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-link-circle"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link-circle"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link-circle"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                        <div>
+                            <h4>Client Portal</h4>
+                            <ul class="space-y-4">
+                                <li><a href="login.html">Client Login</a></li>
+                                <li><a href="user.html">Fleet Dashboard</a></li>
+                                <li><a href="pricing.html">Lease Terms</a></li>
+                                <li><a href="faq.html">Support & FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Our Solutions</h4>
+                            <ul class="space-y-4">
+                                <li><a href="services.html">Corporate Leasing</a></li>
+                                <li><a href="services.html">Maintenance Tracking</a></li>
+                                <li><a href="services.html">Logistics Planning</a></li>
+                                <li><a href="services.html">Enterprise Fleets</a></li>
+                            </ul>
+                        </div>
+                        <div class="sm:col-span-2 md:col-span-1">
+                            <h4>Headquarters</h4>
+                            <ul class="space-y-5 text-[var(--text-muted)] text-sm">
+                                <li class="flex items-start gap-4"><i class="fas fa-map-marker-alt mt-1 shrink-0"
+                                        style="color: var(--accent-color);"></i><span>1200 Logistics Way<br>Industrial Park, NY 10001</span></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-phone shrink-0"
+                                        style="color: var(--accent-color);"></i><a href="tel:+18005550199"
+                                        class="break-all hover:text-[var(--accent-color)]">+1 (800) 555-0199</a></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-envelope shrink-0"
+                                        style="color: var(--accent-color);"></i><a href="contact.html"
+                                        class="break-all hover:text-[var(--accent-color)]">support@fleetmanage.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center text-xs gap-6 uppercase tracking-[1px]">
+                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. All rights reserved.</p>
+                <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Lease Agreements</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Drawer Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        mobileBtn.onclick = toggleMenu;
+        closeMenu.onclick = toggleMenu;
+        drawerOverlay.onclick = toggleMenu;
+
+        // Theme Toggle Logic
+        const themeDesktop = document.getElementById('theme-toggle-desktop');
+        const themeMobile = document.getElementById('theme-toggle-mobile');
+        const theme = localStorage.getItem('theme') || 'light';
+
+        function updateThemeUI(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                if (themeMobile) themeMobile.classList.add('active');
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (themeMobile) themeMobile.classList.remove('active');
+            }
+        }
+
+        updateThemeUI(theme === 'dark');
+
+        function toggleTheme() {
+            const isDark = !document.body.classList.contains('dark-mode');
+            updateThemeUI(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        themeDesktop.onclick = toggleTheme;
+        if (themeMobile) themeMobile.onclick = toggleTheme;
+
+        // RTL Logic
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMobile = document.getElementById('rtl-toggle-mobile');
+        const dir = localStorage.getItem('dir') || 'ltr';
+
+        function updateRTLUI(currentDir) {
+            const isRTL = currentDir === 'rtl';
+            if (rtlBtn) rtlBtn.innerText = isRTL ? 'RTL' : 'LTR';
+            if (rtlMobile) rtlMobile.innerText = isRTL ? 'RTL' : 'LTR';
+        }
+
+        if (dir === 'rtl') {
+            document.documentElement.dir = 'rtl';
+        }
+        updateRTLUI(dir);
+
+        function toggleRTL() {
+            const isRTL = document.documentElement.dir === 'rtl';
+            const newDir = isRTL ? 'ltr' : 'rtl';
+            document.documentElement.dir = newDir;
+            localStorage.setItem('dir', newDir);
+            updateRTLUI(newDir);
+        }
+
+        if (rtlBtn) rtlBtn.onclick = toggleRTL;
+        if (rtlMobile) rtlMobile.onclick = toggleRTL;
+    </script>
+</body>
+</html>

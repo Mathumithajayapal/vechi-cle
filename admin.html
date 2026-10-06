@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>FleetManage Admin | Dashboard</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
+        type="image/svg+xml">
+    
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Branding Font (Matches Fleet Main Site) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables matched for FleetManage Theme */
+        :root {
+            --text-main: #1E293B; 
+            --accent-color: #0284C7;
+            --border-color: #eef2f6; 
+            --sidebar-bg: #ffffff;
+            --sidebar-text: #64748b;
+            --sidebar-text-hover: #0284C7;
+            --sidebar-bg-hover: rgba(2, 132, 199, 0.08);
+            --sidebar-active-bg: #0284C7;
+            --sidebar-active-text: #ffffff;
+            --badge-bg: #f8fafc;
+            --badge-border: #eef2f6;
+            --badge-text-main: #1a1f2e;
+        }
+
+        /* Dark mode overrides */
+        body.dark {
+            --text-main: #F1F5F9; 
+            --accent-color: #38BDF8;
+            --border-color: #2d2d3a;
+            --sidebar-bg: #1e1e2a;
+            --sidebar-text: #cbd5e6;
+            --sidebar-text-hover: #ffffff;
+            --sidebar-bg-hover: rgba(56, 189, 248, 0.2);
+            --sidebar-active-bg: #0EA5E9;
+            --sidebar-active-text: #ffffff;
+            --badge-bg: rgba(56, 189, 248, 0.18);
+            --badge-border: rgba(56, 189, 248, 0.25);
+            --badge-text-main: #ffffff;
+        }
+
+        /* Logo Utility Classes */
+        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .brand-logo { font-family: 'Playfair Display', serif; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .uppercase { text-transform: uppercase; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .whitespace-nowrap { white-space: nowrap; }
+
+        body {
+            background: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            line-height: 1.4;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Dark Mode Backgrounds */
+        body.dark {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark .stat-card,
+        body.dark .data-card,
+        body.dark .quick-actions,
+        body.dark .top-bar {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        body.dark .stat-title,
+        body.dark .data-table th,
+        body.dark .data-table td {
+            color: #cbd5e1;
+        }
+
+        body.dark .data-table th {
+            background: #0f172a;
+        }
+
+        body.dark .data-table td {
+            border-bottom-color: #334155;
+        }
+
+        body.dark .stat-number {
+            color: #38bdf8;
+        }
+
+        body.dark .quick-btn {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        body.dark .action-icons .action-icon-btn {
+            color: #94a3b8;
+            background: #0f172a;
+        }
+
+        body.dark .main-footer {
+            border-top-color: #334155;
+            color: #94a3b8;
+        }
+
+        body.dark .toast-msg {
+            background: #1e293b;
+        }
+
+        body.dark .hamburger-btn {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        body.dark .hamburger-btn:hover {
+            background: var(--accent-color); 
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        body.dark .page-heading h1 {
+            background: linear-gradient(135deg, #e2e8f0, var(--accent-color)); 
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* RTL Support */
+        body.rtl {
+            direction: rtl;
+        }
+
+        body.rtl .nav-item {
+            justify-content: flex-end;
+        }
+
+        body.rtl .nav-item i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+
+        body.rtl .stat-icon {
+            float: left;
+        }
+
+        body.rtl .quick-btn i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+
+        body.rtl .main-footer {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .data-table th,
+        body.rtl .data-table td {
+            text-align: right;
+        }
+
+        body.rtl .toast-msg {
+            right: auto;
+            left: 24px;
+        }
+
+        body.rtl .top-bar {
+            flex-direction: row;
+        }
+
+        body.rtl .left-top-group {
+            order: 0;
+        }
+
+        body.rtl .action-icons {
+            order: 1;
+            flex-direction: row;
+        }
+
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* ========= SIDEBAR ========= */
+        .sidebar {
+            width: 320px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 20px;
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), background-color 0.2s ease, border-color 0.2s ease;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        /* Mobile Sidebar (≤900px) */
+        @media (max-width: 900px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                transform: translateX(-100%);
+                width: 320px;
+                height: 100%;
+                z-index: 1050;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+            }
+            body.dark .sidebar {
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            }
+
+            body.rtl .sidebar {
+                transform: translateX(100%);
+                left: auto;
+                right: 0;
+            }
+
+            .sidebar.open {
+                transform: translateX(0) !important;
+            }
+
+            .sidebar-overlay {
+                display: none;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .sidebar-overlay {
+                display: none !important;
+            }
+        }
+
+        /* Hamburger Button */
+        .hamburger-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid #eef2f6;
+            border-radius: 40px;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e293b;
+            transition: 0.2s;
+            white-space: nowrap;
+            width: fit-content;
+        }
+
+        @media (max-width: 900px) {
+            .hamburger-btn {
+                display: flex;
+            }
+        }
+
+        .hamburger-btn i {
+            font-size: 1.1rem;
+        }
+
+        .hamburger-btn:hover {
+            background: var(--accent-color); 
+            color: white;
+            border-color: var(--accent-color); 
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 1040;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        body.dark .sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(2, 132, 199, 0.4); 
+            border-radius: 4px;
+        }
+
+        .logo-container {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .admin-badge {
+            background: var(--badge-bg);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--badge-border); 
+            transition: all 0.2s ease;
+        }
+
+        .admin-avatar {
+            background: var(--accent-color); 
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .admin-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: var(--badge-text-main);
+            transition: color 0.2s ease;
+        }
+
+        .admin-info span {
+            font-size: 11px;
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        body.dark .admin-info span {
+            color: #94a3b8;
+        }
+
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+            color: var(--sidebar-text);
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            width: 24px;
+            font-size: 1.15rem;
+        }
+
+        .nav-item.active {
+            background: var(--sidebar-active-bg); 
+            color: var(--sidebar-active-text);
+            box-shadow: 0 6px 14px rgba(2, 132, 199, 0.25); 
+        }
+
+        .nav-item:not(.active):hover {
+            background: var(--sidebar-bg-hover); 
+            color: var(--sidebar-text-hover);
+        }
+
+        .sidebar-footer {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--badge-text-main);
+            padding: 10px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .weather-info i {
+            color: #eab308;
+            font-size: 14px;
+        }
+
+        .logout-btn-sidebar {
+            background: rgba(220, 38, 38, 0.08);
+            color: #dc2626;
+            padding: 12px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid rgba(220, 38, 38, 0.15);
+            width: 100%;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+        body.dark .logout-btn-sidebar {
+            background: rgba(220, 38, 38, 0.15);
+            color: #fca5a5;
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        .logout-btn-sidebar:hover {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
+        /* ========= MAIN CONTENT ========= */
+        .main-content {
+            flex: 1;
+            padding: 24px 28px;
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border-radius: 60px;
+            padding: 8px 24px;
+            border: 1px solid #eef2f6;
+            margin-bottom: 28px;
+            transition: background 0.2s;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .left-top-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+
+        .page-heading h1 {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e293b, var(--accent-color)); 
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .action-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(2, 132, 199, 0.08); 
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #475569;
+            font-size: 1.2rem;
+        }
+
+        .action-icon-btn:hover {
+            background: rgba(2, 132, 199, 0.15); 
+            color: var(--accent-color); 
+            transform: scale(1.02);
+        }
+
+        .rtl-text-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 56px;
+            padding: 0 16px;
+            height: 42px;
+            border-radius: 42px;
+            background: rgba(2, 132, 199, 0.08); 
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #475569;
+        }
+
+        .rtl-text-btn:hover {
+            background: rgba(2, 132, 199, 0.15); 
+            color: var(--accent-color); 
+        }
+
+        body.dark .rtl-text-btn {
+            background: #1e293b;
+            color: #cbd5e1;
+        }
+
+        body.dark .rtl-text-btn:hover {
+            background: #334155;
+            color: var(--accent-color); 
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .main-content {
+                padding: 16px;
+            }
+            .top-bar {
+                padding: 8px 18px;
+                flex-wrap: nowrap;
+            }
+            .page-heading h1 {
+                font-size: 18px;
+                white-space: nowrap;
+            }
+            .action-icon-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .rtl-text-btn {
+                height: 38px;
+                min-width: 52px;
+                padding: 0 14px;
+                font-size: 0.8rem;
+            }
+            .left-top-group {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .top-bar {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            .page-heading h1 {
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            .hamburger-btn {
+                padding: 6px 10px;
+            }
+            .hamburger-btn span {
+                display: none;
+            }
+            .action-icon-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 0.9rem;
+            }
+            .rtl-text-btn {
+                height: 34px;
+                min-width: 46px;
+                padding: 0 10px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 22px;
+            margin-bottom: 36px;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 28px;
+            padding: 20px 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f6;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--accent-color); } 
+        .stat-title { font-size: 14px; font-weight: 500; color: #64748b; margin-bottom: 12px; }
+        .stat-number { font-size: 40px; font-weight: 800; color: #0f172a; line-height: 1; }
+        .stat-icon { float: right; font-size: 2rem; color: #e2e8f0; }
+
+        .data-card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid #eef2f6;
+            margin-bottom: 28px;
+            overflow-x: auto;
+        }
+        .data-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1e293b;
+            border-left: 4px solid var(--accent-color); 
+            padding-left: 16px;
+        }
+        body.dark .data-card h3 { color: #f1f5f9; }
+        .data-card h3 i { font-size: 1.4rem; color: var(--accent-color); } 
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+        .data-table th, .data-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .data-table th {
+            font-weight: 600;
+            color: #475569;
+            background: #f8fafc;
+            font-size: 0.85rem;
+        }
+        body.dark .data-table th { background: #0f172a; color: #cbd5e1; }
+        .badge {
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .badge-active { background: #e0f2fe; color: #0369a1; }
+        body.dark .badge-active { background: #0c4a6e; color: #bae6fd; }
+        .badge-full { background: #fee2e2; color: #b91c1c; }
+        body.dark .badge-full { background: #7f1d1d; color: #fecaca; }
+        .badge-warning { background: #fef3c7; color: #b45309; }
+        body.dark .badge-warning { background: #78350f; color: #fde68a; }
+
+        .quick-actions {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 28px;
+            margin-top: 8px;
+            border: 1px solid #eef2f6;
+        }
+        .quick-actions h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .quick-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; }
+        .quick-btn {
+            background: #f8fafc;
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+        .quick-btn i { color: var(--accent-color); } 
+        .quick-btn:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: translateY(-2px); } 
+        .quick-btn:hover i { color: white; }
+
+        .main-footer {
+            margin-top: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .data-card { padding: 20px; }
+        }
+        @media (max-width: 500px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .quick-grid { flex-direction: column; }
+            .quick-btn { justify-content: center; }
+            .main-footer { flex-direction: column; text-align: center; }
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1e293b;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 13px;
+            z-index: 1100;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        body.rtl .toast-msg { right: auto; left: 24px; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="mainSidebar">
+            
+            <!-- LOGO INTEGRATED FROM INDEX.HTML FOR 100% MATCH -->
+            <div class="logo-container">
+                <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                    <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
+                </a>
+            </div>
+
+            <div class="admin-badge">
+                <div class="admin-avatar">FM</div>
+                <div class="admin-info"><h4>Fleet Manager</h4><span>full access • logistics</span></div>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</div>
+                <div class="nav-item" data-page="vehicles"><i class="fas fa-car-side"></i> Vehicle Fleet</div>
+                <div class="nav-item" data-page="clients"><i class="fas fa-building"></i> Client Accounts</div>
+                <div class="nav-item" data-page="maintenance"><i class="fas fa-wrench"></i> Maintenance</div>
+                <div class="nav-item" data-page="reports"><i class="fas fa-chart-line"></i> Analytics & Reports</div>
+                <div class="nav-item" data-page="settings"><i class="fas fa-cog"></i> System Settings</div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="weather-info"><i class="fas fa-sun"></i><span>28°C Sunny</span></div>
+                <a href="login.html" class="logout-btn-sidebar" id="sidebarLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <div class="left-top-group">
+                    <div class="hamburger-btn" id="hamburgerBtn"><i class="fas fa-bars"></i><span>Menu</span></div>
+                    <div class="page-heading">
+                        <h1 id="pageHeading"><i class="fas fa-tachometer-alt" style="color:#0284C7;"></i> Dashboard</h1>
+                    </div>
+                </div>
+                <div class="action-icons">
+                    <!-- Dark mode: pure icon button -->
+                    <div class="action-icon-btn" id="darkModeIcon" title="Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <!-- RTL toggle: TEXT ONLY - no icon, clean background -->
+                    <div id="rtlToggleBtn" class="rtl-text-btn">
+                        <span id="rtlToggleText">LTR</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD SECTION -->
+            <div id="dashboard-section" class="page-section active-section">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-title"><i class="fas fa-car"></i> Total Vehicles</div><div class="stat-number">1,245</div><div class="stat-icon"><i class="fas fa-truck"></i></div></div>
+                    <div class="stat-card"><div class="stat-title"><i class="fas fa-building"></i> Active Clients</div><div class="stat-number">142</div><div class="stat-icon"><i class="fas fa-users"></i></div></div>
+                    <div class="stat-card"><div class="stat-title"><i class="fas fa-wrench"></i> In Maintenance</div><div class="stat-number">38</div><div class="stat-icon"><i class="fas fa-tools"></i></div></div>
+                    <div class="stat-card"><div class="stat-title"><i class="fas fa-chart-pie"></i> Utilization Rate</div><div class="stat-number">88%</div><div class="stat-icon"><i class="fas fa-chart-bar"></i></div></div>
+                </div>
+                <div class="data-card">
+                    <h3><i class="fas fa-clock"></i> Recent Lease Agreements</h3>
+                    <div class="table-wrapper"><table class="data-table"><thead><tr><th>Lease ID</th><th>Client</th><th>Vehicle Class</th><th>Status</th><th>Term</th><th>Updated</th></tr></thead><tbody>
+                        <tr><td>LSE-2026-081</td><td>Acme Corp</td><td>Cargo Van</td><td><span class="badge badge-active">Active</span></td><td>36 Months</td><td>2 hours ago</td></tr>
+                        <tr><td>LSE-2026-082</td><td>Global Logistics</td><td>Heavy Truck</td><td><span class="badge" style="background:#fef3c7;color:#b45309;">Pending Approval</span></td><td>48 Months</td><td>Yesterday</td></tr>
+                        <tr><td>LSE-2026-083</td><td>City Deliveries</td><td>Electric Sedan</td><td><span class="badge" style="background:#fee2e2;color:#b91c1c;">Awaiting Payment</span></td><td>24 Months</td><td>3 days ago</td></tr>
+                    </tbody></table></div>
+                    <div style="margin-top:20px; font-size:13px;"><i class="fas fa-database"></i> Showing 3 of 45 recent agreements</div>
+                </div>
+                <div class="quick-actions"><h3><i class="fas fa-bolt"></i> Quick Actions</h3><div class="quick-grid">
+                    <div class="quick-btn" id="quickCaseBtn"><i class="fas fa-plus-circle"></i> Add Vehicle</div>
+                    <div class="quick-btn" id="quickClientBtn"><i class="fas fa-building"></i> Register Client</div>
+                    <div class="quick-btn" id="quickAssignBtn"><i class="fas fa-wrench"></i> Schedule Maintenance</div>
+                    <div class="quick-btn" id="quickReportBtn"><i class="fas fa-file-invoice"></i> Generate Invoice</div>
+                </div></div>
+            </div>
+
+            <div id="vehicles-section" class="page-section"><div class="data-card"><h3><i class="fas fa-car-side"></i> Vehicle Fleet Status</h3><div class="table-wrapper"><table class="data-table"><thead><tr><th>VIN / ID</th><th>Make & Model</th><th>Category</th><th>Status</th><th>Mileage</th><th>Location</th></tr></thead><tbody>
+                <tr><td>V-88234</td><td>Ford Transit 350</td><td>Cargo Van</td><td><span class="badge badge-active">Leased</span></td><td>12,450</td><td>New York, NY</td></tr>
+                <tr><td>V-99122</td><td>Tesla Model 3</td><td>Sedan (EV)</td><td><span class="badge badge-active">Available</span></td><td>450</td><td>HQ Lot A</td></tr>
+                <tr><td>V-77341</td><td>Volvo VNL 860</td><td>Heavy Truck</td><td><span class="badge badge-full">In Service</span></td><td>85,200</td><td>Chicago Depot</td></tr>
+                <tr><td>V-88455</td><td>Mercedes Sprinter</td><td>Cargo Van</td><td><span class="badge badge-warning">Maintenance Due</span></td><td>44,900</td><td>Boston, MA</td></tr>
+            </tbody></table></div></div></div>
+
+            <div id="clients-section" class="page-section"><div class="data-card"><h3><i class="fas fa-building"></i> Client Directory</h3><div class="table-wrapper"><table class="data-table"><thead><tr><th>Company Name</th><th>Contact</th><th>Active Leases</th><th>Account Status</th><th>Client Since</th></tr></thead><tbody>
+                <tr><td>Acme Corp</td><td>j.smith@acme.com</td><td>14</td><td><span class="badge badge-active">Good Standing</span></td><td>2021</td></tr>
+                <tr><td>Global Logistics</td><td>ops@global-log.com</td><td>42</td><td><span class="badge badge-active">Good Standing</span></td><td>2019</td></tr>
+                <tr><td>City Deliveries</td><td>billing@citydel.com</td><td>5</td><td><span class="badge badge-warning">Review Needed</span></td><td>2025</td></tr>
+            </tbody></table></div><div style="margin-top:28px;"><div class="quick-btn" id="addClientSectionBtn"><i class="fas fa-plus"></i> Onboard New Client</div></div></div></div>
+
+            <div id="maintenance-section" class="page-section"><div class="data-card"><h3><i class="fas fa-wrench"></i> Maintenance Schedule</h3><div class="table-wrapper"><table class="data-table"><thead><tr><th>Service ID</th><th>Vehicle</th><th>Service Type</th><th>Priority</th><th>Scheduled Date</th></tr></thead><tbody>
+                <tr><td>SRV-092</td><td>V-88455 (Sprinter)</td><td>45k Mile Standard</td><td><span class="badge badge-warning">Medium</span></td><td>Oct 05, 2026</td></tr>
+                <tr><td>SRV-093</td><td>V-77341 (Volvo)</td><td>Brake System Overhaul</td><td><span class="badge badge-full">High</span></td><td>Oct 02, 2026</td></tr>
+                <tr><td>SRV-094</td><td>V-11234 (Chevy)</td><td>Tire Rotation</td><td><span class="badge badge-active">Low</span></td><td>Oct 10, 2026</td></tr>
+            </tbody></table></div></div></div>
+
+            <div id="reports-section" class="page-section"><div class="stats-grid" style="margin-bottom:28px;"><div class="stat-card"><div class="stat-title">Q3 Revenue</div><div class="stat-number">$1.2M</div></div><div class="stat-card"><div class="stat-title">Fleet Utilization</div><div class="stat-number">88%</div></div></div><div class="data-card"><h3><i class="fas fa-chart-line"></i> Analytics Reports</h3><div class="table-wrapper"><table class="data-table"><thead><tr><th>Report Name</th><th>Type</th><th>Generated</th><th>Download</th></tr></thead><tbody>
+                <tr><td>Q3 Fleet Utilization Analysis</td><td>PDF</td><td>Sep 28, 2026</td><td><i class="fas fa-download" style="color:#0284C7; cursor:pointer;"></i></td></tr>
+                <tr><td>Maintenance Cost Breakdown</td><td>Excel</td><td>Sep 15, 2026</td><td><i class="fas fa-download" style="color:#0284C7; cursor:pointer;"></i></td></tr>
+            </tbody></table></div><div style="margin-top:28px;"><div class="quick-btn" id="genReportBtn"><i class="fas fa-chart-bar"></i> Generate Custom Report</div></div></div></div>
+
+            <div id="settings-section" class="page-section"><div class="data-card"><h3><i class="fas fa-cog"></i> System Preferences</h3><div style="margin-top:24px; display:flex; flex-direction:column; gap:24px;"><div><label style="display:flex; align-items:center; gap:12px;"><input type="checkbox" checked> Enable GPS Telematics Tracking</label></div><div><label style="display:flex; align-items:center; gap:12px;"><input type="checkbox" checked> Automated Maintenance Alerts</label></div><div><button class="quick-btn" id="saveSettingsBtn" style="width:fit-content;">Save Configuration</button></div></div></div></div>
+
+            <div class="main-footer"><div><i class="far fa-copyright"></i> FleetManage · Secure Admin Portal</div><div><i class="fas fa-cloud-sun"></i> 28°C Sunny · <span id="liveClock"></span></div></div>
+        </main>
+    </div>
+
+    <script>
+        let isDark = localStorage.getItem('fleet_dark') === 'enabled';
+        let isRTL = localStorage.getItem('fleet_rtl') === 'enabled';
+
+        function applyDarkMode(enabled) {
+            if (enabled) {
+                document.body.classList.add('dark');
+                const darkBtn = document.getElementById('darkModeIcon');
+                if(darkBtn) darkBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.body.classList.remove('dark');
+                const darkBtn = document.getElementById('darkModeIcon');
+                if(darkBtn) darkBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            localStorage.setItem('fleet_dark', enabled ? 'enabled' : 'disabled');
+        }
+        
+        function applyRTL(enabled) {
+            if (enabled) {
+                document.body.classList.add('rtl');
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.getElementById('rtlToggleText').innerText = 'RTL';
+            } else {
+                document.body.classList.remove('rtl');
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.getElementById('rtlToggleText').innerText = 'LTR';
+            }
+            localStorage.setItem('fleet_rtl', enabled ? 'enabled' : 'disabled');
+        }
+        
+        applyDarkMode(isDark);
+        applyRTL(isRTL);
+
+        document.getElementById('darkModeIcon').onclick = () => { 
+            isDark = !isDark; 
+            applyDarkMode(isDark); 
+            showToast(isDark ? "Dark mode enabled" : "Light mode enabled"); 
+        };
+        
+        const rtlBtn = document.getElementById('rtlToggleBtn');
+        rtlBtn.onclick = () => { 
+            isRTL = !isRTL; 
+            applyRTL(isRTL); 
+            showToast(isRTL ? "RTL layout active" : "LTR layout active"); 
+        };
+
+        function closeSidebar() { document.getElementById('mainSidebar')?.classList.remove('open'); document.getElementById('sidebarOverlay')?.classList.remove('active'); }
+        function openSidebar() { document.getElementById('mainSidebar')?.classList.add('open'); document.getElementById('sidebarOverlay')?.classList.add('active'); }
+        document.getElementById('hamburgerBtn')?.addEventListener('click', openSidebar);
+        document.getElementById('sidebarOverlay')?.addEventListener('click', closeSidebar);
+
+        function showToast(msg, icon = "info-circle") { const old = document.querySelector('.toast-msg'); if (old) old.remove(); const toast = document.createElement('div'); toast.className = 'toast-msg'; toast.innerHTML = `<i class="fas fa-${icon}" style="margin-right:8px;"></i> ${msg}`; document.body.appendChild(toast); setTimeout(() => toast.remove(), 2500); }
+
+        function showPage(pageId, pageTitle) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
+            document.getElementById(`${pageId}-section`).classList.add('active-section');
+            const icons = { dashboard: 'tachometer-alt', vehicles: 'car-side', clients: 'building', maintenance: 'wrench', reports: 'chart-line', settings: 'cog' };
+            document.getElementById('pageHeading').innerHTML = `<i class="fas fa-${icons[pageId]}" style="color:var(--accent-color);"></i> ${pageTitle}`;
+            document.querySelectorAll('.nav-item').forEach(item => { item.classList.remove('active'); if (item.getAttribute('data-page') === pageId) item.classList.add('active'); });
+            if (window.innerWidth <= 900) closeSidebar();
+            showToast(`Switched to ${pageTitle}`, "check-circle");
+        }
+        document.querySelectorAll('.nav-item').forEach(btn => { btn.addEventListener('click', () => { const page = btn.getAttribute('data-page'); const titles = { dashboard: 'Dashboard', vehicles: 'Vehicle Fleet', clients: 'Client Accounts', maintenance: 'Maintenance', reports: 'Analytics & Reports', settings: 'System Settings' }; showPage(page, titles[page]); }); });
+
+        document.getElementById('quickCaseBtn')?.addEventListener('click', () => showToast("Add vehicle form (demo)", "plus-circle"));
+        document.getElementById('quickClientBtn')?.addEventListener('click', () => showToast("Client registration dialog (demo)", "building"));
+        document.getElementById('quickAssignBtn')?.addEventListener('click', () => showToast("Maintenance scheduler (demo)", "wrench"));
+        document.getElementById('quickReportBtn')?.addEventListener('click', () => showToast("Generating invoice...", "file-invoice"));
+        document.getElementById('addClientSectionBtn')?.addEventListener('click', () => showToast("Client onboarding demo", "building"));
+        document.getElementById('genReportBtn')?.addEventListener('click', () => showToast("New analytics report generated", "file-pdf"));
+        document.getElementById('saveSettingsBtn')?.addEventListener('click', () => showToast("Settings saved (demo)", "check-circle"));
+        document.getElementById('sidebarLogoutBtn')?.addEventListener('click', () => { showToast("Logout simulation: session ended", "sign-out-alt"); setTimeout(() => window.location.href="login.html", 600); });
+
+        function updateClock() { const now = new Date(); const clockSpan = document.getElementById('liveClock'); if (clockSpan) clockSpan.innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); }
+        setInterval(updateClock, 1000); updateClock();
+        window.addEventListener('resize', () => { if (window.innerWidth > 900) closeSidebar(); });
+        window.addEventListener('load', () => setTimeout(() => showToast("Welcome back, Fleet Manager", "check-circle"), 500));
+    </script>
+</body>
+</html>

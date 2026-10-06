@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>FleetManage | Client Dashboard</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
+        type="image/svg+xml">
+    <!-- Tailwind CSS for catalog consistency -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Branding Font (Matches Main Site) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables matched for FleetManage Theme */
+        :root {
+            --bg-body: #F8FAFC;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            
+            --sidebar-bg: #ffffff;
+            --sidebar-text: #64748b;
+            
+            --accent: #0284C7;
+            --accent-color: #0284C7;
+            --text-main: #1E293B; 
+        }
+
+        body.dark {
+            --bg-body: #0F172A;
+            --bg-card: #1E293B;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --border-light: #1e293b;
+            
+            --sidebar-bg: #1e293b;
+            --sidebar-text: #94a3b8;
+            
+            --accent: #38BDF8;
+            --accent-color: #38BDF8;
+            --text-main: #F1F5F9; 
+        }
+
+        /* Logo Utility Classes */
+        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .brand-logo { font-family: 'Playfair Display', serif; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .uppercase { text-transform: uppercase; }
+        .whitespace-nowrap { white-space: nowrap; }
+
+        body {
+            background: var(--bg-body);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.4;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        /* RTL Support - complete */
+        body.rtl {
+            direction: rtl;
+        }
+        body.rtl .nav-item {
+            justify-content: flex-end;
+        }
+        body.rtl .nav-item i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        body.rtl .action-icons {
+            flex-direction: row-reverse;
+        }
+        body.rtl .toast-msg {
+            right: auto;
+            left: 24px;
+        }
+        body.rtl .left-section {
+            flex-direction: row-reverse;
+        }
+        body.rtl .progress-fill {
+            border-radius: 10px 0 0 10px;
+        }
+        body.rtl .toggle-btn.active .toggle-circle {
+            transform: translateX(-24px);
+        }
+
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 320px;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            border-right: 1px solid var(--border-color);
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 20px;
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), background-color 0.2s ease, border-color 0.2s ease;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                transform: translateX(-100%);
+                width: 320px;
+                height: 100%;
+                z-index: 1050;
+                box-shadow: 0 0 30px rgba(0,0,0,0.15);
+            }
+            body.dark .sidebar {
+                box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            }
+            body.rtl .sidebar {
+                transform: translateX(100%);
+                left: auto;
+                right: 0;
+            }
+            .sidebar.open {
+                transform: translateX(0) !important;
+            }
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+            z-index: 1040;
+            display: none;
+        }
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.03); }
+        body.dark .sidebar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        .sidebar::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.4); border-radius: 4px; }
+
+        /* TOP BAR */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 28px;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .hamburger-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .hamburger-btn i { font-size: 1rem; }
+        .hamburger-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 900px) { .hamburger-btn { display: flex; } }
+
+        .page-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e293b, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            white-space: nowrap;
+        }
+        body.dark .page-title h1 {
+            background: linear-gradient(135deg, #e2e8f0, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Action icons with text for RTL/LTR clarity */
+        .action-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .action-icon-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(2, 132, 199, 0.08);
+            padding: 8px 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .action-icon-btn i { font-size: 1.1rem; margin: 0; }
+        .action-icon-btn:hover { background: rgba(2, 132, 199, 0.15); color: var(--accent); }
+        body.dark .action-icon-btn { background: rgba(56, 189, 248, 0.15); color: #cbd5e1; }
+        body.dark .action-icon-btn:hover { color: var(--accent); }
+
+        @media (max-width: 640px) {
+            .top-bar { padding: 10px 14px; gap: 12px; }
+            .left-section { gap: 12px; }
+            .page-title h1 { font-size: 1.1rem; white-space: normal; }
+            .hamburger-btn span { display: none; }
+            .hamburger-btn { padding: 8px 12px; }
+            .action-icon-btn span { display: none; }
+            .action-icon-btn { padding: 8px 12px; }
+        }
+
+        /* 100% Logo matching Main Site */
+        .logo-container {
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(2, 132, 199, 0.12);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .stat-icon i { font-size: 24px; color: var(--accent); }
+        .stat-value { font-size: 32px; font-weight: 800; color: var(--text-primary); }
+        .stat-label { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
+
+        .dashboard-card {
+            background: var(--bg-card);
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 28px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .card-header h3 { font-size: 18px; font-weight: 700; }
+
+        .progress-item { margin-bottom: 20px; }
+        .progress-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; color: var(--text-secondary); }
+        .progress-bar { height: 8px; background: var(--border-light); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 10px; }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .activity-dot { width: 10px; height: 10px; background: #10b981; border-radius: 50%; }
+        .activity-text { flex: 1; font-size: 14px; color: var(--text-secondary); }
+        .activity-time { font-size: 12px; color: var(--text-muted); }
+
+        .course-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.25s ease;
+        }
+        .course-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .course-img {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+        
+        .page-section { display: none; animation: fadeIn 0.3s ease; }
+        .page-section.active-section { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .toast-msg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1e293b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 13px;
+            z-index: 1100;
+        }
+        
+        .main-footer {
+            margin-top: 32px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .main-footer { flex-direction: column; gap: 8px; text-align: center; }
+        }
+        
+        .badge-active { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 40px; font-size: 12px; }
+        body.dark .badge-active { background: rgba(56, 189, 248, 0.2); color: #bae6fd; }
+
+        .save-btn { background: var(--accent); color: white; border: none; padding: 12px 24px; border-radius: 40px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .save-btn:hover { background: #0369A1; }
+        .toggle-switch { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border-light); }
+        .toggle-btn { width: 52px; height: 28px; background: #cbd5e1; border-radius: 40px; cursor: pointer; position: relative; transition: 0.2s; }
+        .toggle-btn.active { background: var(--accent); }
+        .toggle-circle { width: 24px; height: 24px; background: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: transform 0.2s; }
+        .toggle-btn.active .toggle-circle { transform: translateX(24px); }
+        body.rtl .toggle-btn.active .toggle-circle { transform: translateX(-24px); }
+        
+        .user-badge {
+            background: rgba(2, 132, 199, 0.08);
+            border-radius: 40px;
+            padding: 12px 16px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(2, 132, 199, 0.15);
+        }
+        body.dark .user-badge {
+            background: rgba(56, 189, 248, 0.18);
+            border-color: rgba(56, 189, 248, 0.25);
+        }
+        .user-avatar {
+            background: var(--accent);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        .user-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .user-info span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+            color: var(--sidebar-text);
+            cursor: pointer;
+        }
+        .nav-item i { width: 24px; font-size: 1.15rem; }
+        .nav-item.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 6px 14px rgba(2, 132, 199, 0.3);
+        }
+        .nav-item:not(.active):hover {
+            background: rgba(2, 132, 199, 0.08); 
+            color: var(--accent);
+        }
+        body.dark .nav-item:not(.active):hover {
+            background: rgba(56, 189, 248, 0.2); 
+            color: white;
+        }
+
+        .logout-btn-sidebar {
+            background: rgba(220, 38, 38, 0.08);
+            color: #dc2626;
+            padding: 12px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid rgba(220, 38, 38, 0.15);
+            width: 100%;
+            text-decoration: none;
+            justify-content: center;
+        }
+        body.dark .logout-btn-sidebar {
+            background: rgba(220, 38, 38, 0.15);
+            color: #fca5a5;
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+        .logout-btn-sidebar:hover {
+            background: #dc2626;
+            color: white;
+        }
+        .main-content {
+            flex: 1;
+            padding: 28px 32px;
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+        @media (max-width: 900px) {
+            .main-content { padding: 16px; }
+        }
+        .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="app-wrapper">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="mainSidebar">
+        <!-- EXACT LOGO FROM MAIN PROJECT -->
+        <div class="logo-container">
+            <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
+            </a>
+        </div>
+        
+        <div class="user-badge">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+                <h4>James Donovan</h4>
+                <span>Fleet Client</span>
+            </div>
+        </div>
+        
+        <div class="nav-menu">
+            <div class="nav-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</div>
+            <div class="nav-item" data-page="vehicles"><i class="fas fa-car-side"></i> My Vehicles</div>
+            <div class="nav-item" data-page="profile"><i class="fas fa-building"></i> Company Profile</div>
+            <div class="nav-item" data-page="security"><i class="fas fa-lock"></i> Security</div>
+            <div class="nav-item" data-page="preferences"><i class="fas fa-sliders-h"></i> Preferences</div>
+            <div class="nav-item" data-page="activity"><i class="fas fa-history"></i> Activity Log</div>
+            <div class="nav-item" data-page="cases"><i class="fas fa-file-invoice-dollar"></i> My Leases</div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn-sidebar">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <!-- TOP BAR: clear icons with text labels for RTL/LTR -->
+        <div class="top-bar">
+            <div class="left-section">
+                <div class="hamburger-btn" id="hamburgerBtn">
+                    <i class="fas fa-bars"></i>
+                    <span>Menu</span>
+                </div>
+                <div class="page-title">
+                    <h1 id="dynamicHeading"><i class="fas fa-tachometer-alt" style="color:var(--accent);"></i> Dashboard</h1>
+                </div>
+            </div>
+            <div class="action-icons">
+                <div class="action-icon-btn" id="topDarkIcon">
+                    <i class="fas fa-moon"></i>
+                    <span id="darkModeLabel">Dark</span>
+                </div>
+                <div class="action-icon-btn" id="topRtlIcon">
+                    <span id="rtlModeLabel">LTR</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboard-section" class="page-section active-section">
+            <div class="dashboard-card mb-6" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); color: white; border: none;">
+                <div class="flex justify-between items-center flex-wrap">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Welcome back, James!</h2>
+                        <p class="opacity-90">Your fleet operations are running smoothly.</p>
+                    </div>
+                    <div class="mt-3 sm:mt-0"><span class="bg-white/20 px-4 py-2 rounded-full text-sm">📅 September 30, 2026</span></div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-truck"></i></div><div class="stat-value">14</div><div class="stat-label">Active Vehicles</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-wrench"></i></div><div class="stat-value">2</div><div class="stat-label">In Maintenance</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-road"></i></div><div class="stat-value">12k</div><div class="stat-label">Miles Logged (This Month)</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-file-contract"></i></div><div class="stat-value">3</div><div class="stat-label">Leases Expiring Soon</div></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-6 mb-6">
+                <div class="dashboard-card">
+                    <div class="card-header"><h3><i class="fas fa-chart-simple mr-2" style="color:var(--accent);"></i> Fleet Utilization</h3></div>
+                    <div class="progress-item"><div class="progress-header"><span>Cargo Vans</span><span>85%</span></div><div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div></div>
+                    <div class="progress-item"><div class="progress-header"><span>Heavy Trucks</span><span>92%</span></div><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div></div>
+                    <div class="progress-item"><div class="progress-header"><span>Electric Sedans</span><span>45%</span></div><div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div></div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-header"><h3><i class="fas fa-history mr-2" style="color:var(--accent);"></i> Recent Activity</h3></div>
+                    <div class="activity-item"><div class="activity-dot" style="background:#10b981"></div><div class="activity-text">Service completed: V-88455 (Sprinter)</div><div class="activity-time">2h ago</div></div>
+                    <div class="activity-item"><div class="activity-dot" style="background:#3b82f6"></div><div class="activity-text">Payment processed: Invoice #INV-0042</div><div class="activity-time">Yesterday</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTHER SECTIONS -->
+        <div id="vehicles-section" class="page-section">
+            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-car-side"></i> My Fleet Directory</h3></div><div class="grid md:grid-cols-3 gap-5"><div class="course-card"><div class="course-img"><i class="fas fa-truck-moving"></i></div><div class="p-4"><h3>Heavy Duty Fleet</h3><p class="text-sm text-[var(--text-muted)]">4 Vehicles Active</p></div></div><div class="course-card"><div class="course-img"><i class="fas fa-shuttle-van"></i></div><div class="p-4"><h3>Delivery Vans</h3><p class="text-sm text-[var(--text-muted)]">8 Vehicles Active</p></div></div><div class="course-card"><div class="course-img"><i class="fas fa-car-battery"></i></div><div class="p-4"><h3>EV Sedans</h3><p class="text-sm text-[var(--text-muted)]">2 Vehicles Active</p></div></div></div></div>
+        </div>
+        <div id="profile-section" class="page-section">
+            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-building"></i> Company Information</h3></div><div class="grid md:grid-cols-2 gap-5"><div><label class="block mb-1">Company Name</label><input type="text" value="Acme Corp Logistics" class="w-full p-3 rounded-xl border border-border-light bg-[var(--bg-card)]" style="background:var(--bg-card); color:var(--text-primary); border-color:var(--border-light)"></div><div><label class="block mb-1">Primary Contact Email</label><input type="email" value="james.donovan@acme.com" class="w-full p-3 rounded-xl border border-border-light bg-[var(--bg-card)]" style="background:var(--bg-card); color:var(--text-primary); border-color:var(--border-light)"></div></div><button class="save-btn mt-5" id="saveProfileBtn">Update Profile</button></div>
+        </div>
+        <div id="security-section" class="page-section">
+            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-shield-alt"></i> Security Settings</h3></div><div class="flex justify-between py-4 border-b" style="border-bottom-color:var(--border-light)"><div><h4>Password</h4><p class="text-sm text-[var(--text-muted)]">Last changed 45 days ago</p></div><div class="font-semibold cursor-pointer" style="color:var(--accent);" id="changePasswordBtn">Change →</div></div><div class="flex justify-between py-4 border-b" style="border-bottom-color:var(--border-light)"><div><h4>Two-Factor Authentication</h4><p class="text-sm text-[var(--text-muted)]">Add extra security</p></div><div class="font-semibold cursor-pointer" style="color:var(--accent);" id="enable2faBtn">Enable 2FA →</div></div></div>
+        </div>
+        <div id="preferences-section" class="page-section">
+            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-sliders-h"></i> Appearance & Reporting</h3></div><div class="toggle-switch"><div><h4>Dark Mode</h4></div><div id="darkModeTogglePref" class="toggle-btn"><div class="toggle-circle"></div></div></div><div class="toggle-switch"><div><h4>RTL Layout</h4></div><div id="rtlTogglePref" class="toggle-btn"><div class="toggle-circle"></div></div></div><button class="save-btn mt-5" id="savePreferencesBtn">Save Preferences</button></div>
+        </div>
+        <div id="activity-section" class="page-section">
+            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-history"></i> Activity Log</h3></div><div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Login - Client Portal</div><div class="activity-time">Sep 30, 2026</div></div><div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Downloaded Invoice #INV-0042</div><div class="activity-time">Sep 29, 2026</div></div></div>
+        </div>
+        <div id="cases-section" class="page-section">
+            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-file-invoice-dollar"></i> My Leases</h3></div><div class="activity-item"><div class="activity-dot" style="background:#10b981"></div><div class="activity-text">LSE-2026-081 - Cargo Van Fleet</div><div class="badge-active">Active</div></div><div class="activity-item"><div class="activity-dot" style="background:#f59e0b"></div><div class="activity-text">LSE-2026-082 - Heavy Truck Additions</div><div class="badge-active" style="background:rgba(245,158,11,0.2);color:#d97706;">Pending Review</div></div></div>
+        </div>
+
+        <div class="main-footer"><div><i class="far fa-copyright"></i> FleetManage · Secure Portal</div><div><span id="liveClock"></span> · EN</div></div>
+    </main>
+</div>
+
+<script>
+    let isDark = localStorage.getItem('fleet_dark') === 'enabled';
+    let isRTL = localStorage.getItem('fleet_rtl') === 'enabled';
+    
+    // Update UI elements for dark mode
+    function applyDarkMode(enabled) {
+        if (enabled) document.body.classList.add('dark'); else document.body.classList.remove('dark');
+        const togglePref = document.getElementById('darkModeTogglePref');
+        if(togglePref) {
+            if(enabled) togglePref.classList.add('active'); else togglePref.classList.remove('active');
+        }
+        const darkLabel = document.getElementById('darkModeLabel');
+        if(darkLabel) darkLabel.innerText = enabled ? 'Light' : 'Dark';
+        const topIconDiv = document.getElementById('topDarkIcon');
+        if(topIconDiv) {
+            const icon = topIconDiv.querySelector('i');
+            if(icon) icon.className = enabled ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        localStorage.setItem('fleet_dark', enabled ? 'enabled' : 'disabled');
+    }
+    
+    // Update UI for RTL with clear text label
+    function applyRTL(enabled) {
+        if (enabled) {
+            document.body.classList.add('rtl');
+            document.documentElement.setAttribute('dir', 'rtl');
+        } else {
+            document.body.classList.remove('rtl');
+            document.documentElement.setAttribute('dir', 'ltr');
+        }
+        const rtlPref = document.getElementById('rtlTogglePref');
+        if(rtlPref) {
+            if(enabled) rtlPref.classList.add('active'); else rtlPref.classList.remove('active');
+        }
+        const rtlLabelSpan = document.getElementById('rtlModeLabel');
+        if(rtlLabelSpan) rtlLabelSpan.innerText = enabled ? 'RTL' : 'LTR';
+        localStorage.setItem('fleet_rtl', enabled ? 'enabled' : 'disabled');
+        // Force reflow
+        document.body.style.display = 'none';
+        document.body.offsetHeight;
+        document.body.style.display = '';
+    }
+    
+    applyDarkMode(isDark);
+    applyRTL(isRTL);
+    
+    // Toggle event handlers
+    const darkTogglePref = document.getElementById('darkModeTogglePref');
+    if(darkTogglePref) darkTogglePref.addEventListener('click', () => { isDark = !isDark; applyDarkMode(isDark); showToast(isDark ? "Dark mode enabled" : "Light mode enabled"); });
+    
+    const rtlTogglePref = document.getElementById('rtlTogglePref');
+    if(rtlTogglePref) rtlTogglePref.addEventListener('click', () => { isRTL = !isRTL; applyRTL(isRTL); showToast(isRTL ? "RTL layout enabled" : "LTR layout enabled"); });
+    
+    const topDark = document.getElementById('topDarkIcon');
+    if(topDark) topDark.addEventListener('click', () => { isDark = !isDark; applyDarkMode(isDark); showToast(isDark ? "Dark mode on" : "Light mode on"); });
+    
+    const topRtl = document.getElementById('topRtlIcon');
+    if(topRtl) topRtl.addEventListener('click', () => { isRTL = !isRTL; applyRTL(isRTL); showToast(isRTL ? "RTL (Right-to-Left) active" : "LTR (Left-to-Right) active"); });
+    
+    // Navigation and heading updates
+    const headingMap = {
+        dashboard: { icon: 'tachometer-alt', title: 'Dashboard' },
+        vehicles: { icon: 'car-side', title: 'My Vehicles' },
+        profile: { icon: 'building', title: 'Company Profile' },
+        security: { icon: 'lock', title: 'Security' },
+        preferences: { icon: 'sliders-h', title: 'Preferences' },
+        activity: { icon: 'history', title: 'Activity Log' },
+        cases: { icon: 'file-invoice-dollar', title: 'My Leases' }
+    };
+    
+    function showSection(sectionId, pageTitle, icon) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
+        const targetSection = document.getElementById(`${sectionId}-section`);
+        if(targetSection) targetSection.classList.add('active-section');
+        
+        const headingEl = document.getElementById('dynamicHeading');
+        if(headingEl) {
+            headingEl.innerHTML = `<i class="fas fa-${icon}" style="color:var(--accent);"></i> ${pageTitle}`;
+        }
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        const activeNav = document.querySelector(`.nav-item[data-page="${sectionId}"]`);
+        if(activeNav) activeNav.classList.add('active');
+        
+        if(window.innerWidth <= 900) closeSidebar();
+    }
+    
+    function closeSidebar() {
+        document.getElementById('mainSidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+    }
+    function openSidebar() {
+        document.getElementById('mainSidebar').classList.add('open');
+        document.getElementById('sidebarOverlay').classList.add('active');
+    }
+    
+    document.querySelectorAll('.nav-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const page = btn.getAttribute('data-page');
+            const info = headingMap[page];
+            if(info) showSection(page, info.title, info.icon);
+        });
+    });
+    
+    const hamburger = document.getElementById('hamburgerBtn');
+    if(hamburger) hamburger.addEventListener('click', openSidebar);
+    const overlay = document.getElementById('sidebarOverlay');
+    if(overlay) overlay.addEventListener('click', closeSidebar);
+    
+    function showToast(msg) { const t=document.createElement('div'); t.className='toast-msg'; t.innerHTML=`<i class="fas fa-info-circle"></i> ${msg}`; document.body.appendChild(t); setTimeout(()=>t.remove(),2500); }
+    
+    document.getElementById('saveProfileBtn')?.addEventListener('click',()=>showToast("Profile updated successfully!"));
+    document.getElementById('savePreferencesBtn')?.addEventListener('click',()=>showToast("Preferences saved"));
+    document.getElementById('changePasswordBtn')?.addEventListener('click',()=>showToast("Password reset email sent"));
+    document.getElementById('enable2faBtn')?.addEventListener('click',()=>showToast("2FA setup wizard (demo)"));
+    
+    function updateClock(){ if(document.getElementById('liveClock')) document.getElementById('liveClock').innerText = new Date().toLocaleTimeString(); }
+    setInterval(updateClock,1000); updateClock();
+    
+    window.addEventListener('resize', function() { if(window.innerWidth > 900) closeSidebar(); });
+    
+    // Initialize active page
+    const initPage = 'dashboard';
+    const initInfo = headingMap[initPage];
+    if(initInfo) showSection(initPage, initInfo.title, initInfo.icon);
+</script>
+</body>
+</html>
