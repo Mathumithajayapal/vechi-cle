@@ -345,23 +345,27 @@
         .activity-text { flex: 1; font-size: 14px; color: var(--text-secondary); }
         .activity-time { font-size: 12px; color: var(--text-muted); }
 
-        .course-card {
+        .vehicle-fleet-card {
             background: var(--bg-card);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            transition: transform 0.25s ease;
+            transition: all 0.25s ease;
         }
-        .course-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .course-img {
+        .vehicle-fleet-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.15); }
+        .vehicle-fleet-banner {
             width: 100%;
-            height: 160px;
+            height: 140px;
             background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 48px;
+            font-size: 40px;
+            position: relative;
+        }
+        body.dark .vehicle-fleet-banner {
+            background: linear-gradient(135deg, #0369A1 0%, #0F172A 100%);
         }
         
         .page-section { display: none; animation: fadeIn 0.3s ease; }
@@ -609,8 +613,127 @@
 
         <!-- OTHER SECTIONS -->
         <div id="vehicles-section" class="page-section">
-            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-car-side"></i> My Fleet Directory</h3></div><div class="grid md:grid-cols-3 gap-5"><div class="course-card"><div class="course-img"><i class="fas fa-truck-moving"></i></div><div class="p-4"><h3>Heavy Duty Fleet</h3><p class="text-sm text-[var(--text-muted)]">4 Vehicles Active</p></div></div><div class="course-card"><div class="course-img"><i class="fas fa-shuttle-van"></i></div><div class="p-4"><h3>Delivery Vans</h3><p class="text-sm text-[var(--text-muted)]">8 Vehicles Active</p></div></div><div class="course-card"><div class="course-img"><i class="fas fa-car-battery"></i></div><div class="p-4"><h3>EV Sedans</h3><p class="text-sm text-[var(--text-muted)]">2 Vehicles Active</p></div></div></div></div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-truck mr-2" style="color:var(--accent);"></i> Leased Fleet Vehicles Directory</h3>
+                    <span class="text-xs text-[var(--text-muted)]">14 Active Commercial Leases</span>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Vehicle 1 -->
+                    <div class="vehicle-fleet-card">
+                        <div class="vehicle-fleet-banner relative overflow-hidden">
+                            <img src="images/vechicle (9).jpg" alt="Freightliner Box Truck Fleet" class="w-full h-full object-cover opacity-85">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <span class="absolute top-3 right-3 bg-emerald-500/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">Active &bull; On Route</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h4 class="font-bold text-base text-[var(--text-primary)]">Freightliner M2 106 26' Box Truck</h4>
+                                    <p class="text-xs text-[var(--text-muted)]">Unit #FT-402 &bull; VIN: 1FVACWFC8PH72910</p>
+                                </div>
+                                <span class="text-xs font-semibold text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-1 rounded">TRAC Lease</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] my-4 pt-3 border-t border-[var(--border-light)]">
+                                <div><span class="text-[var(--text-muted)] block">Monthly Rate:</span> <strong>$849 / mo</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Odometer:</span> <strong>38,420 mi</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Telematics GPS:</span> <strong class="text-emerald-500"><i class="fas fa-circle text-[8px] mr-1"></i>Live Signal</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Maintenance:</span> <strong>850+ Garage OK</strong></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="showToast('Dispatching maintenance request for Unit #FT-402...')" class="flex-1 py-2 text-xs font-semibold rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition">Book Service</button>
+                                <button onclick="showToast('Opening live telematics stream for Unit #FT-402...')" class="flex-1 py-2 text-xs font-semibold rounded-lg border border-[var(--border-color)] text-[var(--text-secondary)] hover:border-[var(--accent)] transition">Live GPS</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle 2 -->
+                    <div class="vehicle-fleet-card">
+                        <div class="vehicle-fleet-banner relative overflow-hidden">
+                            <img src="images/vechicle (13).jpg" alt="Ford Transit Cargo Van Fleet" class="w-full h-full object-cover opacity-85">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <span class="absolute top-3 right-3 bg-emerald-500/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">Active &bull; On Route</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h4 class="font-bold text-base text-[var(--text-primary)]">Ford Transit 350 High-Roof Van</h4>
+                                    <p class="text-xs text-[var(--text-muted)]">Unit #VN-108 &bull; VIN: 1FTBR1Y89PK18432</p>
+                                </div>
+                                <span class="text-xs font-semibold text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-1 rounded">Closed-End</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] my-4 pt-3 border-t border-[var(--border-light)]">
+                                <div><span class="text-[var(--text-muted)] block">Monthly Rate:</span> <strong>$489 / mo</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Odometer:</span> <strong>24,150 mi</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Telematics GPS:</span> <strong class="text-emerald-500"><i class="fas fa-circle text-[8px] mr-1"></i>Score: 98/100</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Maintenance:</span> <strong>Next in 5,850 mi</strong></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="showToast('Dispatching maintenance request for Unit #VN-108...')" class="flex-1 py-2 text-xs font-semibold rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition">Book Service</button>
+                                <button onclick="showToast('Opening live telematics stream for Unit #VN-108...')" class="flex-1 py-2 text-xs font-semibold rounded-lg border border-[var(--border-color)] text-[var(--text-secondary)] hover:border-[var(--accent)] transition">Live GPS</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle 3 -->
+                    <div class="vehicle-fleet-card">
+                        <div class="vehicle-fleet-banner relative overflow-hidden">
+                            <img src="images/vechicle (7).jpg" alt="Electric Utility Service Van" class="w-full h-full object-cover opacity-85">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <span class="absolute top-3 right-3 bg-sky-500/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">Charging 88%</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h4 class="font-bold text-base text-[var(--text-primary)]">Ford E-Transit Electric Van</h4>
+                                    <p class="text-xs text-[var(--text-muted)]">Unit #EV-204 &bull; VIN: 1FTBW1YK5NK39011</p>
+                                </div>
+                                <span class="text-xs font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-1 rounded">EV Lease</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] my-4 pt-3 border-t border-[var(--border-light)]">
+                                <div><span class="text-[var(--text-muted)] block">Monthly Rate:</span> <strong>$589 / mo</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Battery Range:</span> <strong>126 mi Available</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Charging Network:</span> <strong class="text-emerald-500">Corporate Depot Level 2</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Carbon Offset:</span> <strong>4.8 Tons YTD</strong></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="showToast('Viewing battery health diagnostics for Unit #EV-204...')" class="flex-1 py-2 text-xs font-semibold rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition">Battery Health</button>
+                                <button onclick="showToast('Opening telematics for Unit #EV-204...')" class="flex-1 py-2 text-xs font-semibold rounded-lg border border-[var(--border-color)] text-[var(--text-secondary)] hover:border-[var(--accent)] transition">Telematics</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle 4 -->
+                    <div class="vehicle-fleet-card">
+                        <div class="vehicle-fleet-banner relative overflow-hidden">
+                            <img src="images/vechicle (1).jpg" alt="Kenworth Heavy Commercial Hauler" class="w-full h-full object-cover opacity-85">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <span class="absolute top-3 right-3 bg-emerald-500/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">ELD &bull; Compliant</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h4 class="font-bold text-base text-[var(--text-primary)]">Kenworth T680 Heavy Semi-Tractor</h4>
+                                    <p class="text-xs text-[var(--text-muted)]">Unit #TR-019 &bull; VIN: 1NKDX4EX5PR66321</p>
+                                </div>
+                                <span class="text-xs font-semibold text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-1 rounded">TRAC Heavy</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] my-4 pt-3 border-t border-[var(--border-light)]">
+                                <div><span class="text-[var(--text-muted)] block">Monthly Rate:</span> <strong>$1,750 / mo</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">Odometer:</span> <strong>114,200 mi</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">DOT / ELD Status:</span> <strong class="text-emerald-500"><i class="fas fa-check-circle mr-1"></i>FMCSA Registered</strong></div>
+                                <div><span class="text-[var(--text-muted)] block">PM Service:</span> <strong>Completed Sep 15</strong></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="showToast('Exporting FMCSA DOT Inspection log for Unit #TR-019...')" class="flex-1 py-2 text-xs font-semibold rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition">DOT Log</button>
+                                <button onclick="showToast('Opening live telematics stream for Unit #TR-019...')" class="flex-1 py-2 text-xs font-semibold rounded-lg border border-[var(--border-color)] text-[var(--text-secondary)] hover:border-[var(--accent)] transition">Live GPS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div id="profile-section" class="page-section">
             <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-building"></i> Company Information</h3></div><div class="grid md:grid-cols-2 gap-5"><div><label class="block mb-1">Company Name</label><input type="text" value="Acme Corp Logistics" class="w-full p-3 rounded-xl border border-border-light bg-[var(--bg-card)]" style="background:var(--bg-card); color:var(--text-primary); border-color:var(--border-light)"></div><div><label class="block mb-1">Primary Contact Email</label><input type="email" value="james.donovan@acme.com" class="w-full p-3 rounded-xl border border-border-light bg-[var(--bg-card)]" style="background:var(--bg-card); color:var(--text-primary); border-color:var(--border-light)"></div></div><button class="save-btn mt-5" id="saveProfileBtn">Update Profile</button></div>
         </div>
@@ -623,11 +746,77 @@
         <div id="activity-section" class="page-section">
             <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-history"></i> Activity Log</h3></div><div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Login - Client Portal</div><div class="activity-time">Sep 30, 2026</div></div><div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Downloaded Invoice #INV-0042</div><div class="activity-time">Sep 29, 2026</div></div></div>
         </div>
+
+        <!-- MY LEASES SECTION -->
         <div id="cases-section" class="page-section">
-            <div class="dashboard-card"><div class="card-header"><h3><i class="fas fa-file-invoice-dollar"></i> My Leases</h3></div><div class="activity-item"><div class="activity-dot" style="background:#10b981"></div><div class="activity-text">LSE-2026-081 - Cargo Van Fleet</div><div class="badge-active">Active</div></div><div class="activity-item"><div class="activity-dot" style="background:#f59e0b"></div><div class="activity-text">LSE-2026-082 - Heavy Truck Additions</div><div class="badge-active" style="background:rgba(245,158,11,0.2);color:#d97706;">Pending Review</div></div></div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-file-contract mr-2" style="color:var(--accent);"></i> Master Lease Agreements Portfolio</h3>
+                    <button onclick="showToast('Requesting lease schedule extension...')" class="text-xs bg-[var(--accent)] text-white font-semibold px-4 py-2 rounded-full hover:opacity-90 transition">+ Add Vehicle Rider</button>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr class="border-b border-[var(--border-color)] text-[var(--text-muted)] uppercase tracking-wider">
+                                <th class="pb-3 font-semibold">Lease Agreement</th>
+                                <th class="pb-3 font-semibold">Asset Group</th>
+                                <th class="pb-3 font-semibold">Structure</th>
+                                <th class="pb-3 font-semibold">Monthly Rate</th>
+                                <th class="pb-3 font-semibold">Term</th>
+                                <th class="pb-3 font-semibold">Pooled Mileage</th>
+                                <th class="pb-3 font-semibold">Status</th>
+                                <th class="pb-3 font-semibold text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[var(--border-light)] text-[var(--text-secondary)]">
+                            <tr>
+                                <td class="py-4 font-semibold text-[var(--text-primary)]">LSE-TRAC-2024-081</td>
+                                <td class="py-4">6x Ford Transit High-Roof</td>
+                                <td class="py-4"><span class="badge-active">Open-End TRAC</span></td>
+                                <td class="py-4 font-semibold">$2,934 / mo</td>
+                                <td class="py-4">48 Mo (Exp Nov 2028)</td>
+                                <td class="py-4">124,500 / 180,000 mi (69%)</td>
+                                <td class="py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-500"><i class="fas fa-check-circle"></i> Active</span></td>
+                                <td class="py-4 text-right"><button onclick="showToast('Downloading Master Lease Agreement #LSE-TRAC-2024-081 (PDF)...')" class="text-[var(--accent)] hover:underline font-semibold">Agreement PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-semibold text-[var(--text-primary)]">LSE-CE-2025-119</td>
+                                <td class="py-4">4x Freightliner M2 Box Trucks</td>
+                                <td class="py-4"><span class="badge-active">Closed-End</span></td>
+                                <td class="py-4 font-semibold">$3,396 / mo</td>
+                                <td class="py-4">36 Mo (Exp Jun 2028)</td>
+                                <td class="py-4">76,100 / 144,000 mi (53%)</td>
+                                <td class="py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-500"><i class="fas fa-check-circle"></i> Active</span></td>
+                                <td class="py-4 text-right"><button onclick="showToast('Downloading Master Lease Agreement #LSE-CE-2025-119 (PDF)...')" class="text-[var(--accent)] hover:underline font-semibold">Agreement PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-semibold text-[var(--text-primary)]">LSE-EV-2025-204</td>
+                                <td class="py-4">2x Ford E-Transit Cargo</td>
+                                <td class="py-4"><span class="badge-active">Commercial EV</span></td>
+                                <td class="py-4 font-semibold">$1,178 / mo</td>
+                                <td class="py-4">48 Mo (Exp Mar 2029)</td>
+                                <td class="py-4">28,400 / 80,000 mi (35%)</td>
+                                <td class="py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-500"><i class="fas fa-check-circle"></i> Active</span></td>
+                                <td class="py-4 text-right"><button onclick="showToast('Downloading Master Lease Agreement #LSE-EV-2025-204 (PDF)...')" class="text-[var(--accent)] hover:underline font-semibold">Agreement PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-semibold text-[var(--text-primary)]">LSE-HVY-2026-310</td>
+                                <td class="py-4">2x Kenworth T680 Tractors</td>
+                                <td class="py-4"><span class="badge-active">TRAC Heavy</span></td>
+                                <td class="py-4 font-semibold">$3,500 / mo</td>
+                                <td class="py-4">60 Mo (Exp Jan 2031)</td>
+                                <td class="py-4">12,800 / 300,000 mi (4%)</td>
+                                <td class="py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-500"><i class="fas fa-clock"></i> Staging Dispatch</span></td>
+                                <td class="py-4 text-right"><button onclick="showToast('Viewing delivery & telematics staging schedule for Kenworth T680...')" class="text-[var(--accent)] hover:underline font-semibold">Track Delivery</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
-        <div class="main-footer"><div><i class="far fa-copyright"></i> FleetManage · Secure Portal</div><div><span id="liveClock"></span> · EN</div></div>
+        <div class="main-footer"><div><i class="far fa-copyright"></i> FleetManage · Commercial Fleet Portal</div><div><span id="liveClock"></span> · EN</div></div>
     </main>
 </div>
 

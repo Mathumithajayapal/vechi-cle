@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home 2 - FleetManage</title>
+    <title>Enterprise Fleet Leasing & Operations - FleetManage</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
         type="image/svg+xml">
@@ -30,7 +30,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
@@ -138,11 +138,8 @@
     <nav class="navbar" id="main-nav">
         <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
             <div class="flex items-center">
-                <a href="index.html"
-                    class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
-                    style="color: var(--text-main) !important; text-decoration: none;">
-                    <i class="fas fa-truck"
-                        style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
+                <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                    <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
                 </a>
             </div>
 
@@ -159,7 +156,7 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="proposal.html" class="nav-link">Proposal</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <div class="dropdown">
@@ -184,8 +181,7 @@
             </div>
 
             <div class="xl:hidden flex items-center justify-end gap-4">
-                <button id="mobile-btn"
-                    class="text-2xl text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)]">
+                <button id="mobile-btn" class="text-2xl text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)]">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -194,17 +190,12 @@
 
     <!-- MOBILE HAMBURGER DRAWER -->
     <div class="drawer-overlay" id="drawer-overlay"></div>
-
     <div class="fullscreen-menu" id="fullscreen-menu">
         <div class="w-full px-8 py-8 flex justify-between items-center shrink-0 border-b border-[var(--border-color)]">
-            <a href="index.html"
-                class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
-                style="color: var(--text-main) !important; text-decoration: none;">
-                <i class="fas fa-truck"
-                    style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+            <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
             </a>
-            <button id="close-menu"
-                class="w-10 h-10 flex items-center justify-center transition-all text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)]">
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center transition-all text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)]">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -215,10 +206,9 @@
             <a href="about.html" class="mobile-link">About</a>
             <a href="services.html" class="mobile-link">Services</a>
             <a href="pricing.html" class="mobile-link">Pricing</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="proposal.html" class="mobile-link">Proposal</a>
             <a href="faq.html" class="mobile-link">FAQ</a>
             <a href="contact.html" class="mobile-link">Contact</a>
-
             <div class="px-8 mt-8 mb-2">
                 <span class="text-[10px] font-bold text-[var(--accent-color)] uppercase tracking-widest">Portals</span>
             </div>
@@ -251,25 +241,25 @@
             <!-- Left: Content -->
             <div class="relative z-10 text-left pt-10 lg:pt-0">
                 <span class="inline-block py-1.5 px-4 rounded-full bg-[var(--accent-color)]/10 text-[var(--accent-color)] text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
-                    <i class="fas fa-chart-line mr-2"></i> Data-Driven Logistics
+                    <i class="fas fa-chart-line mr-2"></i> Fleet Leasing & Telematics Intelligence
                 </span>
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-[var(--text-main)] font-serif leading-tight">
-                    Smarter Fleets. <br> Better <span class="italic text-[var(--accent-color)]">Results.</span>
+                    Smarter Fleets. <br> Full-Service <span class="italic text-[var(--accent-color)]">Leasing.</span>
                 </h1>
                 <p class="text-[var(--text-muted)] text-lg mb-10 max-w-lg font-light leading-relaxed">
-                    Take control of your logistics with real-time tracking, predictive maintenance, and scalable leasing options designed for modern enterprises.
+                    Scale your logistical footprint with brand-new leased commercial vehicles, backed by real-time telematics, preventive maintenance, and transparent monthly agreements.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="services.html" class="btn btn-solid !py-4 !px-10 rounded shadow-lg shadow-[var(--accent-color)]/20">Book a Demo</a>
-                    <a href="features.html" class="btn btn-outline !py-4 !px-10 rounded bg-[var(--bg-card)]">View Features</a>
+                    <a href="pricing.html" class="btn btn-solid !py-4 !px-10 rounded shadow-lg shadow-[var(--accent-color)]/20">Explore Lease Options</a>
+                    <a href="services.html" class="btn btn-outline !py-4 !px-10 rounded bg-[var(--bg-card)]">Fleet Services</a>
                 </div>
             </div>
 
             <!-- Right: Image & Floating Cards -->
             <div class="relative z-10 h-[400px] sm:h-[550px] w-full mt-10 lg:mt-0">
-                <img src="images/vechicle (1).jpg" 
+                <img src="images/pexels-silverkblack-36730221.jpg" 
                      class="absolute top-4 right-0 w-[85%] h-[90%] object-cover rounded-2xl shadow-xl border border-[var(--border-color)]" 
-                     alt="Fleet Management Dashboard">
+                     alt="Fleet Management Operations">
                      
                 <!-- Floating Card 1 -->
                 <div class="absolute top-10 left-0 bg-[var(--bg-card)] p-4 rounded-xl shadow-2xl border border-[var(--border-color)] flex items-center gap-4 animate-[bounce_4s_infinite]">
@@ -277,8 +267,8 @@
                         <i class="fas fa-check-circle text-xl"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-semibold">Fleet Status</p>
-                        <p class="text-lg font-bold text-[var(--text-main)]">98% Active</p>
+                        <p class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-semibold">Active Leases</p>
+                        <p class="text-lg font-bold text-[var(--text-main)]">15,000+ Vehicles</p>
                     </div>
                 </div>
 
@@ -289,7 +279,7 @@
                     </div>
                     <div>
                         <p class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-semibold">Fuel Saved</p>
-                        <p class="text-lg font-bold text-[var(--text-main)]">12,450 Gal</p>
+                        <p class="text-lg font-bold text-[var(--text-main)]">1.2M Gallons</p>
                     </div>
                 </div>
             </div>
@@ -299,119 +289,134 @@
     <!-- NEW HOMEPAGE 2 SECTIONS START HERE -->
     <main class="w-full">
         
-        <!-- SECTION 1: Global Impact & Statistics (~75 lines) -->
-        <!-- FIXED for Dark Mode: Hardcoded dark background (slate-900) so text-white is always visible -->
+        <!-- SECTION 1: Global Impact & Statistics -->
         <section class="py-24 px-6 bg-slate-900 border-b border-[var(--border-color)] relative overflow-hidden">
             <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
-                <img src="images/vechicle (2).jpg" alt="World Map" class="w-full h-full object-cover">
+                <img src="images\pexels-gustavo-fring-4173199.jpg" alt="Commercial Fleet Logistics Hub" class="w-full h-full object-cover">
             </div>
             
             <div class="max-w-[1440px] mx-auto lg:px-12 relative z-10 flex flex-col md:flex-row items-center gap-16">
-                <!-- Left Title -->
                 <div class="flex-1 text-center md:text-left">
-                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 block">Our Impact</span>
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 block">Proven Enterprise Footprint</span>
                     <h2 class="text-3xl md:text-5xl font-serif text-white mb-6 leading-tight">
-                        Powering the World's <br> <span class="italic text-[var(--accent-color)]">Leading Fleets</span>
+                        Financing & Managing <br> <span class="italic text-[var(--accent-color)]">Leading Fleets</span>
                     </h2>
                     <p class="text-slate-300 text-lg font-light leading-relaxed max-w-md mx-auto md:mx-0">
-                        Our platform drives efficiency on a global scale. From real-time route optimization to massive fuel savings, the numbers speak for themselves.
+                        From turnkey delivery van leases to real-time engine telemetry and fuel card integration, our dual solutions keep supply chains running at peak efficiency.
                     </p>
                 </div>
                 
-                <!-- Right Stats Grid -->
                 <div class="flex-1 grid grid-cols-2 gap-6 w-full">
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md text-center hover:bg-white/10 transition-colors">
                         <i class="fas fa-truck-moving text-3xl text-[var(--accent-color)] mb-4"></i>
-                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">50k+</h3>
-                        <p class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Active Vehicles</p>
+                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">15k+</h3>
+                        <p class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Leased Vehicles</p>
                     </div>
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md text-center hover:bg-white/10 transition-colors">
-                        <i class="fas fa-road text-3xl text-[var(--accent-color)] mb-4"></i>
-                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">1.2B</h3>
-                        <p class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Miles Tracked</p>
+                        <i class="fas fa-warehouse text-3xl text-[var(--accent-color)] mb-4"></i>
+                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">850+</h3>
+                        <p class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Service Garages</p>
                     </div>
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md text-center hover:bg-white/10 transition-colors">
                         <i class="fas fa-leaf text-3xl text-[var(--accent-color)] mb-4"></i>
-                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">30%</h3>
-                        <p class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Emissions Cut</p>
+                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">28%</h3>
+                        <p class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Operating Cost Cut</p>
                     </div>
                     <div class="bg-[var(--accent-color)] rounded-2xl p-8 text-center shadow-lg shadow-[var(--accent-color)]/20 hover:scale-105 transition-transform">
                         <i class="fas fa-chart-pie text-3xl text-white mb-4"></i>
-                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">99.9%</h3>
-                        <p class="text-sm text-white/80 uppercase tracking-wider font-semibold">Uptime SLA</p>
+                        <h3 class="text-4xl font-bold text-white mb-2 font-serif">99.4%</h3>
+                        <p class="text-sm text-white/80 uppercase tracking-wider font-semibold">Lease Renewals</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2: Solutions by Industry (~75 lines) -->
-        <!-- FIXED for Dark Mode: Ensured gradients are strictly dark (slate-900) so white text always pops -->
+        <!-- SECTION 2: Solutions by Industry -->
         <section class="py-24 px-6 bg-[var(--bg-color)] border-b border-[var(--border-color)]">
             <div class="max-w-[1440px] mx-auto lg:px-12">
                 <div class="text-center max-w-2xl mx-auto mb-16">
-                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Tailored For You</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-[var(--text-main)] mb-6">Built for Every Fleet Profile</h2>
-                    <p class="text-[var(--text-muted)] font-light leading-relaxed">We understand that a delivery fleet has different needs than heavy construction. Our ELD and Telematics platform adapts to your specific operational constraints.</p>
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Tailored Fleet Solutions</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-[var(--text-main)] mb-6">Leasing & Telematics by Industry</h2>
+                    <p class="text-[var(--text-muted)] font-light leading-relaxed">Whether your business operates parcel delivery vans or heavy construction machinery, we tailor the master lease agreement and IoT hardware to your operations.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 h-[400px]">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Industry 1 -->
-                    <div class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm">
-                        <img src="images/vechicle (3).jpg" alt="Logistics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-8 transform transition-transform duration-500 translate-y-8 group-hover:translate-y-0">
-                            <i class="fas fa-box-open text-[var(--accent-color)] text-3xl mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Logistics & Freight</h3>
-                            <p class="text-sm text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4">Optimize dispatch routing and strictly maintain HOS compliance.</p>
-                            <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider">View Case Study &rarr;</span>
+                    <a href="services.html" class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm hover:shadow-2xl h-[460px] transition-all duration-500 block">
+                        <img src="images\pexels-freestockpro-12969398.jpg" alt="Logistics & Parcel Delivery Cargo Vans" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/85 to-transparent"></div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 flex flex-col justify-end">
+                            <div class="w-12 h-12 rounded-xl bg-[var(--accent-color)]/20 border border-[var(--accent-color)]/40 flex items-center justify-center text-[var(--accent-color)] text-2xl mb-4 shrink-0 group-hover:bg-[var(--accent-color)] group-hover:text-white transition-all">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 h-[56px] flex items-center leading-snug">Logistics & Parcel Delivery</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4 h-[68px] overflow-hidden">Cargo van leasing with factory shelving upfits, route optimization, and pooled mileage.</p>
+                            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                                <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider group-hover:underline">Explore Van Leases</span>
+                                <i class="fas fa-arrow-right text-[var(--accent-color)] text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- Industry 2 -->
-                    <div class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm">
-                        <img src="images/vechicle (9).jpg" alt="Construction" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-8 transform transition-transform duration-500 translate-y-8 group-hover:translate-y-0">
-                            <i class="fas fa-hard-hat text-[var(--accent-color)] text-3xl mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Heavy Construction</h3>
-                            <p class="text-sm text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4">Track yellow-iron utilization, engine idle times, and preventative maintenance.</p>
-                            <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider">View Case Study &rarr;</span>
+                    <a href="services.html" class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm hover:shadow-2xl h-[460px] transition-all duration-500 block">
+                        <img src="images/vechicle (7).jpg" alt="Construction & Field Utility Work Trucks" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/85 to-transparent"></div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 flex flex-col justify-end">
+                            <div class="w-12 h-12 rounded-xl bg-[var(--accent-color)]/20 border border-[var(--accent-color)]/40 flex items-center justify-center text-[var(--accent-color)] text-2xl mb-4 shrink-0 group-hover:bg-[var(--accent-color)] group-hover:text-white transition-all">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 h-[56px] flex items-center leading-snug">Construction & Field Utility</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4 h-[68px] overflow-hidden">Open-End TRAC leases for heavy duty service trucks, tool bodies, and engine idle tracking.</p>
+                            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                                <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider group-hover:underline">Explore TRAC Leases</span>
+                                <i class="fas fa-arrow-right text-[var(--accent-color)] text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- Industry 3 -->
-                    <div class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm">
-                        <img src="images/vechicle (10).jpg" alt="Food Delivery" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-8 transform transition-transform duration-500 translate-y-8 group-hover:translate-y-0">
-                            <i class="fas fa-snowflake text-[var(--accent-color)] text-3xl mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Cold Chain</h3>
-                            <p class="text-sm text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4">Live reefer temperature monitoring and FSMA compliance reporting.</p>
-                            <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider">View Case Study &rarr;</span>
+                    <a href="services.html" class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm hover:shadow-2xl h-[460px] transition-all duration-500 block">
+                        <img src="images\pexels-shkrabaanthony-7144174.jpg" alt="Freight Cargo & Cold Chain Logistics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/85 to-transparent"></div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 flex flex-col justify-end">
+                            <div class="w-12 h-12 rounded-xl bg-[var(--accent-color)]/20 border border-[var(--accent-color)]/40 flex items-center justify-center text-[var(--accent-color)] text-2xl mb-4 shrink-0 group-hover:bg-[var(--accent-color)] group-hover:text-white transition-all">
+                                <i class="fas fa-snowflake"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 h-[56px] flex items-center leading-snug">Freight Logistics & Cold Chain</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4 h-[68px] overflow-hidden">Climate-controlled reefer leases with live temperature IoT sensors and distribution logs.</p>
+                            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                                <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider group-hover:underline">Explore Freight Leases</span>
+                                <i class="fas fa-arrow-right text-[var(--accent-color)] text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- Industry 4 -->
-                    <div class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm">
-                        <img src="images/vechicle (6).jpg" alt="Corporate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-90"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-8 transform transition-transform duration-500 translate-y-8 group-hover:translate-y-0">
-                            <i class="fas fa-car-side text-[var(--accent-color)] text-3xl mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Corporate Auto</h3>
-                            <p class="text-sm text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4">Executive leasing, tax mileage tracking, and automated fuel card limits.</p>
-                            <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider">View Case Study &rarr;</span>
+                    <a href="services.html" class="relative rounded-2xl overflow-hidden group cursor-pointer border border-[var(--border-color)] shadow-sm hover:shadow-2xl h-[460px] transition-all duration-500 block">
+                        <img src="images\pexels-shkrabaanthony-7144181.jpg" alt="Passenger Transit & Executive Shuttle Fleets" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/85 to-transparent"></div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 flex flex-col justify-end">
+                            <div class="w-12 h-12 rounded-xl bg-[var(--accent-color)]/20 border border-[var(--accent-color)]/40 flex items-center justify-center text-[var(--accent-color)] text-2xl mb-4 shrink-0 group-hover:bg-[var(--accent-color)] group-hover:text-white transition-all">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 h-[56px] flex items-center leading-snug">Passenger Shuttles & Transit</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4 h-[68px] overflow-hidden">Corporate passenger shuttle leases with route dispatching, passenger safety, and manifest logs.</p>
+                            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                                <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-wider group-hover:underline">Explore Shuttle Leases</span>
+                                <i class="fas fa-arrow-right text-[var(--accent-color)] text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: Driver Mobile Application (~75 lines) -->
+        <!-- SECTION 3: Driver Mobile Application -->
         <section class="py-24 px-6 bg-[var(--bg-secondary)] border-b border-[var(--border-color)] overflow-hidden">
             <div class="max-w-[1440px] mx-auto lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <!-- Left: Content -->
                 <div class="order-2 lg:order-1">
-                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 block">Mobile Empowerment</span>
-                    <h2 class="text-3xl md:text-5xl font-serif text-[var(--text-main)] mb-6 leading-tight">Connect Your Drivers <br> in <span class="italic text-[var(--accent-color)]">Real-Time.</span></h2>
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 block">Mobile Fleet Tools</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-[var(--text-main)] mb-6 leading-tight">Connect Leased Vehicles & Drivers in <span class="italic text-[var(--accent-color)]">Real-Time.</span></h2>
                     <p class="text-[var(--text-muted)] font-light text-lg leading-relaxed mb-10 max-w-lg">
-                        The FleetManage Driver App completely eliminates paperwork. Drivers can complete DOT pre-trip inspections, log hours of service, and receive optimized dispatch routing instantly from their smartphones.
+                        The FleetManage Driver App completely eliminates paperwork. Drivers on your leased vehicles can submit eDVIR inspections, log fuel purchases, and receive turn-by-turn route dispatching directly on their mobile device.
                     </p>
                     
                     <div class="space-y-6 mb-10">
@@ -420,50 +425,125 @@
                                 <i class="fas fa-clipboard-check text-[var(--accent-color)] text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Digital eDVIRs</h4>
-                                <p class="text-sm text-[var(--text-muted)] font-light">Perform mandated daily vehicle inspections with fast photo uploads directly to mechanics.</p>
+                                <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Digital eDVIR Pre-Trip Checks</h4>
+                                <p class="text-sm text-[var(--text-muted)] font-light">Perform mandated daily vehicle inspections with instant mechanic dispatch alerts for repairs.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-5">
                             <div class="w-12 h-12 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-sm flex items-center justify-center shrink-0">
-                                <i class="fas fa-comments text-[var(--accent-color)] text-lg"></i>
+                                <i class="fas fa-gas-pump text-[var(--accent-color)] text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Two-Way Dispatch Chat</h4>
-                                <p class="text-sm text-[var(--text-muted)] font-light">Secure, direct messaging between the cab and the back office to handle live route changes.</p>
+                                <h4 class="text-base font-bold text-[var(--text-main)] mb-1">Fuel Card Pump Sync</h4>
+                                <p class="text-sm text-[var(--text-muted)] font-light">Automatic reconciliation of fuel volume, odometer readings, and fraud prevention at over 95% of national stations.</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#" class="btn btn-solid flex items-center justify-center gap-3 !py-4 !px-8"><i class="fab fa-apple text-lg"></i> iOS App Store</a>
-                        <a href="#" class="btn btn-solid flex items-center justify-center gap-3 !py-4 !px-8"><i class="fab fa-google-play text-lg"></i> Google Play</a>
+                        <a href="login.html" class="btn btn-solid !py-3.5 !px-8 rounded-lg">Access Driver Portal</a>
+                        <a href="services.html" class="btn btn-outline !py-3.5 !px-8 rounded-lg">View Platform Specs</a>
                     </div>
                 </div>
                 
-                <!-- Right: Mobile App Mockup Image -->
                 <div class="order-1 lg:order-2 relative flex justify-center lg:justify-end">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-dark)] opacity-10 rounded-full blur-3xl w-[80%] h-[80%] m-auto z-0"></div>
-                    <img src="images/vechicle (7).jpg" 
-                         alt="Driver Mobile App on Smartphone" 
-                         class="relative z-10 w-[280px] md:w-[320px] rounded-[40px] shadow-2xl border-8 border-slate-900 object-cover h-[550px] md:h-[650px]">
-                </div>
+                    <!-- Smartphone Frame with Realistic Driver App UI -->
+                    <div class="relative z-10 w-[290px] md:w-[320px] h-[580px] md:h-[620px] rounded-[44px] shadow-2xl border-[10px] border-slate-900 bg-slate-950 overflow-hidden flex flex-col p-4 text-white">
+                        <!-- Phone Speaker Notch -->
+                        <div class="w-28 h-4 bg-slate-900 rounded-full mx-auto mb-3 shrink-0 flex items-center justify-center">
+                            <div class="w-2 h-2 rounded-full bg-slate-800 mr-2"></div>
+                            <div class="w-8 h-1 rounded-full bg-slate-800"></div>
+                        </div>
+                        <!-- Status Bar -->
+                        <div class="flex justify-between items-center text-[10px] text-slate-400 px-2 mb-3 shrink-0 font-mono">
+                            <span>09:41</span>
+                            <div class="flex items-center gap-1.5">
+                                <i class="fas fa-signal"></i>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-battery-full text-emerald-400"></i>
+                            </div>
+                        </div>
+                        <!-- App Header -->
+                        <div class="bg-slate-900/90 rounded-2xl p-3 border border-slate-800 mb-3 shrink-0">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-8 h-8 rounded-full bg-[var(--accent-color)] flex items-center justify-center text-white text-xs font-bold">AM</div>
+                                    <div>
+                                        <div class="text-[11px] font-bold">Alex Morgan</div>
+                                        <div class="text-[9px] text-emerald-400 font-medium flex items-center gap-1">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span> On Active Route
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-[9px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Unit #402</span>
+                            </div>
+                        </div>
+                        <!-- Assigned Leased Vehicle Card -->
+                        <div class="bg-gradient-to-br from-slate-900 to-slate-800/80 rounded-2xl p-3.5 border border-slate-700/60 mb-3 shrink-0">
+                            <span class="text-[9px] uppercase tracking-wider text-[var(--accent-color)] font-bold block mb-1">Leased Fleet Asset</span>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold text-white">Transit 350HD High-Roof</span>
+                                <span class="text-[9px] text-slate-400 font-mono">VIN: ...8492</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-[10px]">
+                                <div class="bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                                    <span class="text-[8px] text-slate-400 block uppercase">Fuel Level</span>
+                                    <span class="font-bold text-emerald-400">84% &bull; Full Tank</span>
+                                </div>
+                                <div class="bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                                    <span class="text-[8px] text-slate-400 block uppercase">Odometer</span>
+                                    <span class="font-bold text-slate-200">24,310 mi</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- eDVIR Inspection Status Card -->
+                        <div class="bg-slate-900/90 rounded-2xl p-3 border border-slate-800 mb-3 shrink-0">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="text-[10px] font-bold flex items-center gap-1.5">
+                                    <i class="fas fa-check-circle text-emerald-400"></i> eDVIR Pre-Trip
+                                </span>
+                                <span class="text-[8px] font-bold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">PASSED</span>
+                            </div>
+                            <p class="text-[9px] text-slate-400">Signed 07:15 AM &bull; 24 Points Inspected &bull; Zero Faults</p>
+                        </div>
+                        <!-- Active Dispatch Strip -->
+                        <div class="bg-slate-900/90 rounded-2xl p-3 border border-slate-800 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-[var(--accent-color)] font-bold block mb-1">Today's Delivery Dispatch</span>
+                                <div class="text-xs font-bold text-white mb-1">Route #B-14 &bull; Metro Logistics</div>
+                                <div class="flex items-center justify-between text-[10px] text-slate-300">
+                                    <span>14 of 18 Stops Done</span>
+                                    <span class="text-emerald-400 font-semibold">78% Complete</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                    <div class="bg-[var(--accent-color)] h-full rounded-full" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-800/80">
+                                <button class="bg-[var(--accent-color)] text-white text-[10px] font-bold py-1.5 px-2 rounded-lg flex items-center justify-center gap-1">
+                                    <i class="fas fa-gas-pump text-[9px]"></i> Log Fuel
+                                </button>
+                                <button class="bg-slate-800 text-slate-200 text-[10px] font-bold py-1.5 px-2 rounded-lg flex items-center justify-center gap-1">
+                                    <i class="fas fa-phone-alt text-[9px]"></i> Dispatch
+                                </button>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </section>
 
-        <!-- SECTION 4: Seamless Integrations (~75 lines) -->
+        <!-- SECTION 4: Seamless Integrations -->
         <section class="py-24 px-6 bg-[var(--bg-color)] border-b border-[var(--border-color)] text-center">
             <div class="max-w-[1000px] mx-auto mb-16">
                 <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Extensible Ecosystem</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-[var(--text-main)] mb-6">Plays Well With Your Tech Stack</h2>
+                <h2 class="text-3xl md:text-4xl font-serif text-[var(--text-main)] mb-6">Connect Your Fleet With Existing Systems</h2>
                 <p class="text-[var(--text-muted)] font-light text-lg leading-relaxed max-w-2xl mx-auto">
-                    No need to rip and replace. FleetManage connects seamlessly with your existing TMS, Fuel Providers, and ERP accounting software via our robust open API architecture.
+                    FleetManage connects seamlessly with corporate fuel providers, toll agencies, and enterprise ERP systems through secure cloud APIs.
                 </p>
             </div>
             
             <div class="max-w-[1200px] mx-auto">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <!-- Tech Partner Boxes (Fleet Specific) -->
                     <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:border-[var(--accent-color)] transition-colors shadow-sm">
                         <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mb-2"><i class="fas fa-gas-pump text-2xl"></i></div>
                         <span class="text-xs font-bold text-[var(--text-main)] uppercase tracking-wider text-center">Fuel Cards<br><span class="opacity-60 text-[10px]">WEX & Comdata</span></span>
@@ -481,66 +561,335 @@
                         <span class="text-xs font-bold text-[var(--text-main)] uppercase tracking-wider text-center">ERP APIs<br><span class="opacity-60 text-[10px]">SAP & Oracle</span></span>
                     </div>
                 </div>
-                
-                <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 border-t border-[var(--border-color)] pt-12">
-                    <p class="text-[var(--text-muted)] font-medium">Need a custom integration or webhook setup?</p>
-                    <a href="about.html" class="text-[var(--accent-color)] font-bold uppercase text-xs tracking-wider border-b border-[var(--accent-color)] pb-1 hover:text-[var(--accent-dark)]">Read our API Documentation</a>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Live Operations & Telematics Command Center -->
+        <section class="py-24 px-6 bg-[var(--bg-secondary)] border-b border-[var(--border-color)] relative overflow-hidden">
+            <div class="max-w-[1440px] mx-auto lg:px-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div>
+                        <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                            <i class="fas fa-satellite-dish"></i> Real-Time Asset Intelligence
+                        </span>
+                        <h2 class="text-3xl md:text-5xl font-serif text-[var(--text-main)] leading-tight">
+                            Live Telematics & <br><span class="italic text-[var(--accent-color)]">Preventive Diagnostic Command.</span>
+                        </h2>
+                    </div>
+                    <div class="mt-4 md:mt-0 max-w-md">
+                        <p class="text-[var(--text-muted)] text-sm sm:text-base leading-relaxed">
+                            Every leased commercial vehicle streams 10-second CAN-bus telemetry. Track engine diagnostics, state-of-charge, driver safety scores, and route progress without blindspots.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <!-- Left: Interactive Telemetry Console (Glassmorphism & Live Status) -->
+                    <div class="lg:col-span-7 bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] p-6 sm:p-8 shadow-xl relative">
+                        <!-- Top status bar with live vehicle tabs -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[var(--border-color)]">
+                            <div class="flex items-center gap-3">
+                                <span class="relative flex h-3 w-3">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                </span>
+                                <span class="text-xs font-bold tracking-wider uppercase text-[var(--text-main)]">Active CAN-Bus Stream (OBD-II / J1939)</span>
+                            </div>
+                            <span class="text-[11px] font-mono text-[var(--text-muted)] bg-[var(--bg-secondary)] px-3 py-1 rounded-full border border-[var(--border-color)]">
+                                Refresh: 10s &bull; Latency: 42ms
+                            </span>
+                        </div>
+
+                        <!-- Vehicle Selector Buttons -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 my-6">
+                            <button type="button" onclick="selectTelemetryVehicle('van')" id="tele-tab-van" class="tele-tab active text-left p-3 rounded-xl border border-[var(--accent-color)] bg-[var(--menu-hover-bg)] transition-all">
+                                <span class="text-[10px] uppercase font-bold text-[var(--accent-color)] block">Van #104</span>
+                                <span class="text-xs font-semibold text-[var(--text-main)] truncate block">Transit 350HD</span>
+                            </button>
+                            <button type="button" onclick="selectTelemetryVehicle('truck')" id="tele-tab-truck" class="tele-tab text-left p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-all">
+                                <span class="text-[10px] uppercase font-bold text-[var(--text-muted)] block">Truck #218</span>
+                                <span class="text-xs font-semibold text-[var(--text-main)] truncate block">Box Truck 24ft</span>
+                            </button>
+                            <button type="button" onclick="selectTelemetryVehicle('ev')" id="tele-tab-ev" class="tele-tab text-left p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-all">
+                                <span class="text-[10px] uppercase font-bold text-[var(--text-muted)] block">EV #089</span>
+                                <span class="text-xs font-semibold text-[var(--text-main)] truncate block">E-Transit Cargo</span>
+                            </button>
+                            <button type="button" onclick="selectTelemetryVehicle('reefer')" id="tele-tab-reefer" class="tele-tab text-left p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:border-[var(--accent-color)] transition-all">
+                                <span class="text-[10px] uppercase font-bold text-[var(--text-muted)] block">Reefer #312</span>
+                                <span class="text-xs font-semibold text-[var(--text-main)] truncate block">Cold Chain 26ft</span>
+                            </button>
+                        </div>
+
+                        <!-- Live Diagnostic Gauges & Telemetry Readouts -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block mb-1">
+                                    <i class="fas fa-tachometer-alt text-[var(--accent-color)]"></i> Current Speed
+                                </span>
+                                <div class="text-2xl font-bold font-serif text-[var(--text-main)]" id="tele-speed">58 <span class="text-xs font-sans text-[var(--text-muted)]">MPH</span></div>
+                                <span class="text-[10px] text-emerald-600 font-medium" id="tele-speed-status">Within 60 MPH Limit</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block mb-1">
+                                    <i class="fas fa-gas-pump text-amber-500"></i> Fuel / State of Charge
+                                </span>
+                                <div class="text-2xl font-bold font-serif text-[var(--text-main)]" id="tele-fuel">78% <span class="text-xs font-sans text-[var(--text-muted)]">Range: 340 mi</span></div>
+                                <span class="text-[10px] text-emerald-600 font-medium" id="tele-fuel-status">No Refuel Needed</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block mb-1">
+                                    <i class="fas fa-heartbeat text-red-500"></i> DTC Diagnostic Faults
+                                </span>
+                                <div class="text-2xl font-bold font-serif text-emerald-600" id="tele-dtc">0 Active</div>
+                                <span class="text-[10px] text-[var(--text-muted)] font-medium" id="tele-dtc-status">ECU Scan: All Systems Green</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block mb-1">
+                                    <i class="fas fa-temperature-low text-blue-500"></i> Engine / Cargo Temp
+                                </span>
+                                <div class="text-2xl font-bold font-serif text-[var(--text-main)]" id="tele-temp">192°F <span class="text-xs font-sans text-[var(--text-muted)]">Optimal</span></div>
+                                <span class="text-[10px] text-emerald-600 font-medium" id="tele-temp-status">Coolant Temp Normal</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block mb-1">
+                                    <i class="fas fa-shield-alt text-emerald-500"></i> Safety Score
+                                </span>
+                                <div class="text-2xl font-bold font-serif text-[var(--text-main)]" id="tele-score">96 / 100</div>
+                                <span class="text-[10px] text-emerald-600 font-medium" id="tele-score-status">Tier-1 Safe Driver Rating</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block mb-1">
+                                    <i class="fas fa-tools text-[var(--accent-color)]"></i> Next PM Service
+                                </span>
+                                <div class="text-2xl font-bold font-serif text-[var(--accent-color)]" id="tele-service">In 2,840 mi</div>
+                                <span class="text-[10px] text-[var(--text-muted)] font-medium" id="tele-service-status">Garage Bay Booked</span>
+                            </div>
+                        </div>
+
+                        <!-- Live Dispatch Breadcrumb Strip -->
+                        <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-[var(--accent-color)]/10 text-[var(--accent-color)] flex items-center justify-center text-lg shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)] block">Current Active Corridor</span>
+                                    <span class="text-xs font-semibold text-[var(--text-main)]" id="tele-route">I-95 North Corridor &bull; Mile Marker 142.6 &bull; ETA 14:15 EST</span>
+                                </div>
+                            </div>
+                            <a href="user.html" class="btn btn-solid !py-2 !px-4 !text-[10px] rounded-lg whitespace-nowrap">
+                                Open in Telematics Portal &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Features Breakdown -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-sm flex items-center justify-center shrink-0 text-2xl text-[var(--accent-color)]">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-serif text-[var(--text-main)] mb-2">CAN-Bus Engine Telemetry</h3>
+                                <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                                    Hardware hooks directly into OEM engine controllers. Receive instant diagnostic trouble codes (DTCs) before catastrophic engine or transmission failure occurs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-sm flex items-center justify-center shrink-0 text-2xl text-[var(--accent-color)]">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-serif text-[var(--text-main)] mb-2">Automated Maintenance Dispatch</h3>
+                                <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                                    Mileage milestones automatically route vehicles to 850+ authorized service garages nationwide. Invoices are pre-authorized with zero driver out-of-pocket delays.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)] shadow-sm flex items-center justify-center shrink-0 text-2xl text-[var(--accent-color)]">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-serif text-[var(--text-main)] mb-2">Driver Safety & Fuel Efficiency</h3>
+                                <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                                    Track harsh braking, rapid acceleration, excessive engine idling, and speed compliance. Cut corporate fleet fuel bills by up to 18% in the first quarter.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex flex-wrap gap-4">
+                            <a href="services.html" class="btn btn-outline !py-3.5 !px-8 rounded-lg text-[11px]">Explore All Services</a>
+                            <a href="proposal.html" class="btn btn-solid !py-3.5 !px-8 rounded-lg text-[11px]">Request Telematics Quote</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 5: Transparent Pricing (~80 lines) -->
-        <section class="py-24 px-6 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
+        <!-- SECTION 6: Enterprise Commercial Lease Architectures & Comparison -->
+        <section class="py-24 px-6 bg-[var(--bg-color)] border-b border-[var(--border-color)] relative">
             <div class="max-w-[1440px] mx-auto lg:px-12">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">Pricing Plans</span>
-                    <h2 class="text-3xl md:text-4xl font-serif text-[var(--text-main)] mb-6">Scale Without Surprises</h2>
-                    <p class="text-[var(--text-muted)] font-light leading-relaxed">Simple, per-vehicle hardware and software pricing. Choose the tier that matches your operational complexity.</p>
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-[var(--accent-color)] text-xs font-bold uppercase tracking-[0.2em] mb-4 flex items-center justify-center gap-2">
+                        <i class="fas fa-file-invoice-dollar"></i> Structured Fleet Financing
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-[var(--text-main)] mb-6 leading-tight">
+                        Commercial Lease Models Designed for <span class="italic text-[var(--accent-color)]">Cash Flow Optimization.</span>
+                    </h2>
+                    <p class="text-[var(--text-muted)] text-base sm:text-lg font-light leading-relaxed">
+                        Tailor your master lease agreement to your specific operating conditions, mileage intensity, and corporate balance sheet requirements.
+                    </p>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-[1200px] mx-auto">
-                    <!-- Starter Plan -->
-                    <div class="bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] p-10 text-center shadow-sm hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-bold text-[var(--text-main)] mb-2">Starter</h3>
-                        <p class="text-[var(--text-muted)] text-sm mb-6">For small, local fleets.</p>
-                        <div class="text-4xl font-serif font-bold text-[var(--text-main)] mb-8">$15<span class="text-base font-sans text-[var(--text-muted)] font-light">/veh/mo</span></div>
-                        <ul class="text-sm text-[var(--text-muted)] font-light space-y-4 mb-10 text-left">
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Basic GPS Tracking</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Manual Maintenance Logs</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Email Support</li>
-                            <li class="flex items-center gap-3 opacity-40"><i class="fas fa-times text-[var(--text-muted)]"></i> No Fuel Card Integrations</li>
-                        </ul>
-                        <a href="pricing.html" class="btn btn-outline w-full rounded-lg !py-3">Choose Starter</a>
-                    </div>
-                    
-                    <!-- Professional Plan (Highlighted) -->
-                    <!-- FIXED for Dark Mode: Hardcoded dark slate so text-white is always visible -->
-                    <div class="bg-slate-900 rounded-2xl border border-[var(--accent-color)] p-10 text-center shadow-xl transform md:-translate-y-4 relative">
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full">Most Popular</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Professional</h3>
-                        <p class="text-slate-400 text-sm mb-6">For scaling logistics operations.</p>
-                        <div class="text-4xl font-serif font-bold text-white mb-8">$35<span class="text-base font-sans text-slate-400 font-light">/veh/mo</span></div>
-                        <ul class="text-sm text-slate-300 font-light space-y-4 mb-10 text-left">
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> 1-Second Real-time Telematics</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Predictive Engine AI</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Full Driver Mobile App</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> 24/7 Dispatch Support</li>
-                        </ul>
-                        <a href="pricing.html" class="btn btn-solid w-full rounded-lg !py-3">Start Free Trial</a>
+
+                <!-- 3-Column Comparative Lease Models -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Model 1: Open-End TRAC Lease -->
+                    <div class="bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] p-8 flex flex-col justify-between hover:border-[var(--accent-color)] hover:shadow-xl transition-all relative">
+                        <div>
+                            <div class="inline-block py-1 px-3 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider mb-4">
+                                Most Popular for Heavy Fleets
+                            </div>
+                            <h3 class="text-2xl font-bold font-serif text-[var(--text-main)] mb-1">Open-End TRAC Lease</h3>
+                            <p class="text-xs text-[var(--accent-color)] font-semibold uppercase tracking-wider mb-4">Terminal Rental Adjustment Clause</p>
+                            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light mb-6">
+                                Ideal for commercial vehicles subject to high mileage, heavy payload use, and custom shelving or crane body upfits.
+                            </p>
+
+                            <div class="space-y-3 mb-8 pt-4 border-t border-[var(--border-color)]">
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Zero Mileage Penalties:</strong> Drive unlimited annual miles.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Equity Retention:</strong> Keep resale profits when vehicle is remarketed.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>100% Tax Deductible:</strong> Off-balance sheet OPEX financing.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Custom Terms:</strong> 24 to 72 months flexible amortization.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] mb-6 text-center">
+                                <span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider block">Best Suited For</span>
+                                <span class="text-sm font-bold text-[var(--text-main)]">Cargo Vans, Box Trucks & Heavy Duty Work Vehicles</span>
+                            </div>
+                            <a href="proposal.html" class="btn btn-outline w-full rounded-xl !py-3.5 text-center text-xs">Configure TRAC Lease</a>
+                        </div>
                     </div>
 
-                    <!-- Enterprise Plan -->
-                    <div class="bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] p-10 text-center shadow-sm hover:shadow-md transition-shadow">
-                        <h3 class="text-xl font-bold text-[var(--text-main)] mb-2">Enterprise</h3>
-                        <p class="text-[var(--text-muted)] text-sm mb-6">For massive logistics hubs.</p>
-                        <div class="text-4xl font-serif font-bold text-[var(--text-main)] mb-8">Custom</div>
-                        <ul class="text-sm text-[var(--text-muted)] font-light space-y-4 mb-10 text-left">
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Dedicated Account Manager</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Full API Access & ERP Sync</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Custom SLA Options</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-green-500"></i> Volume Hardware Discounts</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-outline w-full rounded-lg !py-3">Contact Sales</a>
+                    <!-- Model 2: Closed-End Full Maintenance Lease (Recommended) -->
+                    <div class="bg-[var(--bg-card)] rounded-3xl border-2 border-[var(--accent-color)] p-8 flex flex-col justify-between shadow-2xl relative">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase tracking-widest py-1 px-4 rounded-full shadow-md whitespace-nowrap">
+                            Zero Market Risk &bull; All-Inclusive
+                        </div>
+                        <div>
+                            <div class="inline-block py-1 px-3 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-4 mt-2">
+                                100% Predictable Budgeting
+                            </div>
+                            <h3 class="text-2xl font-bold font-serif text-[var(--text-main)] mb-1">Closed-End Lease</h3>
+                            <p class="text-xs text-[var(--accent-color)] font-semibold uppercase tracking-wider mb-4">Full Maintenance & Walk-Away</p>
+                            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light mb-6">
+                                Maximum peace of mind. FleetManage assumes 100% of vehicle depreciation and resale risk.
+                            </p>
+
+                            <div class="space-y-3 mb-8 pt-4 border-t border-[var(--border-color)]">
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Zero Depreciation Risk:</strong> Simply return or refresh at term end.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Full Service Bundled:</strong> Routine maintenance, tires & oil covered.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Loaner Vehicle Guarantee:</strong> Replacement vehicle provided in 24 hrs.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Fixed Predictable Cost:</strong> 12 to 48 months constant monthly rate.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="p-4 rounded-2xl bg-[var(--accent-color)]/10 mb-6 text-center border border-[var(--accent-color)]/20">
+                                <span class="text-[10px] text-[var(--accent-color)] uppercase tracking-wider block font-bold">Best Suited For</span>
+                                <span class="text-sm font-bold text-[var(--text-main)]">Courier Vans, Service Technicians & Corporate Cars</span>
+                            </div>
+                            <a href="pricing.html" class="btn btn-solid w-full rounded-xl !py-3.5 text-center text-xs shadow-lg shadow-[var(--accent-color)]/20">Explore Closed-End Rates</a>
+                        </div>
+                    </div>
+
+                    <!-- Model 3: EV Transition & Decarbonization Lease -->
+                    <div class="bg-[var(--bg-card)] rounded-3xl border border-[var(--border-color)] p-8 flex flex-col justify-between hover:border-emerald-500 hover:shadow-xl transition-all relative">
+                        <div>
+                            <div class="inline-block py-1 px-3 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-4">
+                                ESG & Zero-Emission Fleet
+                            </div>
+                            <h3 class="text-2xl font-bold font-serif text-[var(--text-main)] mb-1">EV Transition Lease</h3>
+                            <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-wider mb-4">Vehicles + Depot Charging Infrastructure</p>
+                            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light mb-6">
+                                Turnkey electrification combining commercial EVs, depot charging stations, and smart energy management.
+                            </p>
+
+                            <div class="space-y-3 mb-8 pt-4 border-t border-[var(--border-color)]">
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Incentive Pass-Through:</strong> $7,500 clean commercial credit applied.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Charging Hardware Lease:</strong> Level 2 & DC Fast Depot equipment.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Battery Health Warranty:</strong> Full replacement if capacity falls below 80%.</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-[var(--text-main)]">
+                                    <i class="fas fa-check text-emerald-500"></i>
+                                    <span><strong>Up to 40% Lower OpEx:</strong> Electricity savings vs diesel fuel burn.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="p-4 rounded-2xl bg-[var(--bg-secondary)] mb-6 text-center">
+                                <span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider block">Best Suited For</span>
+                                <span class="text-sm font-bold text-[var(--text-main)]">Urban Last-Mile Fleets & Sustainable Enterprises</span>
+                            </div>
+                            <a href="proposal.html" class="btn btn-outline w-full rounded-xl !py-3.5 text-center text-xs">Plan EV Electrification</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sale & Leaseback Banner Card -->
+                <div class="bg-[var(--bg-secondary)] rounded-3xl border border-[var(--border-color)] p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-[var(--accent-color)] text-white flex items-center justify-center text-2xl shrink-0 shadow-lg shadow-[var(--accent-color)]/30">
+                            <i class="fas fa-hand-holding-dollar"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl sm:text-2xl font-bold font-serif text-[var(--text-main)] mb-2">Own your fleet today? Unlock immediate working capital.</h4>
+                            <p class="text-sm text-[var(--text-muted)] max-w-2xl leading-relaxed">
+                                Our <strong>Sale-and-Leaseback Program</strong> purchases your existing vehicle titles at fair market book value and leases them directly back to your business without disrupting daily driver operations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="shrink-0 flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <a href="contact.html?type=sale-leaseback" class="btn btn-solid !py-3.5 !px-8 rounded-xl text-center text-xs">Request Fleet Valuation</a>
+                        <a href="proposal.html" class="btn btn-outline !py-3.5 !px-8 rounded-xl text-center text-xs">Custom Fleet Proposal</a>
                     </div>
                 </div>
             </div>
@@ -554,15 +903,12 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 pt-4">
                 <div class="lg:col-span-4">
                     <div class="mb-8">
-                        <a href="index.html"
-                            class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
-                            style="color: var(--text-main) !important; text-decoration: none;">
-                            <i class="fas fa-truck"
-                                style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+                        <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                            <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
                         </a>
                     </div>
                     <p class="opacity-90 leading-relaxed text-sm mb-8 max-w-sm" style="color: var(--text-muted);">
-                        Dedicated to delivering efficient corporate fleet solutions. From scalable vehicle leasing to advanced maintenance tracking, we keep your business moving forward.
+                        Delivering corporate vehicle leasing and intelligent fleet management. From turnkey vehicle procurement to predictive maintenance and live GPS telematics.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="social-link-circle"><i class="fab fa-linkedin-in"></i></a>
@@ -574,35 +920,30 @@
                 <div class="lg:col-span-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                         <div>
-                            <h4>Client Portal</h4>
+                            <h4>Client Portals</h4>
                             <ul class="space-y-4">
                                 <li><a href="login.html">Client Login</a></li>
-                                <li><a href="user.html">Fleet Dashboard</a></li>
-                                <li><a href="pricing.html">Lease Terms</a></li>
-                                <li><a href="faq.html">Support & FAQ</a></li>
+                                <li><a href="user.html">Client Fleet Dashboard</a></li>
+                                <li><a href="admin.html">Admin Portal</a></li>
+                                <li><a href="pricing.html">Leasing Rates & Terms</a></li>
+                                <li><a href="proposal.html">Custom Fleet Proposal</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h4>Our Solutions</h4>
+                            <h4>Fleet Solutions</h4>
                             <ul class="space-y-4">
-                                <li><a href="services.html">Corporate Leasing</a></li>
-                                <li><a href="services.html">Maintenance Tracking</a></li>
-                                <li><a href="services.html">Logistics Planning</a></li>
-                                <li><a href="services.html">Enterprise Fleets</a></li>
+                                <li><a href="services.html">Commercial Vehicle Leasing</a></li>
+                                <li><a href="services.html">Telematics & GPS Tracking</a></li>
+                                <li><a href="services.html">Preventive Maintenance Network</a></li>
+                                <li><a href="services.html">Electric Fleet Transitions</a></li>
                             </ul>
                         </div>
                         <div class="sm:col-span-2 md:col-span-1">
                             <h4>Headquarters</h4>
                             <ul class="space-y-5 text-[var(--text-muted)] text-sm">
-                                <li class="flex items-start gap-4"><i class="fas fa-map-marker-alt mt-1 shrink-0"
-                                        style="color: var(--accent-color);"></i><span>1200 Logistics Way<br>Industrial Park, NY 10001</span></li>
-                                <li class="flex items-center gap-4"><i class="fas fa-phone shrink-0"
-                                        style="color: var(--accent-color);"></i><a href="tel:+18005550199"
-                                        class="break-all hover:text-[var(--accent-color)]">+1 (800) 555-0199</a></li>
-                                <li class="flex items-center gap-4"><i class="fas fa-envelope shrink-0"
-                                        style="color: var(--accent-color);"></i><a href="contact.html"
-                                        class="break-all hover:text-[var(--accent-color)]">support@fleetmanage.com</a>
-                                </li>
+                                <li class="flex items-start gap-4"><i class="fas fa-map-marker-alt mt-1 shrink-0" style="color: var(--accent-color);"></i><span>1200 Logistics Way<br>Industrial Park, NY 10001</span></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-phone shrink-0" style="color: var(--accent-color);"></i><a href="tel:+18005550199" class="break-all hover:text-[var(--accent-color)]">+1 (800) 555-0199</a></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-envelope shrink-0" style="color: var(--accent-color);"></i><a href="contact.html" class="break-all hover:text-[var(--accent-color)]">support@fleetmanage.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -610,10 +951,10 @@
             </div>
 
             <div class="footer-bottom flex flex-col md:flex-row justify-between items-center text-xs gap-6 uppercase tracking-[1px]">
-                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. All rights reserved.</p>
+                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. Vehicle Fleet Management & Leasing Company. All rights reserved.</p>
                 <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
                     <a href="#">Terms of Service</a>
-                    <a href="#">Lease Agreements</a>
+                    <a href="#">Master Lease Agreement</a>
                     <a href="#">Privacy Policy</a>
                 </div>
             </div>
@@ -700,6 +1041,124 @@
 
         if (rtlBtn) rtlBtn.onclick = toggleRTL;
         if (rtlMobile) rtlMobile.onclick = toggleRTL;
+
+        // Telemetry Simulator Data & Logic
+        const telemetryData = {
+            van: {
+                speed: '58 <span class="text-xs font-sans text-[var(--text-muted)]">MPH</span>',
+                speedStatus: 'Within 60 MPH Limit',
+                fuel: '78% <span class="text-xs font-sans text-[var(--text-muted)]">Range: 340 mi</span>',
+                fuelStatus: 'No Refuel Needed',
+                dtc: '0 Active',
+                dtcStatus: 'ECU Scan: All Systems Green',
+                temp: '192°F <span class="text-xs font-sans text-[var(--text-muted)]">Optimal</span>',
+                tempStatus: 'Coolant Temp Normal',
+                score: '96 / 100',
+                scoreStatus: 'Tier-1 Safe Driver Rating',
+                service: 'In 2,840 mi',
+                serviceStatus: 'Garage Bay Booked',
+                route: 'I-95 North Corridor &bull; Mile Marker 142.6 &bull; ETA 14:15 EST'
+            },
+            truck: {
+                speed: '44 <span class="text-xs font-sans text-[var(--text-muted)]">MPH</span>',
+                speedStatus: 'Regional Arterial Route',
+                fuel: '62% <span class="text-xs font-sans text-[var(--text-muted)]">Range: 410 mi</span>',
+                fuelStatus: 'WEX Fuel Card Sync Active',
+                dtc: '0 Active',
+                dtcStatus: 'DPF Filter 94% Clean',
+                temp: '198°F <span class="text-xs font-sans text-[var(--text-muted)]">Normal</span>',
+                tempStatus: 'Transmission Oil Steady',
+                score: '94 / 100',
+                scoreStatus: 'ELD HOS Compliant (5.2h Left)',
+                service: 'In 1,120 mi',
+                serviceStatus: 'Brake Inspection Next Week',
+                route: 'US-20 Westbound &bull; Approach Hub Alpha &bull; ETA 16:30 EST'
+            },
+            ev: {
+                speed: '0 <span class="text-xs font-sans text-[var(--text-muted)]">MPH</span>',
+                speedStatus: 'Docked at Level 3 Fast Charger',
+                fuel: '91% <span class="text-xs font-sans text-[var(--text-muted)]">SoC: 228 kWh</span>',
+                fuelStatus: 'Charging Complete in 14 min',
+                dtc: '0 Active',
+                dtcStatus: 'Battery Health 99.1%',
+                temp: '72°F <span class="text-xs font-sans text-[var(--text-muted)]">Depot Room</span>',
+                tempStatus: 'Cell Thermal Balanced',
+                score: '99 / 100',
+                scoreStatus: '100% Regenerative Braking',
+                service: 'In 6,400 mi',
+                serviceStatus: 'Tire Rotation Scheduled',
+                route: 'Central Metro Depot Bay 4 &bull; Dispatch Scheduled 15:00'
+            },
+            reefer: {
+                speed: '65 <span class="text-xs font-sans text-[var(--text-muted)]">MPH</span>',
+                speedStatus: 'Interstate Highway Cruise',
+                fuel: '84% <span class="text-xs font-sans text-[var(--text-muted)]">Reefer Tank: 96%</span>',
+                fuelStatus: 'Independent Reefer Generator OK',
+                dtc: '0 Active',
+                dtcStatus: 'FSMA Cold Chain Compliant',
+                temp: '-4.2°F <span class="text-xs font-sans text-[var(--text-muted)]">Deep Chill</span>',
+                tempStatus: 'Setpoint -5.0°F (Within 0.8°)',
+                score: '98 / 100',
+                scoreStatus: 'Smooth Turning / No Spillage',
+                service: 'In 3,100 mi',
+                serviceStatus: 'Reefer Unit Compressor Check',
+                route: 'I-35 Southbound &bull; Dairy Cold Corridor &bull; ETA 17:45 CST'
+            }
+        };
+
+        function selectTelemetryVehicle(type) {
+            const data = telemetryData[type];
+            if (!data) return;
+
+            const speedEl = document.getElementById('tele-speed');
+            const speedStatEl = document.getElementById('tele-speed-status');
+            const fuelEl = document.getElementById('tele-fuel');
+            const fuelStatEl = document.getElementById('tele-fuel-status');
+            const dtcEl = document.getElementById('tele-dtc');
+            const dtcStatEl = document.getElementById('tele-dtc-status');
+            const tempEl = document.getElementById('tele-temp');
+            const tempStatEl = document.getElementById('tele-temp-status');
+            const scoreEl = document.getElementById('tele-score');
+            const scoreStatEl = document.getElementById('tele-score-status');
+            const serviceEl = document.getElementById('tele-service');
+            const serviceStatEl = document.getElementById('tele-service-status');
+            const routeEl = document.getElementById('tele-route');
+
+            if (speedEl) speedEl.innerHTML = data.speed;
+            if (speedStatEl) speedStatEl.innerText = data.speedStatus;
+            if (fuelEl) fuelEl.innerHTML = data.fuel;
+            if (fuelStatEl) fuelStatEl.innerText = data.fuelStatus;
+            if (dtcEl) dtcEl.innerText = data.dtc;
+            if (dtcStatEl) dtcStatEl.innerText = data.dtcStatus;
+            if (tempEl) tempEl.innerHTML = data.temp;
+            if (tempStatEl) tempStatEl.innerText = data.tempStatus;
+            if (scoreEl) scoreEl.innerText = data.score;
+            if (scoreStatEl) scoreStatEl.innerText = data.scoreStatus;
+            if (serviceEl) serviceEl.innerText = data.service;
+            if (serviceStatEl) serviceStatEl.innerText = data.serviceStatus;
+            if (routeEl) routeEl.innerHTML = data.route;
+
+            ['van', 'truck', 'ev', 'reefer'].forEach(t => {
+                const btn = document.getElementById('tele-tab-' + t);
+                if (!btn) return;
+                const badge = btn.querySelector('span:first-child');
+                if (t === type) {
+                    btn.classList.add('border-[var(--accent-color)]', 'bg-[var(--menu-hover-bg)]');
+                    btn.classList.remove('border-[var(--border-color)]', 'bg-[var(--bg-secondary)]');
+                    if (badge) {
+                        badge.classList.add('text-[var(--accent-color)]');
+                        badge.classList.remove('text-[var(--text-muted)]');
+                    }
+                } else {
+                    btn.classList.remove('border-[var(--accent-color)]', 'bg-[var(--menu-hover-bg)]');
+                    btn.classList.add('border-[var(--border-color)]', 'bg-[var(--bg-secondary)]');
+                    if (badge) {
+                        badge.classList.remove('text-[var(--accent-color)]');
+                        badge.classList.add('text-[var(--text-muted)]');
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

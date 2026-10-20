@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing & Lease Terms - FleetManage</title>
+    <title>Fleet Pricing & Commercial Lease Terms - FleetManage</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
         type="image/svg+xml">
@@ -30,7 +30,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
@@ -264,6 +264,31 @@
         .mobile-link:hover { color: var(--accent-color); padding-left: 40px; background: var(--menu-hover-bg); }
         [dir="rtl"] .mobile-link:hover { padding-left: 32px; padding-right: 40px; }
 
+        /* TAB SWITCHER */
+        .plan-toggle-pill {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            border-radius: 999px;
+            display: inline-flex;
+            gap: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .plan-toggle-btn {
+            padding: 10px 24px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .plan-toggle-btn.active {
+            background: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
+        }
+
         /* FOOTER */
         footer { background: var(--bg-secondary); border-top: 1px solid var(--border-color); padding-top: 80px; }
         footer h4 { color: var(--text-main); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 24px; letter-spacing: 1px; }
@@ -307,7 +332,7 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="pricing.html" class="nav-link active">Pricing</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="proposal.html" class="nav-link">Proposal</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <div class="dropdown">
@@ -363,10 +388,9 @@
             <a href="about.html" class="mobile-link">About</a>
             <a href="services.html" class="mobile-link">Services</a>
             <a href="pricing.html" class="mobile-link" style="color: var(--accent-color);">Pricing</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="proposal.html" class="mobile-link">Proposal</a>
             <a href="faq.html" class="mobile-link">FAQ</a>
             <a href="contact.html" class="mobile-link">Contact</a>
-
             <div class="px-8 mt-8 mb-2">
                 <span class="text-[10px] font-bold text-[var(--accent-color)] uppercase tracking-widest">Portals</span>
             </div>
@@ -393,449 +417,656 @@
         </div>
     </div>
 
-    <!-- PRICING HERO BANNER COMPONENT -->
-    <section class="relative w-full min-h-[70dvh] pt-32 pb-24 flex items-center justify-center overflow-hidden border-b border-[var(--border-color)]">
+    <!-- PRICING HERO BANNER: The Integrated Leasing & Management Promise -->
+    <section class="relative w-full min-h-[72dvh] pt-32 pb-20 flex items-center justify-center overflow-hidden border-b border-[var(--border-color)]">
         <div class="absolute inset-0 z-0 bg-[#0F172A]">
-            <img src="images/vechicle (8).jpg" alt="Finance and Accounting"
-                class="w-full h-full object-cover animate-zoom opacity-40" />
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/50 to-[var(--bg-color)] z-10"></div>
+            <img src="images/vechicle (2).jpg" alt="Commercial Fleet Lineup"
+                class="w-full h-full object-cover animate-zoom opacity-35" />
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/60 to-[var(--bg-color)] z-10"></div>
         </div>
 
-        <div class="max-w-[1000px] mx-auto px-6 w-full flex flex-col items-center justify-center text-center relative z-20">
-            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-6">
-                <i class="fas fa-tags mr-2 text-[10px]"></i> Transparent Pricing
+        <div class="max-w-[1100px] mx-auto px-6 w-full flex flex-col items-center justify-center text-center relative z-20">
+            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-4 inline-flex items-center gap-2">
+                <i class="fas fa-file-contract text-[10px]"></i> Flexible Fleet Financing & Management
             </span>
 
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-regular leading-tight mb-8 text-white">
-                Flexible Plans for <br class="hidden sm:block">
-                <span class="italic text-[var(--accent-color)]">Every</span> Fleet.
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 text-white font-serif">
+                Commercial Leasing & <br class="hidden sm:block">
+                <span class="italic text-[var(--accent-color)]">Full-Service</span> Fleet Solutions.
             </h1>
 
-            <p class="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl font-light mb-12 drop-shadow-md">
-                Explore our scalable vehicle leasing options, competitive maintenance packages, and transparent pricing structures designed to optimize your business logistics.
+            <p class="text-slate-300 text-base md:text-xl leading-relaxed max-w-3xl font-light mb-10 drop-shadow-md">
+                Acquire brand-new commercial vehicles with zero capital lockup, or bring your existing fleet under our intelligent telematics and nationwide maintenance umbrella. Transparent terms, predictable cash flow.
             </p>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
-                <a href="#lease-terms" class="btn btn-solid !py-4 !px-12">
-                    View Lease Terms
-                </a>
-                <a href="contact.html"
-                    class="btn btn-outline !bg-white/90 backdrop-blur-sm !border-white !text-slate-900 hover:!bg-white shadow-lg !py-4 !px-12">
-                    Request a Custom Quote
-                </a>
+            <!-- Dual Mode Toggle -->
+            <div class="plan-toggle-pill mb-4">
+                <button type="button" class="plan-toggle-btn active" id="tab-bundle-btn" onclick="switchPlanMode('bundle')">
+                    <i class="fas fa-truck-ramp-box mr-2"></i> Vehicle Lease + Management Bundle
+                </button>
+                <button type="button" class="plan-toggle-btn" id="tab-saas-btn" onclick="switchPlanMode('saas')">
+                    <i class="fas fa-satellite mr-2"></i> Fleet Software & Telematics Only
+                </button>
             </div>
+          
         </div>
     </section>
 
-    <!-- MAIN CONTENT - PRICING SECTIONS & FAQ -->
+    <!-- MAIN CONTENT - PRICING SECTIONS -->
     <main id="lease-terms" class="w-full bg-[var(--bg-color)]">
-        
-        <!-- Pricing Grid Section -->
-        <div class="py-20 px-6 max-w-[1200px] mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Subscription Plans</span>
-                <h2 class="text-3xl md:text-5xl font-regular mb-4" style="color: var(--text-main);">Choose Your Fleet Tier</h2>
-                <p class="text-[var(--text-muted)] text-base font-light">Flexible billing and transparent pricing tailored to scale with your logistical demands.</p>
+
+        <!-- ==================== VIEW 1: COMMERCIAL VEHICLE LEASE + MANAGEMENT BUNDLE ==================== -->
+        <section id="bundle-view" class="py-20 px-6 max-w-[1320px] mx-auto transition-all duration-500">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
+                    Turnkey Fleet Procurement
+                </span>
+                <h2 class="text-3xl md:text-5xl font-regular mb-4" style="color: var(--text-main);">
+                    Commercial Vehicle <span class="italic text-[var(--accent-color)]">Leasing Catalog</span>
+                </h2>
+                <p class="text-[var(--text-muted)] text-base font-light">
+                    Every leased vehicle is delivered pre-equipped with OBD-II telematics, nationwide warranty, full preventive maintenance, and factory upfitting.
+                </p>
             </div>
 
-            <!-- Pricing Grid with items-stretch for uniform card heights -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <!-- Vehicle Leasing Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 items-stretch">
                 
+                <!-- Vehicle 1: Cargo Vans -->
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[var(--accent-color)] transition-all group">
+                    <div class="relative h-48 overflow-hidden bg-slate-900 shrink-0">
+                        <img src="images/vechicle (13).jpg" alt="Commercial Cargo Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <span class="absolute top-3 left-3 bg-[#0F172A]/80 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                            Urban Logistics
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="text-lg font-bold" style="color: var(--text-main);">Commercial Cargo Van</h3>
+                            </div>
+                            <p class="text-xs text-[var(--text-muted)] mb-4">Ford Transit 250 / Ram ProMaster / Sprinter</p>
+                            
+                            <div class="mb-5 p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-xs text-[var(--text-muted)] block uppercase font-medium">Starting Lease Rate</span>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-3xl font-bold font-serif text-[var(--accent-color)]">$489</span>
+                                    <span class="text-xs text-[var(--text-muted)]">/ mo per vehicle</span>
+                                </div>
+                                <span class="text-[11px] text-[var(--text-muted)] mt-1 block">36-60 Mo • Full Maintenance Incl.</span>
+                            </div>
+
+                            <ul class="space-y-3 mb-6 text-xs text-[var(--text-muted)]">
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> 3,800 - 4,500 lbs Payload</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Custom Shelving & Upfitting</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Live GPS & Route Dispatch</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Bumper-to-Bumper Servicing</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Pooled Fleet Mileage</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html?type=cargo-van" class="btn btn-outline w-full text-center !py-3 rounded-lg text-[11px]">
+                            Configure Van Lease
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2: Commercial Freight & Heavy Haulers (Featured) -->
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border-2 border-[var(--accent-color)] rounded-2xl overflow-hidden shadow-xl relative transition-all group">
+                    <div class="absolute top-3 right-3 z-10 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
+                        Most Demanded
+                    </div>
+                    <div class="relative h-48 overflow-hidden bg-slate-900 shrink-0">
+                        <img src="images/vechicle (1).jpg" alt="Commercial Freight & Heavy Haulers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <span class="absolute top-3 left-3 bg-[#0F172A]/80 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                            Regional Freight
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="text-lg font-bold" style="color: var(--text-main);">Commercial Freight Haulers</h3>
+                            </div>
+                            <p class="text-xs text-[var(--text-muted)] mb-4">Kenworth & Heavy Class Haulers (16-26ft Body)</p>
+                            
+                            <div class="mb-5 p-4 rounded-xl bg-[var(--menu-hover-bg)] border border-[var(--accent-color)]/30">
+                                <span class="text-xs text-[var(--text-muted)] block uppercase font-medium">Starting Lease Rate</span>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-3xl font-bold font-serif text-[var(--accent-color)]">$849</span>
+                                    <span class="text-xs text-[var(--text-muted)]">/ mo per vehicle</span>
+                                </div>
+                                <span class="text-[11px] text-[var(--text-muted)] mt-1 block">36-72 Mo • Hydraulic Liftgate Incl.</span>
+                            </div>
+
+                            <ul class="space-y-3 mb-6 text-xs text-[var(--text-muted)]">
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> 16ft - 26ft Van Body Options</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> 2,500 lbs Tuckunder Liftgate</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Full Telematics & IFTA Logging</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Scheduled Fluid & Tire Program</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> 24/7 Heavy Roadside Recovery</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html?type=box-truck" class="btn btn-solid w-full text-center !py-3 rounded-lg text-[11px]">
+                            Lease Heavy Hauler
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3: Contractor & Utility Field Fleets -->
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-500 transition-all group">
+                    <div class="relative h-48 overflow-hidden bg-slate-900 shrink-0">
+                        <img src="images/vechicle (10).jpg" alt="Commercial Contractor Work Trucks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <span class="absolute top-3 left-3 bg-amber-500 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                            Contractor & Field
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="text-lg font-bold" style="color: var(--text-main);">Contractor & Field Trucks</h3>
+                            </div>
+                            <p class="text-xs text-[var(--text-muted)] mb-4">Heavy-Duty Work Pickups • Safety Cones & Tool Upfits</p>
+                            
+                            <div class="mb-5 p-4 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-500/20">
+                                <span class="text-xs text-amber-700 dark:text-amber-400 block uppercase font-medium">Starting Lease Rate</span>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-3xl font-bold font-serif text-amber-600 dark:text-amber-400">$549</span>
+                                    <span class="text-xs text-[var(--text-muted)]">/ mo per vehicle</span>
+                                </div>
+                                <span class="text-[11px] text-[var(--text-muted)] mt-1 block">Commercial Field Work Packages</span>
+                            </div>
+
+                            <ul class="space-y-3 mb-6 text-xs text-[var(--text-muted)]">
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-amber-500"></i> 4x4 Off-Road Field Capabilities</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-amber-500"></i> Utility Bed Racks & Storage Lockers</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-amber-500"></i> Safety Lighting & Cone Package</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-amber-500"></i> Heavy Towing Hitch & Telematics</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-amber-500"></i> Bumper-to-Bumper Warranty</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html?type=contractor-truck" class="btn btn-outline w-full text-center !py-3 rounded-lg text-[11px]">
+                            Lease Contractor Truck
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vehicle 4: Class 8 Heavy Tractor -->
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[var(--accent-color)] transition-all group">
+                    <div class="relative h-48 overflow-hidden bg-slate-900 shrink-0">
+                        <img src="images/vechicle (3).jpg" alt="Class 8 Interstate Semi Tractors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <span class="absolute top-3 left-3 bg-[#0F172A]/80 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                            Long-Haul Interstate
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="text-lg font-bold" style="color: var(--text-main);">Class 8 Heavy Tractor</h3>
+                            </div>
+                            <p class="text-xs text-[var(--text-muted)] mb-4">Scania & Freightliner Cascadia Fleets</p>
+                            
+                            <div class="mb-5 p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                <span class="text-xs text-[var(--text-muted)] block uppercase font-medium">Starting Lease Rate</span>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-3xl font-bold font-serif text-[var(--accent-color)]">$1,289</span>
+                                    <span class="text-xs text-[var(--text-muted)]">/ mo per vehicle</span>
+                                </div>
+                                <span class="text-[11px] text-[var(--text-muted)] mt-1 block">48-60 Mo • High Sleeper Cab</span>
+                            </div>
+
+                            <ul class="space-y-3 mb-6 text-xs text-[var(--text-muted)]">
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> 80,000 lbs GCWR Capacity</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> DOT & FMCSA Automated ELD</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Nationwide Heavy Duty Network</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Full Engine Telemetry AI</li>
+                                <li class="flex items-center gap-2.5"><i class="fas fa-check text-[var(--accent-color)]"></i> Fuel Card Volume Rebates</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html?type=semi" class="btn btn-outline w-full text-center !py-3 rounded-lg text-[11px]">
+                            Lease Semi Tractor
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 2: FLEET SOFTWARE & TELEMATICS ONLY (FOR OWNED FLEETS) ==================== -->
+        <section id="saas-view" class="py-20 px-6 max-w-[1240px] mx-auto hidden transition-all duration-500">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
+                    Already Own Your Vehicles?
+                </span>
+                <h2 class="text-3xl md:text-5xl font-regular mb-4" style="color: var(--text-main);">
+                    Fleet Management & <span class="italic text-[var(--accent-color)]">Telematics Subscriptions</span>
+                </h2>
+                <p class="text-[var(--text-muted)] text-base font-light">
+                    Transform your existing fleet with plug-and-play OBD-II telematics, predictive maintenance scheduling, corporate fuel auditing, and real-time live dispatching.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 <!-- Plan 1 -->
-                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] p-8 rounded-xl shadow-sm transition-all duration-300 hover:border-[var(--accent-color)]">
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] p-8 rounded-2xl shadow-sm hover:border-[var(--accent-color)] transition-all">
                     <div>
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-xl font-semibold" style="color: var(--text-main);">Starter Fleet</h3>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--bg-secondary)] text-[var(--text-muted)] uppercase tracking-wider">Basic</span>
+                            <h3 class="text-xl font-bold" style="color: var(--text-main);">Starter Fleet</h3>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--bg-secondary)] text-[var(--text-muted)] uppercase tracking-wider">Up to 15 Vehicles</span>
                         </div>
                         <div class="mb-6">
                             <span class="text-4xl font-bold font-serif" style="color: var(--text-main);">$499</span>
                             <span class="text-[var(--text-muted)] text-sm"> / month</span>
                         </div>
-                        <p class="text-[var(--text-muted)] text-sm mb-8 font-light">Ideal for small local delivery teams looking to digitize basic tracking.</p>
+                        <p class="text-[var(--text-muted)] text-sm mb-8 font-light">Ideal for small local delivery and field-service teams digitizing GPS and maintenance.</p>
                         <ul class="space-y-4 mb-8 text-sm text-[var(--text-muted)]">
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Up to 15 Vehicles</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Real-time GPS Tracking</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Basic Maintenance Alerts</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Email Support</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Up to 15 OBD-II Hardware Trackers Included</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> 10-Second Live GPS Map Refresh</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Scheduled Maintenance Reminders</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Basic Driver Speeding Alerts</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Business Hours Support Desk</li>
                         </ul>
                     </div>
                     <div>
-                        <a href="contact.html" class="btn btn-outline w-full text-center">Get Started</a>
+                        <a href="contact.html?plan=starter" class="btn btn-outline w-full text-center rounded-lg">Get Starter Setup</a>
                     </div>
                 </div>
 
                 <!-- Plan 2 (Featured) -->
-                <div class="flex flex-col justify-between bg-[var(--bg-card)] border-2 border-[var(--accent-color)] p-8 rounded-xl shadow-lg relative transition-all duration-300">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border-2 border-[var(--accent-color)] p-8 rounded-2xl shadow-xl relative transition-all">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
                         Most Popular
                     </div>
                     <div>
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-xl font-semibold" style="color: var(--text-main);">Professional</h3>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--accent-color)]/10 text-[var(--accent-color)] uppercase tracking-wider">Growth</span>
+                            <h3 class="text-xl font-bold" style="color: var(--text-main);">Professional Fleet</h3>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--accent-color)]/10 text-[var(--accent-color)] uppercase tracking-wider">Up to 50 Vehicles</span>
                         </div>
                         <div class="mb-6">
                             <span class="text-4xl font-bold font-serif" style="color: var(--text-main);">$1,299</span>
                             <span class="text-[var(--text-muted)] text-sm"> / month</span>
                         </div>
-                        <p class="text-[var(--text-muted)] text-sm mb-8 font-light">Designed for scaling logistics companies requiring advanced analytics.</p>
+                        <p class="text-[var(--text-muted)] text-sm mb-8 font-light">Engineered for growing logistics operators needing fuel integration, route optimization & dispatch.</p>
                         <ul class="space-y-4 mb-8 text-sm text-[var(--text-muted)]">
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Up to 50 Vehicles</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Advanced Telemetry & Diagnostics</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Automated Maintenance Scheduling</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Priority 24/7 Support</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Up to 50 Telematics Devices Included</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Real-Time Engine Fault Code Diagnostics</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Corporate Fuel Card Integration & Fraud Auditing</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Driver Safety Scoring & Dashcam Ready</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Priority 24/7 Dispatch Support</li>
                         </ul>
                     </div>
                     <div>
-                        <a href="contact.html" class="btn btn-solid w-full text-center">Start Free Trial</a>
+                        <a href="contact.html?plan=professional" class="btn btn-solid w-full text-center rounded-lg">Start 14-Day Pilot</a>
                     </div>
                 </div>
 
                 <!-- Plan 3 -->
-                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] p-8 rounded-xl shadow-sm transition-all duration-300 hover:border-[var(--accent-color)]">
+                <div class="flex flex-col justify-between bg-[var(--bg-card)] border border-[var(--border-color)] p-8 rounded-2xl shadow-sm hover:border-[var(--accent-color)] transition-all">
                     <div>
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-xl font-semibold" style="color: var(--text-main);">Enterprise</h3>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--bg-secondary)] text-[var(--text-muted)] uppercase tracking-wider">Custom</span>
+                            <h3 class="text-xl font-bold" style="color: var(--text-main);">Enterprise Fleet</h3>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--bg-secondary)] text-[var(--text-muted)] uppercase tracking-wider">Unlimited Scale</span>
                         </div>
                         <div class="mb-6">
                             <span class="text-4xl font-bold font-serif" style="color: var(--text-main);">$2,999</span>
                             <span class="text-[var(--text-muted)] text-sm"> / month</span>
                         </div>
-                        <p class="text-[var(--text-muted)] text-sm mb-8 font-light">Unlimited capacity and bespoke integrations for large corporate fleets.</p>
+                        <p class="text-[var(--text-muted)] text-sm mb-8 font-light">Custom integrations, ERP connectors, and dedicated fleet operations staff for major commercial enterprises.</p>
                         <ul class="space-y-4 mb-8 text-sm text-[var(--text-muted)]">
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Unlimited Vehicles</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Custom ERP & API Integrations</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Dedicated Account Manager</li>
-                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> On-site Staff Training</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Unlimited Connected Vehicles & Heavy Equipment</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> SAP, Oracle & Custom TMS/ERP Integration</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Dedicated Commercial Fleet Account Executive</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Nationwide Service Discount Garage Pass</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-color)]"></i> Custom SLA & On-Site Driver Training</li>
                         </ul>
                     </div>
                     <div>
-                        <a href="contact.html" class="btn btn-outline w-full text-center">Contact Sales</a>
+                        <a href="contact.html?plan=enterprise" class="btn btn-outline w-full text-center rounded-lg">Contact Enterprise Sales</a>
                     </div>
                 </div>
-
             </div>
-        </div>
-        <!-- ==================== UNIQUE SECTION 1: FLEET COST SNAPSHOT ==================== -->
+        </section>
 
-<section class="w-full py-24 px-6 bg-[var(--bg-color)] border-t border-[var(--border-color)]">
-    <div class="max-w-[1200px] mx-auto">
+        <!-- ==================== UNIQUE SECTION 1: INTERACTIVE FLEET LEASE & ROI CALCULATOR ==================== -->
+        <section class="w-full py-24 px-6 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Explanation -->
+                    <div class="lg:col-span-5">
+                        <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
+                            <i class="fas fa-calculator mr-2"></i> Interactive Lease Estimator
+                        </span>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+                        <h2 class="text-3xl md:text-5xl font-regular leading-tight mb-6" style="color: var(--text-main);">
+                            Calculate Your <br><span class="italic text-[var(--accent-color)]">Fleet Economics</span>.
+                        </h2>
 
-        <!-- Left Content -->
-        <div>
-            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
-                <i class="fas fa-calculator mr-2"></i> Fleet Cost Snapshot
-            </span>
-
-            <h2 class="text-3xl md:text-5xl font-regular leading-tight mb-6"
-                style="color: var(--text-main);">
-                Plan Your Fleet <span class="italic text-[var(--accent-color)]">With Confidence.</span>
-            </h2>
-
-            <p class="text-[var(--text-muted)] text-base leading-relaxed font-light mb-8">
-                Understand how your fleet size can fit into our subscription structure.
-                Choose the right capacity and keep your monthly fleet management costs predictable.
-            </p>
-
-            <div class="grid grid-cols-2 gap-4">
-
-                <div class="p-5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
-                    <div class="text-2xl font-bold mb-1" style="color: var(--text-main);">
-                        $499+
-                    </div>
-                    <div class="text-xs uppercase tracking-wider text-[var(--text-muted)]">
-                        Starting Plan
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
-                    <div class="text-2xl font-bold mb-1" style="color: var(--text-main);">
-                        24/7
-                    </div>
-                    <div class="text-xs uppercase tracking-wider text-[var(--text-muted)]">
-                        Support Options
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Right Calculator Card -->
-        <div class="relative">
-            <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8 shadow-xl">
-
-                <div class="flex items-center justify-between mb-8">
-                    <div>
-                        <h3 class="text-xl font-semibold" style="color: var(--text-main);">
-                            Fleet Estimate
-                        </h3>
-                        <p class="text-xs text-[var(--text-muted)] mt-1">
-                            Example monthly planning
+                        <p class="text-[var(--text-muted)] text-base leading-relaxed font-light mb-8">
+                            See how bundling vehicle procurement, scheduled service, and telematics into a consolidated monthly lease eliminates upfront capital expenditure while reducing operating costs by up to 28%.
                         </p>
-                    </div>
 
-                    <div class="w-12 h-12 rounded-full flex items-center justify-center"
-                        style="background: var(--menu-hover-bg); color: var(--accent-color);">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
+                                <div class="w-10 h-10 rounded-lg bg-[var(--accent-color)]/10 text-[var(--accent-color)] flex items-center justify-center shrink-0">
+                                    <i class="fas fa-shield-heart"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold mb-1" style="color: var(--text-main);">Zero Residual Balance Risk</h4>
+                                    <p class="text-xs text-[var(--text-muted)]">Closed-end lease riders ensure you never pay for used vehicle market depreciations.</p>
+                                </div>
+                            </div>
 
-                <div class="space-y-6">
-
-                    <div class="flex justify-between items-center pb-4 border-b border-[var(--border-color)]">
-                        <span class="text-sm text-[var(--text-muted)]">
-                            Fleet Size
-                        </span>
-                        <span class="font-semibold" style="color: var(--text-main);">
-                            25 Vehicles
-                        </span>
-                    </div>
-
-                    <div class="flex justify-between items-center pb-4 border-b border-[var(--border-color)]">
-                        <span class="text-sm text-[var(--text-muted)]">
-                            Recommended Tier
-                        </span>
-                        <span class="font-semibold text-[var(--accent-color)]">
-                            Professional
-                        </span>
-                    </div>
-
-                    <div class="flex justify-between items-center pb-4 border-b border-[var(--border-color)]">
-                        <span class="text-sm text-[var(--text-muted)]">
-                            Fleet Capacity
-                        </span>
-                        <span class="font-semibold" style="color: var(--text-main);">
-                            Up to 50
-                        </span>
-                    </div>
-
-                    <div class="pt-2">
-                        <span class="text-xs uppercase tracking-widest text-[var(--text-muted)]">
-                            Estimated Monthly Plan
-                        </span>
-
-                        <div class="flex items-end gap-2 mt-2">
-                            <span class="text-4xl font-bold font-serif"
-                                style="color: var(--text-main);">
-                                $1,299
-                            </span>
-
-                            <span class="text-sm text-[var(--text-muted)] mb-1">
-                                / month
-                            </span>
+                            <div class="flex items-start gap-4 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
+                                <div class="w-10 h-10 rounded-lg bg-[var(--accent-color)]/10 text-[var(--accent-color)] flex items-center justify-center shrink-0">
+                                    <i class="fas fa-receipt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold mb-1" style="color: var(--text-main);">100% Tax Deductible</h4>
+                                    <p class="text-xs text-[var(--text-muted)]">Commercial operating lease payments qualify as direct business expenses under federal tax code.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <a href="contact.html"
-                        class="btn btn-solid w-full mt-2">
-                        Discuss Your Fleet
-                    </a>
+                    <!-- Right Calculator Panel -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8 md:p-10 shadow-xl">
+                            
+                            <h3 class="text-xl font-bold mb-6 flex items-center justify-between" style="color: var(--text-main);">
+                                <span>Fleet Lease & Management Simulator</span>
+                                <span class="text-xs font-normal text-[var(--accent-color)] bg-[var(--accent-color)]/10 px-3 py-1 rounded-full">Live Projection</span>
+                            </h3>
+
+                            <!-- Sliders & Inputs -->
+                            <div class="space-y-6 mb-8">
+                                <!-- Vehicle Type Select -->
+                                <div>
+                                    <label class="block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
+                                        Primary Vehicle Classification
+                                    </label>
+                                    <select id="calc-vehicle-type" onchange="updateLeaseCalculator()" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] rounded-lg p-3.5 text-sm font-medium focus:outline-none focus:border-[var(--accent-color)]">
+                                        <option value="489">Commercial Cargo Van ($489/mo base)</option>
+                                        <option value="849">Medium Duty Box Truck ($849/mo base)</option>
+                                        <option value="589">Electric Cargo Van ($589/mo base)</option>
+                                        <option value="1750">Class 8 Heavy Semi Tractor ($1,750/mo base)</option>
+                                        <option value="520">Executive Corporate Sedan / SUV ($520/mo base)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Fleet Count Slider -->
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">Number of Vehicles</label>
+                                        <span id="calc-qty-label" class="text-lg font-bold font-serif text-[var(--accent-color)]">15 Vehicles</span>
+                                    </div>
+                                    <input type="range" id="calc-qty" min="1" max="100" value="15" oninput="updateLeaseCalculator()" class="w-full accent-[var(--accent-color)] cursor-pointer">
+                                    <div class="flex justify-between text-[10px] text-[var(--text-muted)] mt-1">
+                                        <span>1 Vehicle</span>
+                                        <span>25 Vehicles</span>
+                                        <span>50 Vehicles</span>
+                                        <span>100+ Vehicles</span>
+                                    </div>
+                                </div>
+
+                                <!-- Lease Term Select -->
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">Lease Duration</label>
+                                        <select id="calc-term" onchange="updateLeaseCalculator()" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] rounded-lg p-3 text-sm focus:outline-none focus:border-[var(--accent-color)]">
+                                            <option value="1.08">24 Months</option>
+                                            <option value="1.0" selected>36 Months (Standard)</option>
+                                            <option value="0.94">48 Months</option>
+                                            <option value="0.88">60 Months (Lowest Mo)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">Maintenance Level</label>
+                                        <select id="calc-maint" onchange="updateLeaseCalculator()" class="w-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-main)] rounded-lg p-3 text-sm focus:outline-none focus:border-[var(--accent-color)]">
+                                            <option value="85">Full Maintenance + Tires ($85/mo)</option>
+                                            <option value="45">Standard Preventive Only ($45/mo)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Result Snapshot -->
+                            <div class="p-6 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] mb-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left">
+                                    <div>
+                                        <span class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider block">Estimated Monthly Bundle</span>
+                                        <span id="calc-total-monthly" class="text-3xl font-bold font-serif text-[var(--accent-color)]">$8,610</span>
+                                        <span class="text-[10px] text-[var(--text-muted)] block">All vehicles + telematics</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider block">Projected Annual Fuel Savings</span>
+                                        <span id="calc-annual-savings" class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 font-serif">$16,200</span>
+                                        <span class="text-[10px] text-[var(--text-muted)] block">Via route optimization</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider block">Tax Write-Off Potential</span>
+                                        <span id="calc-tax-benefit" class="text-2xl font-bold text-blue-600 dark:text-blue-400 font-serif">$25,830</span>
+                                        <span class="text-[10px] text-[var(--text-muted)] block">Est. 25% corp rate</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="contact.html" class="btn btn-solid w-full text-center !py-4 rounded-lg font-semibold tracking-wider">
+                                Lock In This Commercial Fleet Quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
-        </div>
+        </section>
 
-    </div>
-</div>
-
-</section>
-
-<!-- ==================== UNIQUE SECTION 2: WHAT YOUR PLAN UNLOCKS ==================== -->
-
-<section class="w-full py-24 px-6 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
-    <div class="max-w-[1200px] mx-auto">
-
-    <!-- Section Heading -->
-    <div class="text-center max-w-2xl mx-auto mb-16">
-
-        <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
-            Beyond The Price
-        </span>
-
-        <h2 class="text-3xl md:text-5xl font-regular mb-5"
-            style="color: var(--text-main);">
-            More Than Just a <span class="italic text-[var(--accent-color)]">Monthly Plan.</span>
-        </h2>
-
-        <p class="text-[var(--text-muted)] text-base font-light leading-relaxed">
-            Every FleetManage plan is designed to give your operations
-            more visibility, control, and room to grow.
-        </p>
-
-    </div>
-
-    <!-- Benefits Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Benefit 1 -->
-        <div class="group bg-[var(--bg-card)] border border-[var(--border-color)]
-                    rounded-2xl p-7 transition-all duration-300
-                    hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
-
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6
-                        transition-all duration-300 group-hover:scale-110"
-                style="background: var(--menu-hover-bg); color: var(--accent-color);">
-                <i class="fas fa-location-crosshairs text-xl"></i>
+        <!-- ==================== SECTION 2: LEASING STRUCTURES COMPARISON ==================== -->
+        <section class="py-24 px-6 max-w-[1240px] mx-auto border-t border-[var(--border-color)]">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Corporate Financing Models</span>
+                <h2 class="text-3xl md:text-5xl font-regular mb-4" style="color: var(--text-main);">
+                    Compare Our <span class="italic text-[var(--accent-color)]">Commercial Lease Structures</span>
+                </h2>
+                <p class="text-[var(--text-muted)] text-base font-light">
+                    Every enterprise operates differently. Choose the leasing agreement that best suits your cash flow strategy, mileage requirements, and asset philosophy.
+                </p>
             </div>
 
-            <h3 class="text-lg font-semibold mb-3"
-                style="color: var(--text-main);">
-                Fleet Visibility
-            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Structure 1 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-[var(--accent-color)] flex items-center justify-center text-xl mb-6">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-main);">Closed-End Operating Lease</h3>
+                        <span class="text-xs font-semibold text-[var(--accent-color)] uppercase tracking-wider block mb-4">Walk-Away Lease</span>
+                        <p class="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                            The safest option for commercial fleets. FleetManage assumes all depreciation and residual resale risk. At lease maturity, return the vehicles and roll straight into brand-new models.
+                        </p>
+                        <ul class="space-y-3 text-xs text-[var(--text-muted)] mb-6">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Zero residual value risk for client</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Predictable fixed monthly budget</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Off-balance sheet financing</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Bundled routine maintenance</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-[var(--border-color)] text-xs font-medium text-[var(--text-main)]">
+                        Best For: Standard commercial routes & fixed replacement cycles.
+                    </div>
+                </div>
 
-            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
-                Keep vehicle activity, locations, and operational information
-                visible from a centralized platform.
-            </p>
+                <!-- Structure 2 -->
+                <div class="bg-[var(--bg-card)] border-2 border-[var(--accent-color)] rounded-2xl p-8 shadow-lg flex flex-col justify-between relative">
+                    <span class="absolute -top-3 right-6 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                        Commercial Standard
+                    </span>
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-[var(--accent-color)]/10 text-[var(--accent-color)] flex items-center justify-center text-xl mb-6">
+                            <i class="fas fa-hand-holding-dollar"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-main);">Open-End TRAC Lease</h3>
+                        <span class="text-xs font-semibold text-[var(--accent-color)] uppercase tracking-wider block mb-4">Terminal Rental Adjustment Clause</span>
+                        <p class="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                            The gold standard for high-mileage and custom upfitted vehicles. No mileage penalties. If the vehicle sells for more than residual value at lease end, your business keeps 100% of the equity gain!
+                        </p>
+                        <ul class="space-y-3 text-xs text-[var(--text-muted)] mb-6">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Unlimited commercial mileage</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Equity upside returned to your business</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Custom heavy industrial upfitting</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Flexible month-to-month extensions</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-[var(--border-color)] text-xs font-medium text-[var(--text-main)]">
+                        Best For: Heavy duty trucks, high mileage & specialty vans.
+                    </div>
+                </div>
 
-        </div>
-
-
-        <!-- Benefit 2 -->
-        <div class="group bg-[var(--bg-card)] border border-[var(--border-color)]
-                    rounded-2xl p-7 transition-all duration-300
-                    hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
-
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6
-                        transition-all duration-300 group-hover:scale-110"
-                style="background: var(--menu-hover-bg); color: var(--accent-color);">
-                <i class="fas fa-screwdriver-wrench text-xl"></i>
+                <!-- Structure 3 -->
+                <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl mb-6">
+                            <i class="fas fa-money-bill-transfer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--text-main);">Sale & Leaseback</h3>
+                        <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider block mb-4">Liquidity Optimization</span>
+                        <p class="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                            Unlock millions in tied-up capital. FleetManage buys your existing corporate vehicle fleet at fair market value and leases them immediately back to you without a single day of downtime.
+                        </p>
+                        <ul class="space-y-3 text-xs text-[var(--text-muted)] mb-6">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Instant cash infusion for core business</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Zero disruption to daily routes</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Shift maintenance headaches to FleetManage</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Immediate telematics onboarding</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-[var(--border-color)] text-xs font-medium text-[var(--text-main)]">
+                        Best For: Companies looking to convert fixed assets to working capital.
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <h3 class="text-lg font-semibold mb-3"
-                style="color: var(--text-main);">
-                Smarter Maintenance
-            </h3>
+        <!-- ==================== SECTION 3: WHAT EVERY LEASE UNLOCKS ==================== -->
+        <section class="w-full py-24 px-6 bg-[var(--bg-secondary)] border-t border-[var(--border-color)]">
+            <div class="max-w-[1200px] mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
+                        Total Lifecycle Care
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-regular mb-5" style="color: var(--text-main);">
+                        More Than a Vehicle. A <span class="italic text-[var(--accent-color)]">Turnkey Operation.</span>
+                    </h2>
+                    <p class="text-[var(--text-muted)] text-base font-light leading-relaxed">
+                        Every FleetManage contract integrates acquisition, technology, maintenance, and remarketing under one consolidated monthly statement.
+                    </p>
+                </div>
 
-            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
-                Organize maintenance schedules and receive timely service
-                reminders to keep vehicles operational.
-            </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--menu-hover-bg); color: var(--accent-color);">
+                            <i class="fas fa-wrench text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-3" style="color: var(--text-main);">850+ Service Hubs</h3>
+                        <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                            Nationwide partner garages with pre-negotiated labor rates and prioritized commercial bays to minimize downtime.
+                        </p>
+                    </div>
 
-        </div>
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--menu-hover-bg); color: var(--accent-color);">
+                            <i class="fas fa-gas-pump text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-3" style="color: var(--text-main);">Fuel Card Discounts</h3>
+                        <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                            Universal corporate fuel cards saving up to $0.15/gal with automatic mileage & odometer fraud auditing at the pump.
+                        </p>
+                    </div>
 
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--menu-hover-bg); color: var(--accent-color);">
+                            <i class="fas fa-satellite-dish text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-3" style="color: var(--text-main);">Included Telematics</h3>
+                        <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                            OBD-II hardware pre-installed at delivery. Real-time GPS, engine telemetry diagnostics, and driver safety scores live on day one.
+                        </p>
+                    </div>
 
-        <!-- Benefit 3 -->
-        <div class="group bg-[var(--bg-card)] border border-[var(--border-color)]
-                    rounded-2xl p-7 transition-all duration-300
-                    hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--menu-hover-bg); color: var(--accent-color);">
+                            <i class="fas fa-repeat text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-3" style="color: var(--text-main);">Seamless Remarketing</h3>
+                        <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                            We handle off-lease vehicle inspection, detailing, and wholesale remarketing so your team stays focused on core logistics.
+                        </p>
+                    </div>
+                </div>
 
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6
-                        transition-all duration-300 group-hover:scale-110"
-                style="background: var(--menu-hover-bg); color: var(--accent-color);">
-                <i class="fas fa-chart-pie text-xl"></i>
+                <!-- Bottom CTA Card -->
+                <div class="mt-14 rounded-2xl p-8 md:p-12 border border-[var(--accent-color)]/30 bg-[var(--bg-card)] flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3" style="color: var(--text-main);">
+                            Need a custom lease structure for 20+ vehicles?
+                        </h3>
+                        <p class="text-base text-[var(--text-muted)] font-light max-w-xl">
+                            Speak with a senior commercial fleet leasing advisor. We structure bespoke TRAC schedules, tax-exempt municipal leases, and EV transitions.
+                        </p>
+                    </div>
+                    <a href="proposal.html" class="btn btn-solid whitespace-nowrap !py-4 !px-8 rounded-lg shadow-md">
+                        Request Custom Fleet Proposal <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                </div>
             </div>
+        </section>
 
-            <h3 class="text-lg font-semibold mb-3"
-                style="color: var(--text-main);">
-                Operational Insights
-            </h3>
-
-            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
-                Turn fleet activity into useful insights that help teams
-                understand ongoing operational performance.
-            </p>
-
-        </div>
-
-
-        <!-- Benefit 4 -->
-        <div class="group bg-[var(--bg-card)] border border-[var(--border-color)]
-                    rounded-2xl p-7 transition-all duration-300
-                    hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
-
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6
-                        transition-all duration-300 group-hover:scale-110"
-                style="background: var(--menu-hover-bg); color: var(--accent-color);">
-                <i class="fas fa-arrow-trend-up text-xl"></i>
-            </div>
-
-            <h3 class="text-lg font-semibold mb-3"
-                style="color: var(--text-main);">
-                Built to Scale
-            </h3>
-
-            <p class="text-sm text-[var(--text-muted)] leading-relaxed font-light">
-                Start with the capacity you need today and expand your
-                fleet management setup as operations grow.
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- Bottom CTA -->
-    <div class="mt-12 rounded-2xl p-8 md:p-10 border border-[var(--accent-color)]/30
-                bg-[var(--bg-card)] flex flex-col md:flex-row
-                items-center justify-between gap-6">
-
-        <div>
-            <h3 class="text-xl md:text-2xl font-semibold mb-2"
-                style="color: var(--text-main);">
-                Need a plan built around your fleet?
-            </h3>
-
-            <p class="text-sm text-[var(--text-muted)] font-light">
-                Talk with our team about vehicle count, operations, and custom requirements.
-            </p>
-        </div>
-
-        <a href="contact.html" class="btn btn-solid whitespace-nowrap">
-            Request Custom Quote
-            <i class="fas fa-arrow-right ml-3"></i>
-        </a>
-
-    </div>
-
-</div>
-
-</section>
-
-
-        <!-- Added Lease & Pricing FAQ Section -->
-        <section class="w-full bg-[var(--bg-secondary)] py-24 px-6 border-t border-[var(--border-color)]">
+        <!-- ==================== SECTION 4: LEASE & PRICING FAQ ==================== -->
+        <section class="w-full bg-[var(--bg-color)] py-24 px-6 border-t border-[var(--border-color)]">
             <div class="max-w-[900px] mx-auto">
                 <div class="text-center max-w-2xl mx-auto mb-16">
-                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Common Inquiries</span>
-                    <h2 class="text-3xl md:text-5xl font-regular mb-4" style="color: var(--text-main);">Lease & Pricing FAQ</h2>
-                    <p class="text-[var(--text-muted)] text-base font-light">Got questions about our vehicle leasing terms, maintenance schedules, or upgrade policies? Find answers below.</p>
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.2em] block mb-3">Clear & Transparent</span>
+                    <h2 class="text-3xl md:text-5xl font-regular mb-4" style="color: var(--text-main);">Fleet Leasing & Pricing FAQ</h2>
+                    <p class="text-[var(--text-muted)] text-base font-light">Detailed answers to corporate inquiries on credit underwriting, upfitting amortization, and lease terms.</p>
                 </div>
 
                 <div class="space-y-4">
-                    <!-- FAQ Item 1 -->
                     <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
                         <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>Can we scale our vehicle fleet up or down mid-lease?</span>
+                            <span>How does commercial vehicle leasing compare to outright vehicle purchasing?</span>
                             <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
                         </h3>
                         <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
-                            Yes, our corporate lease agreements are built for scalability. You can add vehicles at any time under your existing tier terms, and flexible fleet adjustment options become available after the initial 6-month period.
+                            Commercial vehicle leasing preserves your business credit lines and operating capital. Instead of deploying $50,000 to $150,000 upfront per vehicle in depreciating assets, your company pays a predictable monthly operating expense that includes telematics, warranty coverage, and nationwide maintenance. Operating lease payments are also generally 100% tax-deductible.
                         </p>
                     </div>
 
-                    <!-- FAQ Item 2 -->
                     <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
                         <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>What is included in the maintenance packages?</span>
+                            <span>Can we amortize custom vinyl vehicle wraps, cargo shelving, and liftgates into the lease?</span>
                             <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
                         </h3>
                         <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
-                            All plans include remote diagnostics and automated service scheduling. Professional and Enterprise tiers also cover routine scheduled maintenance, roadside assistance, and priority parts replacement nationwide.
+                            Yes! Our factory-grade upfitting program covers custom vinyl branding wraps, commercial shelving units, ladder racks, hydraulic liftgates, and refrigeration units. All equipment costs are rolled directly into your regular monthly lease schedule, requiring $0 upfront capital.
                         </p>
                     </div>
 
-                    <!-- FAQ Item 3 -->
                     <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
                         <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>Are there any hidden fees or mileage caps?</span>
+                            <span>What happens if an operational vehicle exceeds its estimated annual mileage?</span>
                             <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
                         </h3>
                         <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
-                            We pride ourselves on 100% transparent pricing. Base plans include generous commercial mileage allowances tailored to logistics operations, with clear, predictable overage rates outlined upfront in your agreement.
+                            Unlike consumer car leases, FleetManage implements a <strong>Pooled Fleet Mileage System</strong>. Mileage across your entire active commercial fleet is aggregated, meaning lower-mileage vehicles balance out intensive routes. Under our Open-End TRAC leases, there are zero mileage penalties whatsoever.
+                        </p>
+                    </div>
+
+                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
+                        <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
+                            <span>Can we lease vehicles in one state and operate them across multiple regional depots?</span>
+                            <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
+                        </h3>
+                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
+                            Absolutely. FleetManage handles multi-state licensing, title registration, and local tax compliance across all 50 states. We dispatch vehicles directly to your regional fulfillment centers, depots, or field offices.
                         </p>
                     </div>
                 </div>
@@ -858,7 +1089,7 @@
                         </a>
                     </div>
                     <p class="opacity-90 leading-relaxed text-sm mb-8 max-w-sm" style="color: var(--text-muted);">
-                        Dedicated to delivering efficient corporate fleet solutions. From scalable vehicle leasing to advanced maintenance tracking, we keep your business moving forward.
+                        Delivering end-to-end commercial vehicle leasing and intelligent fleet management. From vehicle acquisition and custom upfitting to predictive maintenance and telematics.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="social-link-circle"><i class="fab fa-linkedin-in"></i></a>
@@ -870,21 +1101,22 @@
                 <div class="lg:col-span-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                         <div>
-                            <h4>Client Portal</h4>
+                            <h4>Client Portals</h4>
                             <ul class="space-y-4">
                                 <li><a href="login.html">Client Login</a></li>
-                                <li><a href="user.html">Fleet Dashboard</a></li>
-                                <li><a href="pricing.html">Lease Terms</a></li>
-                                <li><a href="faq.html">Support & FAQ</a></li>
+                                <li><a href="user.html">Client Fleet Dashboard</a></li>
+                                <li><a href="admin.html">Admin Portal</a></li>
+                                <li><a href="pricing.html">Leasing Rates & Terms</a></li>
+                                <li><a href="proposal.html">Custom Fleet Proposal</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h4>Our Solutions</h4>
+                            <h4>Fleet Solutions</h4>
                             <ul class="space-y-4">
-                                <li><a href="services.html">Corporate Leasing</a></li>
-                                <li><a href="services.html">Maintenance Tracking</a></li>
-                                <li><a href="services.html">Logistics Planning</a></li>
-                                <li><a href="services.html">Enterprise Fleets</a></li>
+                                <li><a href="services.html">Commercial Vehicle Leasing</a></li>
+                                <li><a href="services.html">Telematics & GPS Tracking</a></li>
+                                <li><a href="services.html">Preventive Maintenance Network</a></li>
+                                <li><a href="services.html">Electric Fleet Transitions</a></li>
                             </ul>
                         </div>
                         <div class="sm:col-span-2 md:col-span-1">
@@ -906,10 +1138,10 @@
             </div>
 
             <div class="footer-bottom flex flex-col md:flex-row justify-between items-center text-xs gap-6 uppercase tracking-[1px]">
-                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. All rights reserved.</p>
+                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. Vehicle Fleet Management & Leasing Company. All rights reserved.</p>
                 <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
                     <a href="#">Terms of Service</a>
-                    <a href="#">Lease Agreements</a>
+                    <a href="#">Master Lease Agreement</a>
                     <a href="#">Privacy Policy</a>
                 </div>
             </div>
@@ -918,6 +1150,52 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // Tab switching between Vehicle Lease + Management Bundle vs Software Only
+        function switchPlanMode(mode) {
+            const bundleView = document.getElementById('bundle-view');
+            const saasView = document.getElementById('saas-view');
+            const bundleBtn = document.getElementById('tab-bundle-btn');
+            const saasBtn = document.getElementById('tab-saas-btn');
+            const subtitle = document.getElementById('tab-subtitle-text');
+
+            if (mode === 'bundle') {
+                bundleView.classList.remove('hidden');
+                saasView.classList.add('hidden');
+                bundleBtn.classList.add('active');
+                saasBtn.classList.remove('active');
+                subtitle.innerText = "Includes new vehicle procurement, custom upfitting, nationwide maintenance, GPS telematics & roadside assist.";
+            } else {
+                bundleView.classList.add('hidden');
+                saasView.classList.remove('hidden');
+                saasBtn.classList.add('active');
+                bundleBtn.classList.remove('active');
+                subtitle.innerText = "For client-owned vehicles: plug-and-play OBD-II telematics, predictive maintenance automation & driver analytics.";
+            }
+        }
+
+        // Interactive Lease Calculator
+        function updateLeaseCalculator() {
+            const baseRate = parseFloat(document.getElementById('calc-vehicle-type').value);
+            const qty = parseInt(document.getElementById('calc-qty').value);
+            const termFactor = parseFloat(document.getElementById('calc-term').value);
+            const maintRate = parseFloat(document.getElementById('calc-maint').value);
+
+            document.getElementById('calc-qty-label').innerText = qty + (qty === 1 ? ' Vehicle' : ' Vehicles');
+
+            // Calculation
+            const perVehicleRate = Math.round((baseRate * termFactor) + maintRate);
+            const totalMonthly = perVehicleRate * qty;
+            const annualSavings = Math.round(qty * 1080); // approx $1080 saved in fuel/downtime per vehicle/yr
+            const taxBenefit = Math.round(totalMonthly * 12 * 0.25); // 25% tax benefit
+
+            document.getElementById('calc-total-monthly').innerText = '$' + totalMonthly.toLocaleString();
+            document.getElementById('calc-annual-savings').innerText = '$' + annualSavings.toLocaleString();
+            document.getElementById('calc-tax-benefit').innerText = '$' + taxBenefit.toLocaleString();
+        }
+
+        // Initialize calculator on load
+        updateLeaseCalculator();
+
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
@@ -998,4 +1276,5 @@
         if (rtlMobile) rtlMobile.onclick = toggleRTL;
     </script>
 </body>
+
 </html>

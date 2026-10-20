@@ -425,6 +425,11 @@
                     class="w-full text-white mt-4 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 group">
                     Access Dashboard <span class="text-base md:text-lg submit-arrow transition-transform group-hover:translate-x-1">→</span>
                 </button>
+
+                <!-- Credentials Hint -->
+                <div class="mt-3 p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[11px] text-[var(--text-muted)] text-center">
+                    <i class="fas fa-info-circle text-[var(--accent-color)] mr-1"></i> Demo: <strong>client@fleet.com</strong> (User Portal) &bull; <strong>admin@fleetmanage.com</strong> (Admin Portal)
+                </div>
             </form>
 
             <!-- Divider -->
@@ -597,7 +602,11 @@
                     } else {
                         localStorage.removeItem('fleetmanage_remember_email');
                     }
-                    window.location.href = "user.html";
+                    if (email.toLowerCase().includes('admin')) {
+                        window.location.href = "admin.html";
+                    } else {
+                        window.location.href = "user.html";
+                    }
                 }, 1200);
             });
 

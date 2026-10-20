@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
+<<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - FleetManage</title>
+    <title>About Us | Vehicle Fleet Management & Commercial Leasing - FleetManage</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230284C7' d='M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z'/></svg>"
         type="image/svg+xml">
@@ -30,33 +30,15 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
         /* === RESET & CORE === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6, .brand-logo {
-            font-family: 'Playfair Display', serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); transition: background-color 0.4s ease, color 0.4s ease; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6, .brand-logo { font-family: 'Playfair Display', serif; }
 
         /* === THEME VARIABLES (Corporate Fleet Theme) === */
         :root {
@@ -76,17 +58,9 @@
 
         /* DARK MODE */
         body.dark-mode {
-            --bg-color: #0F172A;
-            --bg-secondary: #1E293B;
-            --bg-card: #1E293B;
-            --bg-inverted: #F8FAFC;
-            --text-main: #F1F5F9;
-            --text-muted: #94A3B8;
-            --accent-color: #38BDF8;
-            --accent-dark: #0EA5E9;
-            --border-color: #334155;
-            --nav-bg: #0F172A;
-            --drawer-bg: rgba(15, 23, 42, 0.98);
+            --bg-color: #0F172A; --bg-secondary: #1E293B; --bg-card: #1E293B; --bg-inverted: #F8FAFC;
+            --text-main: #F1F5F9; --text-muted: #94A3B8; --accent-color: #38BDF8; --accent-dark: #0EA5E9;
+            --border-color: #334155; --nav-bg: #0F172A; --drawer-bg: rgba(15, 23, 42, 0.98);
             --menu-hover-bg: rgba(56, 189, 248, 0.1);
         }
 
@@ -95,172 +69,55 @@
         [dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
         [dir="rtl"] .mr-auto { margin-left: auto; margin-right: 0; }
 
-        @keyframes subtleZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
+        @keyframes subtleZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
         .animate-zoom { animation: subtleZoom 25s infinite alternate ease-in-out; }
 
         /* === NAVBAR DESIGN === */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            z-index: 1000;
-            background: var(--nav-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 32px;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            transition: all 0.5s ease;
-        }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--nav-bg); border-bottom: 1px solid var(--border-color); padding: 0 32px; height: 90px; display: flex; align-items: center; transition: all 0.5s ease; }
+        .navbar.scrolled { height: 75px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); background: var(--drawer-bg); backdrop-filter: blur(10px); }
+        body.dark-mode .navbar.scrolled { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8); }
 
-        .navbar.scrolled {
-            height: 75px;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-            background: var(--drawer-bg);
-            backdrop-filter: blur(10px);
-        }
-
-        body.dark-mode .navbar.scrolled {
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-        }
-
-        .nav-link {
-            position: relative;
-            padding: 10px 20px;
-            margin: 0 4px;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 50%; width: 0; height: 2px;
-            background: var(--accent-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
+        .nav-link { position: relative; padding: 10px 20px; margin: 0 4px; color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--accent-color); transition: all 0.3s ease; transform: translateX(-50%); }
         .nav-link:hover::after, .nav-link.active::after { width: 60%; }
         .nav-link:hover, .nav-link.active { color: var(--accent-color); }
 
         .dropdown { position: relative; display: flex; align-items: center; height: 100%; }
-        .dropdown-menu {
-            position: absolute; top: 70px; left: 0;
-            transform: translateY(15px); opacity: 0; visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100;
-        }
+        .dropdown-menu { position: absolute; top: 70px; left: 0; transform: translateY(15px); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100; }
         .navbar.scrolled .dropdown-menu { top: 60px; }
-
-        .dropdown-inner {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            min-width: 220px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-            padding: 8px 0;
-            display: flex; flex-direction: column;
-        }
-
+        .dropdown-inner { background: var(--bg-card); border: 1px solid var(--border-color); min-width: 220px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); padding: 8px 0; display: flex; flex-direction: column; }
         body.dark-mode .dropdown-inner { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1; visibility: visible; transform: translateY(0);
-        }
-
-        .dropdown-item {
-            display: block; padding: 12px 24px; color: var(--text-main);
-            text-decoration: none; font-size: 12px; font-weight: 500;
-            text-transform: uppercase; letter-spacing: 1.5px;
-            transition: all 0.3s; text-align: left; white-space: nowrap;
-        }
-
-        .dropdown-item:hover {
-            background: var(--menu-hover-bg);
-            color: var(--accent-color);
-            padding-left: 28px;
-        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: block; padding: 12px 24px; color: var(--text-main); text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s; text-align: left; white-space: nowrap; }
+        .dropdown-item:hover { background: var(--menu-hover-bg); color: var(--accent-color); padding-left: 28px; }
         [dir="rtl"] .dropdown-item:hover { padding-left: 24px; padding-right: 28px; }
 
         /* PILL TOGGLE */
-        .theme-toggle-pill {
-            width: 52px; height: 28px; background: var(--bg-secondary);
-            border-radius: 30px; position: relative; cursor: pointer;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 6px; border: 1px solid var(--border-color);
-        }
+        .theme-toggle-pill { width: 52px; height: 28px; background: var(--bg-secondary); border-radius: 30px; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; border: 1px solid var(--border-color); }
         .theme-toggle-pill i { font-size: 10px; z-index: 1; }
         .theme-toggle-pill .fa-sun { color: #0284C7; }
         .theme-toggle-pill .fa-moon { color: #64748B; }
-        .theme-toggle-pill .thumb {
-            position: absolute; top: 2px; left: 2px; width: 22px; height: 22px;
-            background: white; border-radius: 50%;
-            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 2; border: 1px solid var(--border-color);
-        }
-        body.dark-mode .theme-toggle-pill .thumb {
-            transform: translateX(24px); background: #1E293B; border-color: var(--border-color);
-        }
+        .theme-toggle-pill .thumb { position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; background: white; border-radius: 50%; transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 2; border: 1px solid var(--border-color); }
+        body.dark-mode .theme-toggle-pill .thumb { transform: translateX(24px); background: #1E293B; border-color: var(--border-color); }
 
         /* RTL BUTTON STYLE */
-        .rtl-btn-style {
-            width: 44px; height: 28px; background: var(--bg-secondary);
-            border-radius: 2px; border: 1px solid var(--border-color);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 600; cursor: pointer; color: var(--text-main);
-            transition: all 0.3s ease; font-family: 'Inter', sans-serif;
-        }
+        .rtl-btn-style { width: 44px; height: 28px; background: var(--bg-secondary); border-radius: 2px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; cursor: pointer; color: var(--text-main); transition: all 0.3s ease; font-family: 'Inter', sans-serif; }
         .rtl-btn-style:hover { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
 
         /* === BUTTON DESIGN === */
-        .btn {
-            padding: 14px 32px; font-weight: 500; font-size: 12px;
-            text-transform: uppercase; letter-spacing: 2px; transition: all 0.4s ease;
-            display: inline-flex; align-items: center; justify-content: center;
-            cursor: pointer; border: 1px solid transparent; font-family: 'Inter', sans-serif;
-        }
+        .btn { padding: 14px 32px; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; transition: all 0.4s ease; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid transparent; font-family: 'Inter', sans-serif; }
         .btn-solid { background: var(--accent-color); color: #FFFFFF !important; }
         .btn-solid:hover { background: var(--accent-dark); }
         .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
         .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color) !important; }
 
         /* MOBILE OVERLAY & DRAWER */
-        .drawer-overlay {
-            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7);
-            z-index: 999; opacity: 0; visibility: hidden;
-            transition: all 0.4s ease; backdrop-filter: blur(5px);
-        }
+        .drawer-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.4s ease; backdrop-filter: blur(5px); }
         .drawer-overlay.active { opacity: 1; visibility: visible; }
-
-        .fullscreen-menu {
-            position: fixed; top: 0; right: 0; width: 100%; max-width: 420px;
-            height: 100dvh; background: var(--drawer-bg); z-index: 1001;
-            display: flex; flex-direction: column; opacity: 0; visibility: hidden;
-            transform: translateX(100%); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            border-left: 1px solid var(--border-color);
-        }
-        [dir="rtl"] .fullscreen-menu {
-            right: auto; left: 0; transform: translateX(-100%);
-            border-left: none; border-right: 1px solid var(--border-color);
-        }
+        .fullscreen-menu { position: fixed; top: 0; right: 0; width: 100%; max-width: 420px; height: 100dvh; background: var(--drawer-bg); z-index: 1001; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transform: translateX(100%); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border-left: 1px solid var(--border-color); }
+        [dir="rtl"] .fullscreen-menu { right: auto; left: 0; transform: translateX(-100%); border-left: none; border-right: 1px solid var(--border-color); }
         .fullscreen-menu.active { opacity: 1; visibility: visible; transform: translateX(0); }
-
-        .mobile-link {
-            display: block; width: 100%; padding: 18px 32px; font-size: 1rem;
-            font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-main);
-            text-decoration: none; transition: all 0.3s; border-bottom: 1px solid var(--border-color);
-        }
+        .mobile-link { display: block; width: 100%; padding: 18px 32px; font-size: 1rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-main); text-decoration: none; transition: all 0.3s; border-bottom: 1px solid var(--border-color); }
         .mobile-link:hover { color: var(--accent-color); padding-left: 40px; background: var(--menu-hover-bg); }
         [dir="rtl"] .mobile-link:hover { padding-left: 32px; padding-right: 40px; }
 
@@ -269,12 +126,7 @@
         footer h4 { color: var(--text-main); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 24px; letter-spacing: 1px; }
         footer a, footer li, footer span { color: var(--text-muted); text-decoration: none; transition: all 0.3s; font-size: 0.95rem; }
         footer a:hover { color: var(--accent-color); }
-
-        .social-link-circle {
-            width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s; color: var(--text-main); background: transparent;
-        }
+        .social-link-circle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; transition: all 0.3s; color: var(--text-main); background: transparent; }
         .social-link-circle:hover { background: var(--accent-color); border-color: var(--accent-color); color: #FFFFFF; }
         .footer-bottom { border-top: 1px solid var(--border-color); padding: 32px 0; margin-top: 60px; }
     </style>
@@ -286,11 +138,8 @@
     <nav class="navbar" id="main-nav">
         <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
             <div class="flex items-center">
-                <a href="index.html"
-                    class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
-                    style="color: var(--text-main) !important; text-decoration: none;">
-                    <i class="fas fa-truck"
-                        style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
+                <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                    <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle; filter: drop-shadow(0 0 4px rgba(2,132,199,0.35));"></i>FleetManage
                 </a>
             </div>
 
@@ -307,7 +156,7 @@
                 <a href="about.html" class="nav-link active">About</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="proposal.html" class="nav-link">Proposal</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <div class="dropdown">
@@ -332,8 +181,7 @@
             </div>
 
             <div class="xl:hidden flex items-center justify-end gap-4">
-                <button id="mobile-btn"
-                    class="text-2xl text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)]">
+                <button id="mobile-btn" class="text-2xl text-[var(--text-main)] transition-colors hover:text-[var(--accent-color)]">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -342,17 +190,12 @@
 
     <!-- MOBILE HAMBURGER DRAWER -->
     <div class="drawer-overlay" id="drawer-overlay"></div>
-
     <div class="fullscreen-menu" id="fullscreen-menu">
         <div class="w-full px-8 py-8 flex justify-between items-center shrink-0 border-b border-[var(--border-color)]">
-            <a href="index.html"
-                class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
-                style="color: var(--text-main) !important; text-decoration: none;">
-                <i class="fas fa-truck"
-                    style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+            <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
             </a>
-            <button id="close-menu"
-                class="w-10 h-10 flex items-center justify-center transition-all text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)]">
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center transition-all text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)]">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -363,10 +206,9 @@
             <a href="about.html" class="mobile-link" style="color: var(--accent-color);">About</a>
             <a href="services.html" class="mobile-link">Services</a>
             <a href="pricing.html" class="mobile-link">Pricing</a>
-            <a href="blog.html" class="mobile-link">Blog</a>
+            <a href="proposal.html" class="mobile-link">Proposal</a>
             <a href="faq.html" class="mobile-link">FAQ</a>
             <a href="contact.html" class="mobile-link">Contact</a>
-
             <div class="px-8 mt-8 mb-2">
                 <span class="text-[10px] font-bold text-[var(--accent-color)] uppercase tracking-widest">Portals</span>
             </div>
@@ -396,28 +238,31 @@
     <!-- ABOUT HERO BANNER COMPONENT -->
     <section class="relative w-full min-h-[70dvh] pt-32 pb-24 flex items-center justify-center overflow-hidden border-b border-[var(--border-color)]">
         <div class="absolute inset-0 z-0 bg-[#0F172A]">
-            <img src="images/vechicle (9).jpg" alt="Corporate Logistics Team"
-                class="w-full h-full object-cover animate-zoom opacity-40" />
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/50 to-[var(--bg-color)] z-10"></div>
+            <img src="images/vechicle (2).jpg" alt="Commercial Fleet Logistics Hub & Operations"
+                class="w-full h-full object-cover animate-zoom opacity-35" />
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A]/85 via-[#0F172A]/55 to-[var(--bg-color)] z-10"></div>
         </div>
 
-        <div class="max-w-[1000px] mx-auto px-6 w-full flex flex-col items-center justify-center text-center relative z-20" id="our-story">
-            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-6">
-                <i class="fas fa-users mr-2 text-[10px]"></i> Our Story & Mission
+        <div class="max-w-[1050px] mx-auto px-6 w-full flex flex-col items-center justify-center text-center relative z-20" id="our-story">
+            <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-6 inline-flex items-center gap-2">
+                <i class="fas fa-users mr-2 text-[10px]"></i> Commercial Fleet Management & Leasing Company
             </span>
 
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-regular leading-tight mb-8 text-white">
-                Driving Business <br class="hidden sm:block">
-                <span class="italic text-[var(--accent-color)]">Forward</span>.
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-8 text-white font-serif">
+                Financing & Managing <br class="hidden sm:block">
+                Modern <span class="italic text-[var(--accent-color)]">Commercial Fleets</span>.
             </h1>
 
-            <p class="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl font-light mb-12 drop-shadow-md">
-                Founded on the principles of efficiency and reliability, FleetManage has grown into a premier provider of corporate vehicle leasing and intelligent fleet management solutions.
+            <p class="text-slate-300 text-base md:text-xl leading-relaxed max-w-2xl font-light mb-12 drop-shadow-md">
+                Founded to bridge the divide between commercial vehicle leasing and intelligent IoT telematics, FleetManage empowers enterprises to acquire, operate, and maintain nationwide transport fleets under one roof.
             </p>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
-                <a href="#core-values" class="btn btn-solid !py-4 !px-12">
+            <div class="flex flex-col sm:flex-row justify-center gap-5 w-full sm:w-auto">
+                <a href="#core-values" class="btn btn-solid !py-4 !px-10 rounded-lg">
                     Explore Our Pillars
+                </a>
+                <a href="pricing.html" class="btn btn-outline !border-white !text-white hover:!bg-white hover:!text-slate-900 !py-4 !px-10 rounded-lg">
+                    View Lease Tiers
                 </a>
             </div>
         </div>
@@ -431,29 +276,29 @@
             <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
                 <div class="text-center max-w-2xl mx-auto mb-16">
                     <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.25em] mb-3 block">Our Core Pillars</span>
-                    <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">Built on Trust & Precision</h2>
+                    <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">Built on Trust, Technology & Value</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-sm shadow-sm transition-all hover:border-[var(--accent-color)]">
-                        <div class="w-12 h-12 bg-[var(--bg-secondary)] flex items-center justify-center text-[var(--accent-color)] rounded-sm mb-6 text-xl">
-                            <i class="fas fa-shield-alt"></i>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm hover:border-[var(--accent-color)] transition-all">
+                        <div class="w-14 h-14 bg-[var(--bg-secondary)] flex items-center justify-center text-[var(--accent-color)] rounded-xl mb-6 text-2xl">
+                            <i class="fas fa-file-contract"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-[var(--text-main)]">Uncompromised Safety</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Every vehicle in our network is meticulously monitored through advanced telematics to guarantee driver and cargo safety 24/7.</p>
+                        <h3 class="text-xl font-bold mb-3 text-[var(--text-main)]">Flexible Commercial Financing</h3>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed font-light">Eliminate massive capital outlays. Our Open-End TRAC and Closed-End operating leases preserve working capital with predictable, fully tax-deductible monthly expenses.</p>
                     </div>
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-sm shadow-sm transition-all hover:border-[var(--accent-color)]">
-                        <div class="w-12 h-12 bg-[var(--bg-secondary)] flex items-center justify-center text-[var(--accent-color)] rounded-sm mb-6 text-xl">
-                            <i class="fas fa-chart-line"></i>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm hover:border-[var(--accent-color)] transition-all">
+                        <div class="w-14 h-14 bg-[var(--bg-secondary)] flex items-center justify-center text-[var(--accent-color)] rounded-xl mb-6 text-2xl">
+                            <i class="fas fa-satellite-dish"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-[var(--text-main)]">Operational Efficiency</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">We leverage real-time analytics to optimize route planning, cut unnecessary fuel consumption, and reduce operational overhead.</p>
+                        <h3 class="text-xl font-bold mb-3 text-[var(--text-main)]">Connected IoT Telematics</h3>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed font-light">Every vehicle features live OBD-II telematics, predictive engine health monitoring, automated geofencing, and driver safety scoring to minimize route delays.</p>
                     </div>
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-sm shadow-sm transition-all hover:border-[var(--accent-color)]">
-                        <div class="w-12 h-12 bg-[var(--bg-secondary)] flex items-center justify-center text-[var(--accent-color)] rounded-sm mb-6 text-xl">
-                            <i class="fas fa-sync-alt"></i>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm hover:border-[var(--accent-color)] transition-all">
+                        <div class="w-14 h-14 bg-[var(--bg-secondary)] flex items-center justify-center text-[var(--accent-color)] rounded-xl mb-6 text-2xl">
+                            <i class="fas fa-wrench"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-[var(--text-main)]">Seamless Scalability</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Whether scaling up your delivery fleets or expanding regional corporate vehicle leasing, our platform grows with your enterprise.</p>
+                        <h3 class="text-xl font-bold mb-3 text-[var(--text-main)]">Nationwide 850+ Garage Network</h3>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed font-light">Keep vehicles on the road. Automated maintenance scheduling, pre-negotiated labor rates, and priority bays cut commercial downtime by up to 45%.</p>
                     </div>
                 </div>
             </div>
@@ -464,28 +309,28 @@
             <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
                 <div class="text-center max-w-2xl mx-auto mb-16">
                     <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.25em] mb-3 block">Our Evolution</span>
-                <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">A Decade of Logistics Innovation</h2>
+                    <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">A Decade of Fleet Innovation</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-[var(--accent-color)] font-bold text-2xl font-serif mb-2 block">2016</span>
-                        <h4 class="text-lg font-semibold mb-2 text-[var(--text-main)]">Foundation</h4>
-                        <p class="text-[var(--text-muted)] text-xs leading-relaxed">Established as a boutique corporate vehicle leasing firm in New York City with an initial pilot fleet of 50 vehicles.</p>
+                    <div class="p-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-[var(--accent-color)] font-bold text-3xl font-serif mb-2 block">2016</span>
+                        <h4 class="text-lg font-bold mb-2 text-[var(--text-main)]">Commercial Leasing Launch</h4>
+                        <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Founded as an independent commercial vehicle leasing firm in New York, structuring open-end TRAC leases for delivery contractors.</p>
                     </div>
-                    <div class="p-6 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-[var(--accent-color)] font-bold text-2xl font-serif mb-2 block">2019</span>
-                        <h4 class="text-lg font-semibold mb-2 text-[var(--text-main)]">Smart Telematics</h4>
-                        <p class="text-[var(--text-muted)] text-xs leading-relaxed">Introduced real-time IoT tracking and predictive maintenance software integration across all enterprise accounts.</p>
+                    <div class="p-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-[var(--accent-color)] font-bold text-3xl font-serif mb-2 block">2019</span>
+                        <h4 class="text-lg font-bold mb-2 text-[var(--text-main)]">Integrated Telematics Software</h4>
+                        <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Pioneered pre-installing OBD-II hardware in all leased assets, creating the industry's first unified lease + telematics ecosystem.</p>
                     </div>
-                    <div class="p-6 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-[var(--accent-color)] font-bold text-2xl font-serif mb-2 block">2023</span>
-                        <h4 class="text-lg font-semibold mb-2 text-[var(--text-main)]">Nationwide Expansion</h4>
-                        <p class="text-[var(--text-muted)] text-xs leading-relaxed">Scaled operations across 12 major US industrial hubs, surpassing 25,000 active managed corporate assets.</p>
+                    <div class="p-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-[var(--accent-color)] font-bold text-3xl font-serif mb-2 block">2023</span>
+                        <h4 class="text-lg font-bold mb-2 text-[var(--text-main)]">850+ Garage Service Network</h4>
+                        <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Established nationwide certified maintenance partnerships across 50 states, surpassing 10,000 active leased commercial vehicles.</p>
                     </div>
-                    <div class="p-6 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-[var(--accent-color)] font-bold text-2xl font-serif mb-2 block">2026</span>
-                        <h4 class="text-lg font-semibold mb-2 text-[var(--text-main)]">AI Optimization</h4>
-                        <p class="text-[var(--text-muted)] text-xs leading-relaxed">Launching next-gen AI automated dispatching and eco-friendly electric fleet transition programs.</p>
+                    <div class="p-7 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-[var(--accent-color)] font-bold text-3xl font-serif mb-2 block">2026</span>
+                        <h4 class="text-lg font-bold mb-2 text-[var(--text-main)]">Fleet Electrification & AI</h4>
+                        <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Leading the clean commercial transport transition with commercial EV van leases, depot charging infrastructure, and AI dispatching.</p>
                     </div>
                 </div>
             </div>
@@ -496,40 +341,40 @@
             <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                     <div>
-                        <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.25em] mb-3 block">Expert Leadership</span>
+                        <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.25em] mb-3 block">Executive Leadership</span>
                         <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">The Minds Behind FleetManage</h2>
                     </div>
-                    <p class="text-[var(--text-muted)] text-sm max-w-md mt-4 md:mt-0">Decades of combined expertise in supply chain logistics, automotive engineering, and enterprise software architecture.</p>
+                    <p class="text-[var(--text-muted)] text-sm max-w-md mt-4 md:mt-0 font-light">Decades of combined expertise in commercial vehicle financing, automotive supply chains, and enterprise telematics.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="group bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden">
+                    <div class="group bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl overflow-hidden shadow-sm">
                         <div class="h-72 overflow-hidden bg-slate-800">
-                            <img src="images/about3.jpg" alt="CEO Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="images/about4.jpg" alt="Jonathan Vance - Chief Executive Officer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold text-[var(--text-main)]">Jonathan Vance</h4>
+                            <h4 class="text-xl font-bold text-[var(--text-main)]">Jonathan Vance</h4>
                             <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-wider block mt-1 mb-3">Chief Executive Officer</span>
-                            <p class="text-[var(--text-muted)] text-xs leading-relaxed">Former VP of Global Logistics at enterprise supply firms, leading FleetManage's long-term vision since inception.</p>
+                            <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Former VP of Commercial Fleet Leasing at global financial institutions, guiding FleetManage's vehicle acquisition and client partnerships.</p>
                         </div>
                     </div>
-                    <div class="group bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden">
+                    <div class="group bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl overflow-hidden shadow-sm">
                         <div class="h-72 overflow-hidden bg-slate-800">
-                            <img src="images/about5.jpg" alt="COO Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="images/about3.jpg" alt="Elena Rostova - Chief Operating Officer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold text-[var(--text-main)]">Elena Rostova</h4>
+                            <h4 class="text-xl font-bold text-[var(--text-main)]">Elena Rostova</h4>
                             <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-wider block mt-1 mb-3">Chief Operating Officer</span>
-                            <p class="text-[var(--text-muted)] text-xs leading-relaxed">Oversees day-to-day fleet operations, client onboarding quality assurance, and regional hub expansion.</p>
+                            <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Directs nationwide maintenance garage relationships, warranty processing, vehicle upfitting quality assurance, and off-lease remarketing.</p>
                         </div>
                     </div>
-                    <div class="group bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden">
+                    <div class="group bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl overflow-hidden shadow-sm">
                         <div class="h-72 overflow-hidden bg-slate-800">
-                            <img src="images/about6.jpg" alt="CTO Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <img src="images/about6.jpg" alt="Marcus Chen - Chief Technology Officer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
                         </div>
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold text-[var(--text-main)]">Marcus Chen</h4>
+                            <h4 class="text-xl font-bold text-[var(--text-main)]">Marcus Chen</h4>
                             <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-wider block mt-1 mb-3">Chief Technology Officer</span>
-                            <p class="text-[var(--text-muted)] text-xs leading-relaxed">Pioneered our cloud telemetry suite and predictive maintenance algorithms that power modern fleet diagnostics.</p>
+                            <p class="text-[var(--text-muted)] text-xs leading-relaxed font-light">Architect of our cloud-native telematics platform, automated eDVIR mobile apps, and predictive maintenance diagnostic algorithms.</p>
                         </div>
                     </div>
                 </div>
@@ -540,25 +385,25 @@
         <section class="py-24 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
             <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
                 <div class="text-center max-w-2xl mx-auto mb-16">
-                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.25em] mb-3 block">Global Scale</span>
-                    <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">FleetManage in Numbers</h2>
+                    <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.25em] mb-3 block">Operational Metrics</span>
+                    <h2 class="text-3xl md:text-5xl font-regular text-[var(--text-main)]">FleetManage by the Numbers</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">50K+</span>
-                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Vehicles Managed</span>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">15,000+</span>
+                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Vehicles Leased</span>
                     </div>
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">1,200+</span>
-                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Enterprise Clients</span>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">850+</span>
+                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Certified Garages</span>
                     </div>
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">99.8%</span>
-                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Uptime Reliability</span>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">99.4%</span>
+                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Lease Renewal Rate</span>
                     </div>
-                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)]">
-                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">24/7</span>
-                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Support & Telemetry</span>
+                    <div class="p-8 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl shadow-sm">
+                        <span class="text-4xl md:text-5xl font-serif text-[var(--accent-color)] font-bold block mb-2">$45M+</span>
+                        <span class="text-[var(--text-main)] text-sm font-semibold uppercase tracking-wider">Fuel & Downtime Saved</span>
                     </div>
                 </div>
             </div>
@@ -568,13 +413,13 @@
         <section class="py-24 bg-[var(--bg-card)]">
             <div class="max-w-[1000px] mx-auto px-6 text-center">
                 <span class="text-[var(--accent-color)] text-xs font-semibold uppercase tracking-[0.3em] mb-4 block">Get Started Today</span>
-                <h2 class="text-4xl md:text-6xl font-regular mb-6 text-[var(--text-main)]">Ready to Transform Your Corporate Fleet?</h2>
-                <p class="text-[var(--text-muted)] text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Partner with industry leaders in fleet leasing and intelligent maintenance tracking. Let us help your business cut costs and maximize uptime.
+                <h2 class="text-4xl md:text-6xl font-regular mb-6 text-[var(--text-main)]">Ready to Lease & Optimize Your Fleet?</h2>
+                <p class="text-[var(--text-muted)] text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                    Partner with an established leader in commercial fleet leasing and intelligent maintenance tracking. Speak with an advisor today.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="contact.html" class="btn btn-solid !py-4 !px-10">Schedule a Demo</a>
-                    <a href="services.html" class="btn btn-outline !py-4 !px-10">Explore Services</a>
+                    <a href="contact.html" class="btn btn-solid !py-4 !px-10 rounded-lg">Schedule Consultation</a>
+                    <a href="pricing.html" class="btn btn-outline !py-4 !px-10 rounded-lg">Explore Lease Terms</a>
                 </div>
             </div>
         </section>
@@ -587,15 +432,12 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 pt-4">
                 <div class="lg:col-span-4">
                     <div class="mb-8">
-                        <a href="index.html"
-                            class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap"
-                            style="color: var(--text-main) !important; text-decoration: none;">
-                            <i class="fas fa-truck"
-                                style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
+                        <a href="index.html" class="text-2xl brand-logo tracking-widest uppercase flex items-center whitespace-nowrap" style="color: var(--text-main) !important; text-decoration: none;">
+                            <i class="fas fa-truck" style="color: var(--accent-color); margin-right: 0.45em; font-size: 0.9em; vertical-align: middle;"></i>FleetManage
                         </a>
                     </div>
                     <p class="opacity-90 leading-relaxed text-sm mb-8 max-w-sm" style="color: var(--text-muted);">
-                        Dedicated to delivering efficient corporate fleet solutions. From scalable vehicle leasing to advanced maintenance tracking, we keep your business moving forward.
+                        Comprehensive commercial vehicle leasing and intelligent fleet management. From turnkey vehicle procurement and custom upfitting to predictive maintenance and live GPS telematics.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="social-link-circle"><i class="fab fa-linkedin-in"></i></a>
@@ -607,35 +449,30 @@
                 <div class="lg:col-span-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                         <div>
-                            <h4>Client Portal</h4>
+                            <h4>Client Portals</h4>
                             <ul class="space-y-4">
                                 <li><a href="login.html">Client Login</a></li>
-                                <li><a href="user.html">Fleet Dashboard</a></li>
-                                <li><a href="pricing.html">Lease Terms</a></li>
-                                <li><a href="faq.html">Support & FAQ</a></li>
+                                <li><a href="user.html">Client Fleet Dashboard</a></li>
+                                <li><a href="admin.html">Admin Portal</a></li>
+                                <li><a href="pricing.html">Leasing Rates & Terms</a></li>
+                                <li><a href="proposal.html">Custom Fleet Proposal</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h4>Our Solutions</h4>
+                            <h4>Fleet Solutions</h4>
                             <ul class="space-y-4">
-                                <li><a href="services.html">Corporate Leasing</a></li>
-                                <li><a href="services.html">Maintenance Tracking</a></li>
-                                <li><a href="services.html">Logistics Planning</a></li>
-                                <li><a href="services.html">Enterprise Fleets</a></li>
+                                <li><a href="services.html">Commercial Vehicle Leasing</a></li>
+                                <li><a href="services.html">Telematics & GPS Tracking</a></li>
+                                <li><a href="services.html">Preventive Maintenance Network</a></li>
+                                <li><a href="services.html">Electric Fleet Transitions</a></li>
                             </ul>
                         </div>
                         <div class="sm:col-span-2 md:col-span-1">
                             <h4>Headquarters</h4>
                             <ul class="space-y-5 text-[var(--text-muted)] text-sm">
-                                <li class="flex items-start gap-4"><i class="fas fa-map-marker-alt mt-1 shrink-0"
-                                        style="color: var(--accent-color);"></i><span>1200 Logistics Way<br>Industrial Park, NY 10001</span></li>
-                                <li class="flex items-center gap-4"><i class="fas fa-phone shrink-0"
-                                        style="color: var(--accent-color);"></i><a href="tel:+18005550199"
-                                        class="break-all hover:text-[var(--accent-color)]">+1 (800) 555-0199</a></li>
-                                <li class="flex items-center gap-4"><i class="fas fa-envelope shrink-0"
-                                        style="color: var(--accent-color);"></i><a href="contact.html"
-                                        class="break-all hover:text-[var(--accent-color)]">support@fleetmanage.com</a>
-                                </li>
+                                <li class="flex items-start gap-4"><i class="fas fa-map-marker-alt mt-1 shrink-0" style="color: var(--accent-color);"></i><span>1200 Logistics Way<br>Industrial Park, NY 10001</span></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-phone shrink-0" style="color: var(--accent-color);"></i><a href="tel:+18005550199" class="break-all hover:text-[var(--accent-color)]">+1 (800) 555-0199</a></li>
+                                <li class="flex items-center gap-4"><i class="fas fa-envelope shrink-0" style="color: var(--accent-color);"></i><a href="contact.html" class="break-all hover:text-[var(--accent-color)]">support@fleetmanage.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -643,10 +480,10 @@
             </div>
 
             <div class="footer-bottom flex flex-col md:flex-row justify-between items-center text-xs gap-6 uppercase tracking-[1px]">
-                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. All rights reserved.</p>
+                <p style="color: var(--text-muted);">&copy; 2026 FleetManage Inc. Vehicle Fleet Management & Leasing Company. All rights reserved.</p>
                 <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
                     <a href="#">Terms of Service</a>
-                    <a href="#">Lease Agreements</a>
+                    <a href="#">Master Lease Agreements</a>
                     <a href="#">Privacy Policy</a>
                 </div>
             </div>
