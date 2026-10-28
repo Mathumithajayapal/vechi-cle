@@ -448,6 +448,9 @@
                     <i class="fas fa-satellite mr-2"></i> Fleet Software & Telematics Only
                 </button>
             </div>
+            <p id="tab-subtitle-text" class="text-xs sm:text-sm text-slate-300 max-w-xl text-center mt-2 transition-all duration-300">
+                Includes new vehicle procurement, custom upfitting, nationwide maintenance, GPS telematics & roadside assist.
+            </p>
           
         </div>
     </section>
@@ -1030,44 +1033,79 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
-                        <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>How does commercial vehicle leasing compare to outright vehicle purchasing?</span>
-                            <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
-                        </h3>
-                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
+                    <!-- FAQ 1 (Expanded by default for immediate clarity) -->
+                    <div class="faq-card bg-[var(--bg-card)] border border-[var(--accent-color)] shadow-md rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-color)]">
+                        <button type="button" onclick="togglePricingFaq(this)" class="faq-toggle-btn w-full text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none group">
+                            <span class="text-base md:text-lg font-semibold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition-colors pr-2">
+                                How does commercial vehicle leasing compare to outright vehicle purchasing?
+                            </span>
+                            <div class="faq-icon-wrapper w-9 h-9 rounded-full bg-[var(--accent-color)] text-white border border-[var(--accent-color)] flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm">
+                                <i class="fas fa-minus text-xs text-white transition-transform duration-300 faq-icon"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer mt-4 pt-4 border-t border-[var(--border-color)] text-[var(--text-muted)] text-sm font-light leading-relaxed">
                             Commercial vehicle leasing preserves your business credit lines and operating capital. Instead of deploying $50,000 to $150,000 upfront per vehicle in depreciating assets, your company pays a predictable monthly operating expense that includes telematics, warranty coverage, and nationwide maintenance. Operating lease payments are also generally 100% tax-deductible.
-                        </p>
+                        </div>
                     </div>
 
-                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
-                        <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>Can we amortize custom vinyl vehicle wraps, cargo shelving, and liftgates into the lease?</span>
-                            <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
-                        </h3>
-                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
+                    <!-- FAQ 2 -->
+                    <div class="faq-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-color)]/60 shadow-sm">
+                        <button type="button" onclick="togglePricingFaq(this)" class="faq-toggle-btn w-full text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none group">
+                            <span class="text-base md:text-lg font-semibold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition-colors pr-2">
+                                Can we amortize custom vinyl vehicle wraps, cargo shelving, and liftgates into the lease?
+                            </span>
+                            <div class="faq-icon-wrapper w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:border-[var(--accent-color)]">
+                                <i class="fas fa-plus text-xs text-[var(--accent-color)] group-hover:text-white transition-transform duration-300 faq-icon"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden mt-4 pt-4 border-t border-[var(--border-color)] text-[var(--text-muted)] text-sm font-light leading-relaxed">
                             Yes! Our factory-grade upfitting program covers custom vinyl branding wraps, commercial shelving units, ladder racks, hydraulic liftgates, and refrigeration units. All equipment costs are rolled directly into your regular monthly lease schedule, requiring $0 upfront capital.
-                        </p>
+                        </div>
                     </div>
 
-                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
-                        <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>What happens if an operational vehicle exceeds its estimated annual mileage?</span>
-                            <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
-                        </h3>
-                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
+                    <!-- FAQ 3 -->
+                    <div class="faq-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-color)]/60 shadow-sm">
+                        <button type="button" onclick="togglePricingFaq(this)" class="faq-toggle-btn w-full text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none group">
+                            <span class="text-base md:text-lg font-semibold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition-colors pr-2">
+                                What happens if an operational vehicle exceeds its estimated annual mileage?
+                            </span>
+                            <div class="faq-icon-wrapper w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:border-[var(--accent-color)]">
+                                <i class="fas fa-plus text-xs text-[var(--accent-color)] group-hover:text-white transition-transform duration-300 faq-icon"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden mt-4 pt-4 border-t border-[var(--border-color)] text-[var(--text-muted)] text-sm font-light leading-relaxed">
                             Unlike consumer car leases, FleetManage implements a <strong>Pooled Fleet Mileage System</strong>. Mileage across your entire active commercial fleet is aggregated, meaning lower-mileage vehicles balance out intensive routes. Under our Open-End TRAC leases, there are zero mileage penalties whatsoever.
-                        </p>
+                        </div>
                     </div>
 
-                    <div class="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-6 transition-all duration-300">
-                        <h3 class="text-lg font-semibold mb-2 flex items-center justify-between cursor-pointer" style="color: var(--text-main);">
-                            <span>Can we lease vehicles in one state and operate them across multiple regional depots?</span>
-                            <i class="fas fa-plus text-xs text-[var(--accent-color)]"></i>
-                        </h3>
-                        <p class="text-[var(--text-muted)] text-sm font-light leading-relaxed">
+                    <!-- FAQ 4 -->
+                    <div class="faq-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-color)]/60 shadow-sm">
+                        <button type="button" onclick="togglePricingFaq(this)" class="faq-toggle-btn w-full text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none group">
+                            <span class="text-base md:text-lg font-semibold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition-colors pr-2">
+                                Can we lease vehicles in one state and operate them across multiple regional depots?
+                            </span>
+                            <div class="faq-icon-wrapper w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:border-[var(--accent-color)]">
+                                <i class="fas fa-plus text-xs text-[var(--accent-color)] group-hover:text-white transition-transform duration-300 faq-icon"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden mt-4 pt-4 border-t border-[var(--border-color)] text-[var(--text-muted)] text-sm font-light leading-relaxed">
                             Absolutely. FleetManage handles multi-state licensing, title registration, and local tax compliance across all 50 states. We dispatch vehicles directly to your regional fulfillment centers, depots, or field offices.
-                        </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-card bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-color)]/60 shadow-sm">
+                        <button type="button" onclick="togglePricingFaq(this)" class="faq-toggle-btn w-full text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none group">
+                            <span class="text-base md:text-lg font-semibold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition-colors pr-2">
+                                What is covered under the Full-Service Maintenance & Telematics program?
+                            </span>
+                            <div class="faq-icon-wrapper w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:border-[var(--accent-color)]">
+                                <i class="fas fa-plus text-xs text-[var(--accent-color)] group-hover:text-white transition-transform duration-300 faq-icon"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden mt-4 pt-4 border-t border-[var(--border-color)] text-[var(--text-muted)] text-sm font-light leading-relaxed">
+                            Every bundled vehicle receives 100% routine and unscheduled mechanical repairs, replacement tires, oil and fluid flushes, DOT annual inspection passes, 24/7 nationwide heavy commercial roadside recovery, and full telematics hardware with real-time automated fault alerts.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1159,19 +1197,63 @@
             const subtitle = document.getElementById('tab-subtitle-text');
 
             if (mode === 'bundle') {
-                bundleView.classList.remove('hidden');
-                saasView.classList.add('hidden');
-                bundleBtn.classList.add('active');
-                saasBtn.classList.remove('active');
-                subtitle.innerText = "Includes new vehicle procurement, custom upfitting, nationwide maintenance, GPS telematics & roadside assist.";
+                if (bundleView) bundleView.classList.remove('hidden');
+                if (saasView) saasView.classList.add('hidden');
+                if (bundleBtn) bundleBtn.classList.add('active');
+                if (saasBtn) saasBtn.classList.remove('active');
+                if (subtitle) {
+                    subtitle.innerText = "Includes new vehicle procurement, custom upfitting, nationwide maintenance, GPS telematics & roadside assist.";
+                }
             } else {
-                bundleView.classList.add('hidden');
-                saasView.classList.remove('hidden');
-                saasBtn.classList.add('active');
-                bundleBtn.classList.remove('active');
-                subtitle.innerText = "For client-owned vehicles: plug-and-play OBD-II telematics, predictive maintenance automation & driver analytics.";
+                if (bundleView) bundleView.classList.add('hidden');
+                if (saasView) saasView.classList.remove('hidden');
+                if (saasBtn) saasBtn.classList.add('active');
+                if (bundleBtn) bundleBtn.classList.remove('active');
+                if (subtitle) {
+                    subtitle.innerText = "For client-owned vehicles: plug-and-play OBD-II telematics, predictive maintenance automation & driver analytics.";
+                }
             }
         }
+
+        // FAQ Accordion Toggle Functionality for Pricing Page
+        function togglePricingFaq(btn) {
+            const card = btn.closest('.faq-card');
+            if (!card) return;
+            const answer = card.querySelector('.faq-answer');
+            const icon = card.querySelector('.faq-icon');
+            const wrapper = card.querySelector('.faq-icon-wrapper');
+            if (!answer) return;
+
+            const isOpen = !answer.classList.contains('hidden');
+
+            if (isOpen) {
+                // Collapse FAQ
+                answer.classList.add('hidden');
+                card.classList.remove('border-[var(--accent-color)]', 'shadow-md');
+                if (icon) {
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+                if (wrapper) {
+                    wrapper.classList.remove('!bg-[var(--accent-color)]', '!text-white', '!border-[var(--accent-color)]');
+                }
+            } else {
+                // Expand FAQ
+                answer.classList.remove('hidden');
+                card.classList.add('border-[var(--accent-color)]', 'shadow-md');
+                if (icon) {
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+                if (wrapper) {
+                    wrapper.classList.add('!bg-[var(--accent-color)]', '!text-white', '!border-[var(--accent-color)]');
+                }
+            }
+        }
+        // Alias for compatibility
+        window.toggleFaq = togglePricingFaq;
 
         // Interactive Lease Calculator
         function updateLeaseCalculator() {

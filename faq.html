@@ -917,13 +917,26 @@
         function toggleFaq(button) {
             const content = button.nextElementSibling;
             const icon = button.querySelector('i');
+            if (!content) return;
             
             if (content.classList.contains('hidden')) {
                 content.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
+                if (icon) {
+                    if (icon.classList.contains('fa-plus')) {
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                    icon.style.transform = 'rotate(180deg)';
+                }
             } else {
                 content.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
+                if (icon) {
+                    if (icon.classList.contains('fa-minus')) {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    }
+                    icon.style.transform = 'rotate(0deg)';
+                }
             }
         }
     </script>
